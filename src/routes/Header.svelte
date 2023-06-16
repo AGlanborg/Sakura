@@ -1,129 +1,100 @@
 <script>
-	import { page } from '$app/stores';
-	import logo from '$lib/images/svelte-logo.svg';
-	import github from '$lib/images/github.svg';
+	import sakura from "$lib/images/blooming-season.png";
+	import { mode } from "$lib/light-mode.js"
+
+	let modeValue = 1
+
+	mode.subscribe(value => {
+		modeValue = value;
+	});
+
+	function toggle() {
+		mode.update(n => n ? 0 : 1)
+		console.log(modeValue)
+	}
 </script>
 
 <header>
-	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
-		</a>
-	</div>
-
 	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/">Home</a>
-			</li>
-			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about">About</a>
-			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Sverdle</a>
-			</li>
-		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
-	</nav>
+		<!-- Nav Buttons Container -->
+		<div>
+			<div class="navSakuraContainer">
+				<img src={sakura} alt="sakura" />
+			</div>
+			<div class="navIcon">
+				<span class="material-icons">home</span>
+			</div>
+			<div class="navIcon">
+				<span class="material-icons">folder</span>
+			</div>
+			<div class="navIcon">
+				<span class="material-icons">table_rows</span>
+			</div>
+		</div>
 
-	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
-			<img src={github} alt="GitHub" />
-		</a>
-	</div>
+		<!-- Nav Settings Container -->
+		<div>
+			<div class="navDevideContainer" />
+			<div class="navIcon">
+				<button on:click={toggle}>
+					<span class="material-icons">wb_sunny</span>
+				</button>
+			</div>
+			<div class="navIcon">
+				<span class="material-icons">settings</span>
+			</div>
+		</div>
+	</nav>
 </header>
 
 <style>
+	@import "material-icons/iconfont/material-icons.css";
+
 	header {
-		display: flex;
-		justify-content: space-between;
+		min-width: 100px;
+		width: 5vw;
+		max-width: 5vw;
+		height: 100vh;
+		background-color: rgb(220, 220, 220);
+		border-right: 2px solid rgb(150, 150, 150);
 	}
 
-	.corner {
-		width: 3em;
-		height: 3em;
-	}
-
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
-
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
+	header.dark-mode {
+		background-color: rgb(100, 100, 100);
 	}
 
 	nav {
 		display: flex;
-		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
-	}
-
-	ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		height: 3em;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		list-style: none;
-		background: var(--background);
-		background-size: contain;
-	}
-
-	li {
-		position: relative;
+		flex-direction: column;
+		justify-content: space-between;
 		height: 100%;
 	}
 
-	li[aria-current='page']::before {
-		--size: 6px;
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--color-theme-1);
-	}
-
-	nav a {
+	.navSakuraContainer,
+	.navIcon {
 		display: flex;
-		height: 100%;
-		align-items: center;
-		padding: 0 0.5rem;
-		color: var(--color-text);
-		font-weight: 700;
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		text-decoration: none;
-		transition: color 0.2s linear;
+		justify-content: center;
 	}
 
-	a:hover {
-		color: var(--color-theme-1);
+	.navSakuraContainer {
+		padding: 20px 0 10px;
+	}
+
+	.navIcon {
+		margin: 45px 0;
+	}
+
+	.material-icons {
+		user-select: none;
+		cursor: pointer;
+		font-size: 35px;
+	}
+
+	.navDevideContainer {
+		height: 3px;
+		width: 70%;
+		margin: 15%;
+		border-radius: 5px;
+		background-color: rgb(150, 150, 150);
 	}
 </style>
