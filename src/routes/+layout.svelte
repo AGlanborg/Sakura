@@ -1,20 +1,27 @@
 <script>
+  import Styles from "./Styles.svelte";
   import Header from "./Header.svelte";
 </script>
 
+<Styles />
 <Header />
 
 <solt />
 
 <style>
+  /* General */
+  :global(*) {
+    transition: background-color 0.3s, color 0.3s;
+  }
+
   :global(body) {
-    background-color: rgb(220, 220, 220);
-    color: rgb(0, 0, 0);
-    transition: background-color 0.3s;
     margin: 0;
   }
-  :global(body.dark-mode) {
-    background-color: rgb(60, 60, 60);
-    color: rgb(220, 220, 220);
+
+  :global(button) {
+    border: none;
+    padding: none;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
   }
 </style>
