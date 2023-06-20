@@ -1,0 +1,15 @@
+@use "colors";
+
+/* Light-mode colors */
+body {
+    header {
+        border-right-color: colors.$default-color;
+    }
+}
+
+/* Dark-mode colors*/
+body.dark {
+    header {
+        border-right-color: colors.$inverted-color;
+    }
+}

@@ -1,0 +1,81 @@
+@use 'colors';
+
+/* Light-mode */
+body {
+  background-color: colors.$default-background;
+  color: colors.$default-color;
+
+  button {
+    color: colors.$default-color;
+  }
+
+  /* Light-default */
+  .default {
+    background-color: colors.$default-background;
+    color: colors.$default-color;
+  }
+
+  .default-background {
+    background-color: colors.$default-background;
+  }
+
+  .default-color {
+    color: colors.$default-color;
+  }
+
+  /* Light-inverted */
+  .inverted {
+    background-color: colors.$inverted-background;
+    color: colors.$inverted-color;
+  }
+
+  .inverted-background {
+    background-color: colors.$inverted-background;
+  }
+
+  .inverted-color {
+    color: colors.$inverted-color;
+  }
+}
+
+/* Dark-mode */
+body.dark {
+  background-color: colors.$inverted-background;
+  color: colors.$inverted-color;
+
+  button {
+    color: colors.$inverted-color;
+  }
+
+  header {
+    border-right-color: colors.$inverted-color;
+  }
+
+  /* Dark-default */
+  .default {
+    background-color: colors.$inverted-background;
+    color: colors.$inverted-color;
+  }
+
+  .default-background {
+    background-color: colors.$inverted-background;
+  }
+
+  .default-color {
+    color: colors.$inverted-color;
+  }
+
+  /* Dark-inverted */
+  .inverted {
+    background-color: colors.$default-background;
+    color: colors.$default-color;
+  }
+
+  .inverted-background {
+    background-color: colors.$default-background;
+  }
+
+  .inverted-color {
+    color: colors.$default-color;
+  }
+}
