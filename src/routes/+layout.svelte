@@ -24,10 +24,12 @@
   }
 
   :global(body) {
+    font-family: 'Times New Roman', Times, serif;
     margin: 0;
   }
 
   :global(button) {
+    font-family: 'Times New Roman', Times, serif;
     border: none;
     padding: none;
     cursor: pointer;

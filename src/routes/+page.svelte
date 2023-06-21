@@ -51,6 +51,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
     top: 0;
     left: 0;
     height: 100vh;
@@ -62,10 +63,8 @@
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
-    border-top-width: 3px;
-    border-top-style: solid;
-    border-bottom-width: 3px;
-    border-bottom-style: solid;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.2);
     height: 80vh;
     width: 100vw;
   }

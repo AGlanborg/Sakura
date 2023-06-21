@@ -1,8 +1,8 @@
 @use "light";
 @use "dark";
 
-$db-max-height: 35vh;
-$db-max-width: 20vw;
+$db-max-height: 32.5vh;
+$db-max-width: 17.5vw;
 
 /* General */
 .dbContainer {
@@ -11,20 +11,20 @@ $db-max-width: 20vw;
     align-items: center;
     width: $db-max-width;
     height: $db-max-height;
-    margin: 2vh 0;
-  }
+    margin: 3.5vh 0;
+}
 
-  .db {
+.db {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
     height: $db-max-height;
     border: 3px solid rgba(0, 0, 0, 0.5);
-    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.5);
-    width: 15vw;
+    box-shadow: 7.5px 7.5px 7.5px 7.5px rgba(0, 0, 0, 0.2);
+    width: 12.5vw;
     border-radius: 25px;
-  }
+}
 
 /* Light-mode colors */
 body {
@@ -35,7 +35,7 @@ body {
     .home {
         border-top-color: light.$default-color;
         border-bottom-color: light.$default-color;
-      }
+    }
 }
 
 /* Dark-mode colors*/
@@ -47,5 +47,5 @@ body.dark {
     .home {
         border-top-color: dark.$inverted-color;
         border-bottom-color: dark.$inverted-color;
-      }
+    }
 }

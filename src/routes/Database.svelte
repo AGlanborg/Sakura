@@ -75,7 +75,7 @@
   h2 {
     user-select: none;
     margin: 15% 0 0;
-    font-size: 30px;
+    font-size: 35px;
   }
 
   img {
