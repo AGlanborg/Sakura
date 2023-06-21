@@ -1,7 +1,7 @@
 <script>
-  import './styles.scss'
+  import "./styles.scss";
   import Header from "./Header.svelte";
-  import sakura from "$lib/images/blooming-season.png";
+  import sakura from "$lib/images/main-icon-64.png";
   import { page } from "$app/stores";
 </script>
 
@@ -43,8 +43,12 @@
   /* Page specific*/
   .sakuraContainer {
     position: absolute;
-    padding: 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     left: 0;
     top: 0;
+    height: 10vh;
+    width: 10vh;
   }
 </style>

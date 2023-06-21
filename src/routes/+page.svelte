@@ -1,40 +1,56 @@
 <script>
+  import Database from "./Database.svelte";
+  import Newdatabase from "./Newdatabase.svelte";
+  import "./unique.scss";
+
   async function getDatabases() {
-    const res = await fetch('api/db');
-    return await res.json()
+    const res = await fetch("api/db");
+    return await res.json();
   }
 </script>
 
 <div class="homeContainer">
-  <div class="home">
-    {#await getDatabases()}
-      <p>Fetching databases...</p>
-    {:then dbs}
-      {#each [...Array(Math.ceil(dbs.length/4)).keys()] as row}
-        {#if dbs.length < Number(row) * 4 + 4}
-          {#each dbs.slice(Number(row) * 4) as db}
-            <p>{db}</p>
-          {/each}
-        {:else}
-          {#each dbs.slice(Number(row) * 4, Number(row) * 4 + 4) as db}
-            <p>{db}</p>
-          {/each}
-        {/if}
+  {#await getDatabases()}
+    <p>Fetching databases...</p>
+  {:then dbs}
+    <div class="home {dbs.length < 4 ? 'homeCenter' : ''}">
+      {#each [...Array(Math.ceil(dbs.length / 4)).keys()] as row}
+        <div class="databaseContainer">
+          {#if dbs.length < Number(row) * 4 + 4}
+            {#each dbs.slice(Number(row) * 4) as db}
+              <Database {row}>
+                {db}
+              </Database>
+            {/each}
+            {#if dbs.length % 4 != 0}
+              <Newdatabase />
+            {/if}
+          {:else}
+            {#each dbs.slice(Number(row) * 4, Number(row) * 4 + 4) as db}
+              <Database {row}>
+                {db}
+              </Database>
+            {/each}
+          {/if}
+        </div>
       {/each}
-    {:catch error}
-      <p>{error.message}</p>
-    {/await}
-  </div>
+      {#if dbs.length % 4 == 0}
+        <div class="databaseContainer">
+          <Newdatabase />
+        </div>
+      {/if}
+    </div>
+  {:catch error}
+    <p>{error.message}</p>
+  {/await}
 </div>
 
 <style lang="scss">
-  @use 'colors';
-
   .homeContainer {
     position: absolute;
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: center;
     top: 0;
     left: 0;
     height: 100vh;
@@ -42,9 +58,10 @@
   }
 
   .home {
+    position: absolute;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    overflow-y: scroll;
     border-top-width: 3px;
     border-top-style: solid;
     border-bottom-width: 3px;
@@ -53,19 +70,15 @@
     width: 100vw;
   }
 
-  /* Light-mode colors */
-  body {
-    .home {
-      border-top-color: colors.$default-color;
-      border-bottom-color: colors.$default-color;
-    }
+  .homeCenter {
+    justify-content: center;
   }
 
-  /* Dark-mode colors*/
-  body.dark {
-    .home {
-      border-top-color: colors.$inverted-color;
-      border-bottom-color: colors.$inverted-color;
-    }
+  .databaseContainer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
   }
 </style>

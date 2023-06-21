@@ -1,15 +1,51 @@
-@use "colors";
+@use "light";
+@use "dark";
+
+$db-max-height: 35vh;
+$db-max-width: 20vw;
+
+/* General */
+.dbContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $db-max-width;
+    height: $db-max-height;
+    margin: 2vh 0;
+  }
+
+  .db {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    height: $db-max-height;
+    border: 3px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.5);
+    width: 15vw;
+    border-radius: 25px;
+  }
 
 /* Light-mode colors */
 body {
     header {
-        border-right-color: colors.$default-color;
+        border-right-color: light.$default-color;
     }
+
+    .home {
+        border-top-color: light.$default-color;
+        border-bottom-color: light.$default-color;
+      }
 }
 
 /* Dark-mode colors*/
 body.dark {
     header {
-        border-right-color: colors.$inverted-color;
+        border-right-color: dark.$inverted-color;
     }
+
+    .home {
+        border-top-color: dark.$inverted-color;
+        border-bottom-color: dark.$inverted-color;
+      }
 }
