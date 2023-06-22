@@ -1,11 +1,13 @@
 <script>
-  export let row = 100;
-  export let txt = '';
+  export let row = "100";
+  export let txt = "";
 
-  import "./unique.scss";
   import MediaQuery from "./MediaQuery.svelte";
-  import non128 from "$lib/images/non-128.png"
-  import non64 from "$lib/images/non-64.png"
+
+  import "$lib/css/unique.scss";
+
+  import non128 from "$lib/images/non-128.png";
+  import non64 from "$lib/images/non-64.png";
   import a128 from "$lib/images/1-128.png";
   import a64 from "$lib/images/1-64.png";
   import b128 from "$lib/images/2-128.png";
@@ -19,24 +21,30 @@
   import f128 from "$lib/images/6-128.png";
   import f64 from "$lib/images/6-64.png";
 
-  let pic64 = [a64, b64, c64, d64, e64, f64]
-  let pic128 = [a128, b128, c128, d128, e128, f128]
+  let pic64 = [a64, b64, c64, d64, e64, f64];
+  let pic128 = [a128, b128, c128, d128, e128, f128];
 </script>
 
 <div class="dbContainer">
   <div class="db">
     <h2>
-      {txt}
+      {!isNaN(parseFloat(row)) ? txt : txt + row}
     </h2>
     <div class="center-row">
       <MediaQuery query="(min-width: 1281px)" let:matches>
         {#if matches}
-            <img src={row == 100 ? non128 : pic128[row]} alt="Cherry Blossom Icon" />
+          <img
+            src={!isNaN(parseFloat(row)) ? pic128[Number(row)] : non128}
+            alt="Cherry Blossom Icon"
+          />
         {/if}
       </MediaQuery>
       <MediaQuery query="(max-width: 1280px)" let:matches>
         {#if matches}
-          <img src={row == 100 ? non64 :pic64[row]} alt="Cherry Blossom Icon" />
+          <img
+            src={!isNaN(parseFloat(row)) ? pic64[Number(row)] : non64}
+            alt="Cherry Blossom Icon"
+          />
         {/if}
       </MediaQuery>
     </div>
@@ -45,10 +53,7 @@
 </div>
 
 <style lang="scss">
-  @import "material-icons/iconfont/material-icons.css";
-
   h2 {
-    user-select: none;
     margin: 15% 0 0;
     font-size: 35px;
   }
@@ -62,5 +67,6 @@
     color: rgba(0, 0, 0, 0.05);
     font-size: 40px;
     margin-bottom: 10%;
+    margin-top: 6.5%;
   }
 </style>

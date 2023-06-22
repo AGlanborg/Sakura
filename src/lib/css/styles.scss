@@ -1,6 +1,37 @@
 @use "light";
 @use "dark";
 
+/* Tags */
+
+* {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+  font-family: 'Times New Roman', Times, serif;
+  margin: 0;
+}
+
+input,
+button {
+  font-family: 'Times New Roman', Times, serif;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+input:focus {
+  outline: none;
+}
+
+main {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Classes */
+
 .center-row {
   display: flex;
   flex-direction: row;
@@ -13,13 +44,22 @@
   justify-content: center;
 }
 
+.absolute {
+  position: absolute;
+}
+
+.pointer {
+  cursor: pointer;
+}
 
 /* Light-mode */
 body {
   background-color: light.$default-background;
   color: light.$default-color;
 
+  input,
   button {
+    background-color: rgba(0, 0, 0, 0);
     color: light.$default-color;
   }
 

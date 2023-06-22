@@ -1,7 +1,7 @@
 <script>
   import Database from "./Database.svelte";
-  import Newdatabase from "./Newdatabase.svelte";
-  import "./unique.scss";
+  import Newdatabase from "./NewDatabase.svelte";
+  import "$lib/css/unique.scss";
 
   async function getDatabases() {
     const res = await fetch("api/db");
@@ -60,7 +60,7 @@
     flex-direction: column;
     overflow-y: scroll;
     box-sizing: border-box;
-    box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 5px 5px 10px 10px rgba(0, 0, 0, 0.2);
     height: 80vh;
     width: 100vw;
   }

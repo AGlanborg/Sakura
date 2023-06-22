@@ -1,0 +1,24 @@
+@use "light";
+@use "dark";
+
+input[type="text"] {
+    padding: 5px 10px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Light-mode colors */
+body {
+    input[type="text"] {
+        background-color: light.$default-background;
+        color: light.$default-color;
+    }
+}
+
+/* Dark-mode colors*/
+body.dark {
+    input[type="text"] {
+        background-color: dark.$inverted-background;
+        color: dark.$inverted-color;
+    }
+}

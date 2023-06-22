@@ -1,5 +1,5 @@
 <script>
-  import './unique.scss'
+  import '$lib/css/unique.scss'
   import { page } from "$app/stores";
 
   function toggleMode() {
@@ -47,8 +47,6 @@
 </header>
 
 <style>
-  @import "material-icons/iconfont/material-icons.css";
-
   header {
     border-right-style: solid;
     border-right-width: 2px;

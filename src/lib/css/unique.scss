@@ -1,16 +1,11 @@
 @use "light";
 @use "dark";
 
-$db-max-height: 32.5vh;
-$db-max-width: 17.5vw;
-
 /* General */
 .dbContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: $db-max-width;
-    height: $db-max-height;
     margin: 3.5vh 0;
 }
 
@@ -19,10 +14,8 @@ $db-max-width: 17.5vw;
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
-    height: $db-max-height;
     border: 3px solid rgba(0, 0, 0, 0.5);
     box-shadow: 7.5px 7.5px 7.5px 7.5px rgba(0, 0, 0, 0.2);
-    width: 12.5vw;
     border-radius: 25px;
 }
 
@@ -47,5 +40,31 @@ body.dark {
     .home {
         border-top-color: dark.$inverted-color;
         border-bottom-color: dark.$inverted-color;
+    }
+}
+
+/* Desktop */
+@media only screen and (min-width: 1281px) {
+    .dbContainer {
+        height: 32.5vh;
+        width: 17.5vw;
+    }
+
+    .db {
+        height: 32.5vh;
+        width: 12.5vw;
+    }
+}
+
+/* Mobile */
+@media only screen and (max-width: 1280px) {
+    .dbContainer {
+        height: 32.5vh;
+        width: 25vw;
+    }
+
+    .db {
+        height: 32.5vh;
+        width: 22.5vw;
     }
 }
