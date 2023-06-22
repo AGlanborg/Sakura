@@ -31,7 +31,7 @@
       {!isNaN(parseFloat(row)) ? txt : txt + row}
     </h2>
     <div class="center-row">
-      <MediaQuery query="(min-width: 1281px)" let:matches>
+      <MediaQuery query="(min-width: 1601px)" let:matches>
         {#if matches}
           <img
             src={!isNaN(parseFloat(row)) ? pic128[Number(row)] : non128}
@@ -39,7 +39,7 @@
           />
         {/if}
       </MediaQuery>
-      <MediaQuery query="(max-width: 1280px)" let:matches>
+      <MediaQuery query="(max-width: 1600px)" let:matches>
         {#if matches}
           <img
             src={!isNaN(parseFloat(row)) ? pic64[Number(row)] : non64}
@@ -53,11 +53,6 @@
 </div>
 
 <style lang="scss">
-  h2 {
-    margin: 15% 0 0;
-    font-size: 35px;
-  }
-
   img {
     user-select: none;
   }
@@ -65,8 +60,32 @@
   span {
     user-select: none;
     color: rgba(0, 0, 0, 0.05);
-    font-size: 40px;
-    margin-bottom: 10%;
-    margin-top: 6.5%;
+  }
+
+  /* Desktop */
+  @media only screen and (min-width: 1601px) {
+    h2 {
+      margin: 15% 0 0;
+      font-size: 35px;
+    }
+
+    span {
+      font-size: 40px;
+      margin-bottom: 10%;
+      margin-top: 6.5%;
+    }
+  }
+
+  /* Laptop */
+  @media only screen and (max-width: 1600px) {
+    h2 {
+      margin: 10% 0 2.5%;
+      font-size: 25px;
+    }
+
+    span {
+      font-size: 30px;
+      margin-bottom: 5%;
+    }
   }
 </style>

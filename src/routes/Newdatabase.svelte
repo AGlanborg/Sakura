@@ -38,7 +38,7 @@
       </div>
       <div class="center-row">
         <button on:click={() => (options = 1)}>
-          <MediaQuery query="(min-width: 1281px)" let:matches>
+          <MediaQuery query="(min-width: 1601px)" let:matches>
             {#if matches}
               {#if rep == 100}
                 <div class="missing128">
@@ -52,7 +52,7 @@
               </div>
             {/if}
           </MediaQuery>
-          <MediaQuery query="(max-width: 1280px)" let:matches>
+          <MediaQuery query="(max-width: 1600px)" let:matches>
             {#if matches}
               {#if rep == 100}
                 <div class="missing64">
@@ -61,24 +61,26 @@
               {:else}
                 <img src={pic64[rep]} alt="Cherry Blossom Icon" />
               {/if}
-              <div class="absolute">
+              <div class="absolute minBody">
                 <span class="material-icons pen64"> edit </span>
               </div>
             {/if}
           </MediaQuery>
         </button>
       </div>
-      <span class="material-icons"> add_circle </span>
+      <button>
+        <span class="material-icons"> add_circle </span>
+      </button>
     {:else}
       <div />
       <div class="center-row">
         <button on:click={() => (phase = 1)}>
-          <MediaQuery query="(min-width: 1281px)" let:matches>
+          <MediaQuery query="(min-width: 1601px)" let:matches>
             {#if matches}
               <span class="material-icons plus128"> add_circle </span>
             {/if}
           </MediaQuery>
-          <MediaQuery query="(max-width: 1280px)" let:matches>
+          <MediaQuery query="(max-width: 1600px)" let:matches>
             {#if matches}
               <span class="material-icons plus64"> add_circle </span>
             {/if}
@@ -93,10 +95,6 @@
 <style lang="scss">
   input[type="text"] {
     font-weight: 800;
-    padding: 2.5% 5%;
-    margin: 12.5% 0 0;
-    font-size: 35px;
-    width: 70%;
   }
 
   input[type="text"]:not(:placeholder-shown) {
@@ -106,9 +104,6 @@
   span {
     user-select: none;
     color: rgba(0, 0, 0, 0.5);
-    font-size: 40px;
-    margin-bottom: 10%;
-    margin-top: 6.5%;
   }
 
   img {
@@ -120,14 +115,6 @@
     color: rgba(0, 0, 0, 0.2);
   }
 
-  .plus64 {
-    font-size: 64px;
-  }
-
-  .plus128 {
-    font-size: 128px;
-  }
-
   .missing64,
   .missing128 {
     display: felx;
@@ -135,6 +122,21 @@
     cursor: pointer;
     border-radius: 50%;
     background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  .pen128,
+  .pen64 {
+    position: relative;
+    height: 0;
+    width: 0;
+  }
+
+  .plus64 {
+    font-size: 64px;
+  }
+
+  .plus128 {
+    font-size: 128px;
   }
 
   .missing128 {
@@ -157,13 +159,6 @@
     font-size: 44px;
   }
 
-  .pen128,
-  .pen64 {
-    position: relative;
-    height: 0;
-    width: 0;
-  }
-
   .pen128 {
     font-size: 30px;
     top: -30px;
@@ -174,5 +169,38 @@
     font-size: 20px;
     top: -20px;
     left: 54px;
+  }
+
+  /* Desktop */
+  @media only screen and (min-width: 1601px) {
+    input[type="text"] {
+      font-weight: 800;
+      padding: 2.5% 5%;
+      margin: 12.5% 0 0;
+      font-size: 35px;
+      width: 70%;
+    }
+
+    span {
+      font-size: 40px;
+      margin-bottom: 10%;
+      margin-top: 6.5%;
+    }
+  }
+
+  /* Laptop */
+  @media only screen and (max-width: 1600px) {
+    input[type="text"] {
+      font-weight: 800;
+      padding: 2.5% 5%;
+      margin: 7.5% 0 0;
+      font-size: 25px;
+      width: 60%;
+    }
+
+    span {
+      font-size: 30px;
+      margin-bottom: 5%;
+    }
   }
 </style>

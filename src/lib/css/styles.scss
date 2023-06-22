@@ -52,6 +52,11 @@ main {
   cursor: pointer;
 }
 
+.minBody {
+  height: 0;
+  width: 0;
+}
+
 /* Light-mode */
 body {
   background-color: light.$default-background;
