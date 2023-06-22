@@ -18,18 +18,14 @@
         <div class="databaseContainer">
           {#if dbs.length < Number(row) * 4 + 4}
             {#each dbs.slice(Number(row) * 4) as db}
-              <Database {row}>
-                {db}
-              </Database>
+              <Database row={db.slice(-1)} txt={db.slice(0, -1)} />
             {/each}
             {#if dbs.length % 4 != 0}
               <Newdatabase />
             {/if}
           {:else}
             {#each dbs.slice(Number(row) * 4, Number(row) * 4 + 4) as db}
-              <Database {row}>
-                {db}
-              </Database>
+              <Database row={db.slice(-1)} txt={db.slice(0, -1)} />
             {/each}
           {/if}
         </div>

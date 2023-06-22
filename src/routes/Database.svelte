@@ -1,69 +1,44 @@
 <script>
-  export let row = 1;
+  export let row = 100;
+  export let txt = '';
 
   import "./unique.scss";
   import MediaQuery from "./MediaQuery.svelte";
-  import first128 from "$lib/images/1-128.png";
-  import first64 from "$lib/images/1-64.png";
-  import second128 from "$lib/images/2-128.png";
-  import second64 from "$lib/images/2-64.png";
-  import third128 from "$lib/images/3-128.png";
-  import third64 from "$lib/images/3-64.png";
-  import forth128 from "$lib/images/4-128.png";
-  import forth64 from "$lib/images/4-64.png";
+  import non128 from "$lib/images/non-128.png"
+  import non64 from "$lib/images/non-64.png"
+  import a128 from "$lib/images/1-128.png";
+  import a64 from "$lib/images/1-64.png";
+  import b128 from "$lib/images/2-128.png";
+  import b64 from "$lib/images/2-64.png";
+  import c128 from "$lib/images/3-128.png";
+  import c64 from "$lib/images/3-64.png";
+  import d128 from "$lib/images/4-128.png";
+  import d64 from "$lib/images/4-64.png";
+  import e128 from "$lib/images/5-128.png";
+  import e64 from "$lib/images/5-64.png";
+  import f128 from "$lib/images/6-128.png";
+  import f64 from "$lib/images/6-64.png";
+
+  let pic64 = [a64, b64, c64, d64, e64, f64]
+  let pic128 = [a128, b128, c128, d128, e128, f128]
 </script>
 
 <div class="dbContainer">
   <div class="db">
     <h2>
-      <slot />
+      {txt}
     </h2>
     <div class="center-row">
-      {#if row % 4 == 0}
-        <MediaQuery query="(min-width: 1281px)" let:matches>
-          {#if matches}
-            <img src={first128} alt="Cherry Blossom Icon" />
-          {/if}
-        </MediaQuery>
-        <MediaQuery query="(max-width: 1280px)" let:matches>
-          {#if matches}
-            <img src={first64} alt="Cherry Blossom Icon" />
-          {/if}
-        </MediaQuery>
-      {:else if row % 4 == 1}
-        <MediaQuery query="(min-width: 1281px)" let:matches>
-          {#if matches}
-            <img src={second128} alt="Cherry Blossom Icon" />
-          {/if}
-        </MediaQuery>
-        <MediaQuery query="(max-width: 1280px)" let:matches>
-          {#if matches}
-            <img src={second64} alt="Cherry Blossom Icon" />
-          {/if}
-        </MediaQuery>
-      {:else if row % 4 == 2}
-        <MediaQuery query="(min-width: 1281px)" let:matches>
-          {#if matches}
-            <img src={third128} alt="Cherry Blossom Icon" />
-          {/if}
-        </MediaQuery>
-        <MediaQuery query="(max-width: 1280px)" let:matches>
-          {#if matches}
-            <img src={third64} alt="Cherry Blossom Icon" />
-          {/if}
-        </MediaQuery>
-      {:else if row % 4 == 3}
-        <MediaQuery query="(min-width: 1281px)" let:matches>
-          {#if matches}
-            <img src={forth128} alt="Cherry Blossom Icon" />
-          {/if}
-        </MediaQuery>
-        <MediaQuery query="(max-width: 1280px)" let:matches>
-          {#if matches}
-            <img src={forth64} alt="Cherry Blossom Icon" />
-          {/if}
-        </MediaQuery>
-      {/if}
+      <MediaQuery query="(min-width: 1281px)" let:matches>
+        {#if matches}
+            <img src={row == 100 ? non128 : pic128[row]} alt="Cherry Blossom Icon" />
+        {/if}
+      </MediaQuery>
+      <MediaQuery query="(max-width: 1280px)" let:matches>
+        {#if matches}
+          <img src={row == 100 ? non64 :pic64[row]} alt="Cherry Blossom Icon" />
+        {/if}
+      </MediaQuery>
     </div>
     <span class="material-icons">delete</span>
   </div>
