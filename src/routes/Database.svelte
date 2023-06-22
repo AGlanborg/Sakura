@@ -65,7 +65,7 @@
   /* Desktop */
   @media only screen and (min-width: 1601px) {
     h2 {
-      margin: 15% 0 0;
+      margin: 15% 0 2.5%;
       font-size: 35px;
     }
 
