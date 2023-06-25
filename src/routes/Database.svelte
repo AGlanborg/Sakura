@@ -6,23 +6,25 @@
 
   import "$lib/css/unique.scss";
 
-  import non128 from "$lib/images/non-128.png";
-  import non64 from "$lib/images/non-64.png";
-  import a128 from "$lib/images/1-128.png";
-  import a64 from "$lib/images/1-64.png";
-  import b128 from "$lib/images/2-128.png";
-  import b64 from "$lib/images/2-64.png";
-  import c128 from "$lib/images/3-128.png";
-  import c64 from "$lib/images/3-64.png";
-  import d128 from "$lib/images/4-128.png";
-  import d64 from "$lib/images/4-64.png";
-  import e128 from "$lib/images/5-128.png";
-  import e64 from "$lib/images/5-64.png";
-  import f128 from "$lib/images/6-128.png";
-  import f64 from "$lib/images/6-64.png";
+  import non64 from "$lib/images/non-64.png"
+  import non128 from "$lib/images/non-128.png"
+  import a128 from "$lib/images/0-128.png";
+  import a64 from "$lib/images/0-64.png";
+  import b128 from "$lib/images/1-128.png";
+  import b64 from "$lib/images/1-64.png";
+  import c128 from "$lib/images/2-128.png";
+  import c64 from "$lib/images/2-64.png";
+  import d128 from "$lib/images/3-128.png";
+  import d64 from "$lib/images/3-64.png";
+  import e128 from "$lib/images/4-128.png";
+  import e64 from "$lib/images/4-64.png";
+  import f128 from "$lib/images/5-128.png";
+  import f64 from "$lib/images/5-64.png";
+  import g128 from "$lib/images/6-128.png";
+  import g64 from "$lib/images/6-64.png";
 
-  let pic64 = [a64, b64, c64, d64, e64, f64];
-  let pic128 = [a128, b128, c128, d128, e128, f128];
+  let pic64 = [a64, b64, c64, d64, e64, f64, g64];
+  let pic128 = [a128, b128, c128, d128, e128, f128, g128];
 </script>
 
 <div class="dbContainer">

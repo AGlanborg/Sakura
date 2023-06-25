@@ -11,7 +11,7 @@
 
 <div class="homeContainer">
   {#await getDatabases()}
-    <p>Fetching databases...</p>
+    <p>Fetching data...</p>
   {:then dbs}
     <div class="home {dbs.length < 4 ? 'homeCenter' : ''}">
       {#each [...Array(Math.ceil(dbs.length / 4)).keys()] as row}

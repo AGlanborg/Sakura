@@ -29,6 +29,10 @@ body {
         border-top-color: light.$default-color;
         border-bottom-color: light.$default-color;
     }
+
+    .newImageClose {
+        color: light.$inverted-color;
+    }
 }
 
 /* Dark-mode colors*/
@@ -40,6 +44,10 @@ body.dark {
     .home {
         border-top-color: dark.$inverted-color;
         border-bottom-color: dark.$inverted-color;
+    }
+
+    .newImageClose {
+        color: dark.$inverted-color;
     }
 }
 
