@@ -30,10 +30,21 @@
 </script>
 
 {#if options}
-  <ImageSelect bind:rep={rep} bind:options={options}/>
+  <MediaQuery query="(max-width: 1600px)" let:matches>
+    {#if matches}
+      <ImageSelect bind:rep bind:options />
+    {/if}
+  </MediaQuery>
 {/if}
 
 <div class="dbContainer">
+  {#if options}
+    <MediaQuery query="(min-width: 1601px)" let:matches>
+      {#if matches}
+        <ImageSelect bind:rep bind:options />
+      {/if}
+    </MediaQuery>
+  {/if}
   <div class="db">
     {#if phase}
       <div>
@@ -181,7 +192,7 @@
       padding: 2.5% 5%;
       margin: 12.5% 0 0;
       font-size: 35px;
-      width: 70%;
+      width: 50%;
     }
 
     span {
@@ -198,7 +209,7 @@
       padding: 2.5% 5%;
       margin: 7.5% 0 0;
       font-size: 25px;
-      width: 60%;
+      width: 50%;
     }
 
     span {

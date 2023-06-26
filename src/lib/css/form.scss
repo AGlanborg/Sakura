@@ -2,9 +2,8 @@
 @use "dark";
 
 input[type="text"] {
-    padding: 5px 10px;
-    border-radius: 10px;
-    box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.2);
+    padding: 5px 0;
+    border-bottom: 3px solid rgb(0, 0, 0, 0.5);
 }
 
 /* Light-mode colors */
