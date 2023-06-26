@@ -101,6 +101,18 @@
 </MediaQuery>
 
 <style lang="scss">
+    .newImageClose {
+      font-size: 40px;
+      transform: rotate(45deg);
+    }
+
+    .newImageCloseContainer {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+  /* Desktop */
   @media only screen and (min-width: 1601px) {
     .newImageContainer {
       position: absolute;
@@ -122,18 +134,11 @@
     }
 
     .newImageCloseContainer {
-      display: flex;
-      justify-content: center;
-      width: 100%;
       margin: 5px 0 0;
-    }
-
-    .newImageClose {
-      font-size: 40px;
-      transform: rotate(45deg);
     }
   }
 
+  /* Laptop */
   @media only screen and (max-width: 1600px) {
     .newImageContainer {
       position: absolute;
@@ -153,17 +158,6 @@
       justify-content: space-around;
       width: 60%;
       padding: 30px 20%;
-    }
-
-    .newImageCloseContainer {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-    }
-
-    .newImageClose {
-      font-size: 40px;
-      transform: rotate(45deg);
     }
   }
 </style>

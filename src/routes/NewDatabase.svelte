@@ -1,6 +1,7 @@
 <script>
   import MediaQuery from "./MediaQuery.svelte";
   import ImageSelect from "./ImageSelect.svelte";
+  import ErrorWarning from "./ErrorWarning.svelte";
 
   import "$lib/css/unique.scss";
   import "$lib/css/form.scss";
@@ -27,22 +28,32 @@
   let title = "";
   let rep = 100;
   let options = 0;
+  let duplicate = 0;
+  let message = new Array();
 
   async function tryCreate() {
     if (title && rep != 100) {
-      let res = await fetch('/api/db', {
-        method: 'POST',
+      let res = await fetch("/api/db", {
+        method: "POST",
         body: JSON.stringify(`${title + rep}`),
         headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+          "Content-Type": "application/json",
+        },
+      });
 
-      res = await res.json()
+      res = await res.json();
 
-      if ( String(res) != 'Exists') {
-        location.reload();
+      if (String(res) == "Exists") {
+        duplicate = 1;
+        message = [
+          "You have tried to create duplicate files!",
+          "This could have wiped the content of the first database!",
+          "Be careful!",
+        ];
+        return;
       }
+
+      location.reload();
     }
   }
 </script>
@@ -53,6 +64,10 @@
       <ImageSelect bind:rep bind:options />
     {/if}
   </MediaQuery>
+{/if}
+
+{#if duplicate}
+  <ErrorWarning bind:message bind:duplicate />
 {/if}
 
 <div class="dbContainer">
