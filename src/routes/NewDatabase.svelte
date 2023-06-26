@@ -30,7 +30,7 @@
 
   async function tryCreate() {
     if (title && rep != 100) {
-      await fetch('/api/db', {
+      let res = await fetch('/api/db', {
         method: 'POST',
         body: JSON.stringify(`${title + rep}`),
         headers: {
@@ -38,7 +38,11 @@
         }
       })
 
-      location.reload();
+      res = await res.json()
+
+      if ( String(res) != 'Exists') {
+        location.reload();
+      }
     }
   }
 </script>

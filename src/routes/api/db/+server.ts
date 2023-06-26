@@ -29,6 +29,11 @@ export const POST: RequestHandler = async ({ request }) => {
 
     const req = await request.json()
 
+    if (fs.existsSync(`/licenses/${req}.sqlite`)) {
+        console.log("File already exists")
+        return json("Exists")
+    }
+
     fs.readFile("src/lib/db/licenses.sqlite", 'utf8', (err, data) => {
         if (err) {
             console.log("Error: ", err)
