@@ -27,6 +27,20 @@
   let title = "";
   let rep = 100;
   let options = 0;
+
+  async function tryCreate() {
+    if (title && rep != 100) {
+      await fetch('/api/db', {
+        method: 'POST',
+        body: JSON.stringify(`${title + rep}`),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+
+      location.reload();
+    }
+  }
 </script>
 
 {#if options}
@@ -82,7 +96,7 @@
           </MediaQuery>
         </button>
       </div>
-      <button>
+      <button on:click={() => tryCreate()}>
         <span class="material-icons"> add_circle </span>
       </button>
     {:else}

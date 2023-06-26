@@ -5,6 +5,7 @@
 
   async function getDatabases() {
     const res = await fetch("api/db");
+
     return await res.json();
   }
 </script>
