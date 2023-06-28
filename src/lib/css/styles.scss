@@ -99,38 +99,38 @@ body {
 
 /* Dark-mode */
 body.dark {
-  background-color: dark.$inverted-background;
-  color: dark.$inverted-color;
+  background-color: dark.$default-background;
+  color: dark.$default-color;
 
   button {
-    color: dark.$inverted-color;
+    color: dark.$default-color;
   }
 
   /* Dark-default */
   .default {
-    background-color: dark.$inverted-background;
-    color: dark.$inverted-color;
+    background-color: dark.$default-background;
+    color: dark.$default-color;
   }
 
   .default-background {
-    background-color: dark.$inverted-background;
+    background-color: dark.$default-background;
   }
 
   .default-color {
-    color: dark.$inverted-color;
+    color: dark.$default-color;
   }
 
   /* Dark-inverted */
   .inverted {
-    background-color: dark.$default-background;
-    color: dark.$default-color;
+    background-color: dark.$inverted-background;
+    color: dark.$inverted-color;
   }
 
   .inverted-background {
-    background-color: dark.$default-background;
+    background-color: dark.$inverted-background;
   }
 
   .inverted-color {
-    color: dark.$default-color;
+    color: dark.$inverted-color;
   }
 }

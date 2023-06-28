@@ -1,9 +1,14 @@
 <script>
   import '$lib/css/unique.scss'
   import { page } from "$app/stores";
+  import { mode } from "$lib/memory/selected";
+  import { goto } from '$app/navigation';
 
   function toggleMode() {
-    window.document.body.classList.toggle("dark");
+    mode.update((val) => {
+      console.log(val)
+      return val == "dark" ? val = "light" : val = "dark"
+    })
   }
 </script>
 
@@ -15,7 +20,9 @@
         class="navIcon"
         aria-current={$page.url.pathname === "/" ? "page" : undefined}
       >
+      <button on:click={() => goto("/")}>
         <span class="material-icons"> home </span>
+      </button>
       </div>
       <div
         class="navIcon"

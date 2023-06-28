@@ -1,4 +1,7 @@
 <script>
+  import { goto } from "$app/navigation";
+  import { db } from "$lib/memory/selected";
+
   export let row = "100";
   export let txt = "";
 
@@ -6,8 +9,8 @@
 
   import "$lib/css/unique.scss";
 
-  import non64 from "$lib/images/non-64.png"
-  import non128 from "$lib/images/non-128.png"
+  import non64 from "$lib/images/non-64.png";
+  import non128 from "$lib/images/non-128.png";
   import a128 from "$lib/images/0-128.png";
   import a64 from "$lib/images/0-64.png";
   import b128 from "$lib/images/1-128.png";
@@ -25,33 +28,40 @@
 
   let pic64 = [a64, b64, c64, d64, e64, f64, g64];
   let pic128 = [a128, b128, c128, d128, e128, f128, g128];
+
+  function selectDB() {
+    db.update(() => txt + row)
+    goto("/db")
+  }
 </script>
 
 <div class="dbContainer">
-  <div class="db">
-    <h2>
-      {!isNaN(parseFloat(row)) ? txt : txt + row}
-    </h2>
-    <div class="center-row">
-      <MediaQuery query="(min-width: 1601px)" let:matches>
-        {#if matches}
-          <img
-            src={!isNaN(parseFloat(row)) ? pic128[Number(row)] : non128}
-            alt="Cherry Blossom Icon"
-          />
-        {/if}
-      </MediaQuery>
-      <MediaQuery query="(max-width: 1600px)" let:matches>
-        {#if matches}
-          <img
-            src={!isNaN(parseFloat(row)) ? pic64[Number(row)] : non64}
-            alt="Cherry Blossom Icon"
-          />
-        {/if}
-      </MediaQuery>
+  <button on:click={() => selectDB()}>
+    <div class="db">
+      <h2>
+        {!isNaN(parseFloat(row)) ? txt : txt + row}
+      </h2>
+      <div class="center-row">
+        <MediaQuery query="(min-width: 1601px)" let:matches>
+          {#if matches}
+            <img
+              src={!isNaN(parseFloat(row)) ? pic128[Number(row)] : non128}
+              alt="Cherry Blossom Icon"
+            />
+          {/if}
+        </MediaQuery>
+        <MediaQuery query="(max-width: 1600px)" let:matches>
+          {#if matches}
+            <img
+              src={!isNaN(parseFloat(row)) ? pic64[Number(row)] : non64}
+              alt="Cherry Blossom Icon"
+            />
+          {/if}
+        </MediaQuery>
+      </div>
+      <span class="material-icons">delete</span>
     </div>
-    <span class="material-icons">delete</span>
-  </div>
+  </button>
 </div>
 
 <style lang="scss">
