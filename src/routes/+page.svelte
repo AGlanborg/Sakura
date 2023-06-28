@@ -1,7 +1,10 @@
 <script>
+  import "$lib/css/unique.scss";
+
+  import ColourButton from "./ColourButton.svelte";
   import Database from "./Database.svelte";
   import Newdatabase from "./NewDatabase.svelte";
-  import "$lib/css/unique.scss";
+
 
   async function getDatabases() {
     const res = await fetch("api/db");
@@ -9,6 +12,8 @@
     return await res.json();
   }
 </script>
+
+<ColourButton />
 
 <div class="homeContainer">
   {#await getDatabases()}

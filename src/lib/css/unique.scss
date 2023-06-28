@@ -22,10 +22,6 @@
 
 /* Light-mode colors */
 body {
-  header {
-    border-right-color: light.$default-color;
-  }
-
   .home {
     border-top-color: light.$default-color;
     border-bottom-color: light.$default-color;
@@ -52,10 +48,6 @@ body {
 
 /* Dark-mode colors*/
 body.dark {
-  header {
-    border-right-color: dark.$inverted-color;
-  }
-
   .home {
     border-top-color: dark.$inverted-color;
     border-bottom-color: dark.$inverted-color;
