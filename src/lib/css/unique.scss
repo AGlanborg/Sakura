@@ -3,76 +3,108 @@
 
 /* General */
 .dbContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 3.5vh 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3.5vh 0;
 }
 
 .db {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
-    border: 3px solid rgba(0, 0, 0, 0.5);
-    box-shadow: 7.5px 7.5px 7.5px 7.5px rgba(0, 0, 0, 0.2);
-    border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  border-width: 3px;
+  border-style: solid;
+  box-shadow: 7.5px 7.5px 7.5px 7.5px rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
 }
 
 /* Light-mode colors */
 body {
-    header {
-        border-right-color: light.$default-color;
-    }
+  header {
+    border-right-color: light.$default-color;
+  }
 
-    .home {
-        border-top-color: light.$default-color;
-        border-bottom-color: light.$default-color;
-    }
+  .home {
+    border-top-color: light.$default-color;
+    border-bottom-color: light.$default-color;
+  }
 
-    .newImageClose {
-        color: light.$inverted-color;
-    }
+  .newImageClose {
+    color: light.$inverted-color;
+  }
+
+  .db {
+    border-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .plus64,
+  .plus128 {
+    color: rgba(0, 0, 0, 0.2);
+  }
+
+  .missing64,
+  .missing128 {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
 }
 
 /* Dark-mode colors*/
 body.dark {
-    header {
-        border-right-color: dark.$inverted-color;
-    }
+  header {
+    border-right-color: dark.$inverted-color;
+  }
 
-    .home {
-        border-top-color: dark.$inverted-color;
-        border-bottom-color: dark.$inverted-color;
-    }
+  .home {
+    border-top-color: dark.$inverted-color;
+    border-bottom-color: dark.$inverted-color;
+  }
 
-    .newImageClose {
-        color: dark.$inverted-color;
-    }
+  .image64,
+  .image128,
+  .newImageClose {
+    color: dark.$inverted-color;
+  }
+
+  .plus64,
+  .plus128,
+  .newImageClose {
+    color: dark.$default-color;
+  }
+
+  .db {
+    border-color: dark.$default-color;
+  }
+
+  .missing64,
+  .missing128 {
+    background-color: dark.$default-color;
+  }
 }
 
 /* Desktop + Laptop */
 @media only screen and (min-width: 1281px) {
-    .dbContainer {
-        height: 32.5vh;
-        width: 17.5vw;
-    }
+  .dbContainer {
+    height: 32.5vh;
+    width: 17.5vw;
+  }
 
-    .db {
-        height: 32.5vh;
-        width: 12.5vw;
-    }
+  .db {
+    height: 32.5vh;
+    width: 12.5vw;
+  }
 }
 
 /* Mobile */
 @media only screen and (max-width: 1280px) {
-    .dbContainer {
-        height: 32.5vh;
-        width: 25vw;
-    }
+  .dbContainer {
+    height: 32.5vh;
+    width: 25vw;
+  }
 
-    .db {
-        height: 32.5vh;
-        width: 22.5vw;
-    }
+  .db {
+    height: 32.5vh;
+    width: 22.5vw;
+  }
 }

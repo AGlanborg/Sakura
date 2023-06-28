@@ -150,16 +150,10 @@
 
   span {
     user-select: none;
-    color: rgba(0, 0, 0, 0.5);
   }
 
   img {
     cursor: pointer;
-  }
-
-  .plus64,
-  .plus128 {
-    color: rgba(0, 0, 0, 0.2);
   }
 
   .missing64,
@@ -168,7 +162,6 @@
     text-align: center;
     cursor: pointer;
     border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.2);
   }
 
   .pen128,
