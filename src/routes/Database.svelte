@@ -2,9 +2,6 @@
   import { goto } from "$app/navigation";
   import { db } from "$lib/memory/selected";
 
-  export let row = "100";
-  export let txt = "";
-
   import MediaQuery from "./MediaQuery.svelte";
 
   import "$lib/css/unique.scss";
@@ -26,11 +23,14 @@
   import g128 from "$lib/images/6-128.png";
   import g64 from "$lib/images/6-64.png";
 
+  export let img = "100";
+  export let title = "";
+
   let pic64 = [a64, b64, c64, d64, e64, f64, g64];
   let pic128 = [a128, b128, c128, d128, e128, f128, g128];
 
   function selectDB() {
-    db.update(() => txt + row)
+    db.update(() => title + img)
     goto("/db")
   }
 </script>
@@ -39,13 +39,13 @@
   <button on:click={() => selectDB()}>
     <div class="db">
       <h2>
-        {!isNaN(parseFloat(row)) ? txt : txt + row}
+        {!isNaN(parseFloat(img)) ? title : title + img}
       </h2>
       <div class="center-row">
         <MediaQuery query="(min-width: 1601px)" let:matches>
           {#if matches}
             <img
-              src={!isNaN(parseFloat(row)) ? pic128[Number(row)] : non128}
+              src={!isNaN(parseFloat(img)) ? pic128[Number(img)] : non128}
               alt="Cherry Blossom Icon"
             />
           {/if}
@@ -53,7 +53,7 @@
         <MediaQuery query="(max-width: 1600px)" let:matches>
           {#if matches}
             <img
-              src={!isNaN(parseFloat(row)) ? pic64[Number(row)] : non64}
+              src={!isNaN(parseFloat(img)) ? pic64[Number(img)] : non64}
               alt="Cherry Blossom Icon"
             />
           {/if}
