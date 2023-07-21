@@ -121,7 +121,7 @@
   }
 
   .navButtonsContainer {
-    margin: 0 5vw;
+    margin: 1.5vh 5vw;
   }
 
   .arrowDown {

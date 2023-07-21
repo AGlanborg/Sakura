@@ -1,110 +1,191 @@
 [
   {
     "name": "Id",
-    "size": "short"
+    "size": "short",
+    "type": "number",
+    "column": "main_id",
+    "position": 1
   },
   {
     "name": "Säljare",
-    "size": "default"
+    "size": "default",
+    "type": "foreign",
+    "column": "saljare",
+    "position": 2
   },
   {
     "name": "Köpare",
-    "size": "default"
+    "size": "default",
+    "type": "foreign",
+    "column": "kopare",
+    "position": 3
   },
   {
     "name": "Arbetstyp",
-    "size": "long"
+    "size": "long",
+    "type": "foreign",
+    "column": "arbetstyp",
+    "position": 4
   },
   {
     "name": "Antal Poster",
-    "size": "long"
+    "size": "long",
+    "type": "number",
+    "column": "antal",
+    "position": 5
   },
   {
     "name": "Typ",
-    "size": "default"
+    "size": "default",
+    "type": "string",
+    "column": "typ",
+    "position": 6
   },
   {
     "name": "Leverantör",
-    "size": "long"
+    "size": "long",
+    "type": "foreign",
+    "column": "leverantor",
+    "position": 7
   },
   {
     "name": "Text På Internfaktura",
-    "size": "extra"
+    "size": "extra",
+    "type": "string",
+    "column": "text",
+    "position": 8
   },
   {
     "name": "Kontaktinfo",
-    "size": "long"
+    "size": "long",
+    "type": "string",
+    "column": "info",
+    "position": 9
   },
   {
     "name": "Valuta",
-    "size": "default"
+    "size": "default",
+    "type": "string",
+    "column": "valuta",
+    "position": 10
   },
   {
     "name": "Antal licenser",
-    "size": "long"
+    "size": "long",
+    "type": "number",
+    "column": "mangd",
+    "position": 11
   },
   {
     "name": "Inpris ex. moms",
-    "size": "extra"
+    "size": "extra",
+    "type": "number",
+    "column": "inprisex",
+    "position": 12
   },
   {
     "name": "Inpris inkl. moms",
-    "size": "extra"
+    "size": "extra",
+    "type": "number",
+    "column": "inprisin",
+    "position": 13
   },
   {
     "name": "Procent (%)",
-    "size": "long"
+    "size": "long",
+    "type": "number",
+    "column": "procent",
+    "position": 14
   },
   {
     "name": "OH",
-    "size": "default"
+    "size": "default",
+    "type": "number",
+    "column": "oh",
+    "position": 15
   },
   {
     "name": "Totalt, SEK, inkl. moms och OH",
-    "size": "extra"
+    "size": "extra",
+    "type": "number",
+    "column": "totalt",
+    "position": 16
   },
   {
     "name": "Fakturanummer",
-    "size": "extra"
+    "size": "extra",
+    "type": "string",
+    "column": "fakturanum",
+    "position": 17
   },
   {
     "name": "Kommentar",
-    "size": "long"
+    "size": "long",
+    "type": "string",
+    "column": "kommentar",
+    "position": 18
   },
   {
     "name": "Internpris",
-    "size": "long"
+    "size": "long",
+    "type": "number",
+    "column": "inpris",
+    "position": 19
   },
   {
     "name": "Periodisering Start",
-    "size": "extra"
+    "size": "extra",
+    "type": "date",
+    "column": "start",
+    "position": 20
   },
   {
     "name": "Periodisering Slut",
-    "size": "extra"
+    "size": "extra",
+    "type": "date",
+    "column": "slut",
+    "position": 21
   },
   {
     "name": "Periodisering antal månader",
-    "size": "extra"
+    "size": "extra",
+    "type": "number",
+    "column": "perioder",
+    "position": 22
   },
   {
     "name": "Antal månader upfront",
-    "size": "extra"
+    "size": "extra",
+    "type": "number",
+    "column": "upfront",
+    "position": 23
   },
   {
     "name": "Antal månader resterande",
-    "size": "extra"
+    "size": "extra",
+    "type": "number",
+    "column": "rest",
+    "position": 24
   },
   {
     "name": "Internfakt. per period, SEK",
-    "size": "extra"
+    "size": "extra",
+    "type": "number",
+    "column": "internfakt",
+    "position": 25
   },
   {
     "name": "Intäkt",
-    "size": "default"
+    "size": "default",
+    "type": "number",
+    "column": "intakt",
+    "position": 26
   },
   {
     "name": "Check",
-    "size": "default"
+    "size": "default",
+    "type": "number",
+    "column": "scan",
+    "position": 27
   }
 ]

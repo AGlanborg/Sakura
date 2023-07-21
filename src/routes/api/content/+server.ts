@@ -15,10 +15,10 @@ export const GET: RequestHandler = async ({ request }) => {
     driver: sqlite3.Database
   })
 
-  const main = await db.get('SELECT * FROM main')
-  const saljare = await db.get('SELECT * FROM saljare')
-  const kopare = await db.get('SELECT * FROM kopare')
-  const arbetstyp = await db.get('SELECT * FROM arbetstyp')
+  const main = await db.all('SELECT * FROM main')
+  const saljare = await db.all('SELECT * FROM saljare')
+  const kopare = await db.all('SELECT * FROM kopare')
+  const arbetstyp = await db.all('SELECT * FROM arbetstyp')
 
   return json({
     main: main,

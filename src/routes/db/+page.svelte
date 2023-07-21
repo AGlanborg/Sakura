@@ -32,7 +32,7 @@
       <Filters />
     </div>
     <div class="contentContainer">
-      <Content />
+      <Content content={content} />
     </div>
   </div>
 {:catch error}
