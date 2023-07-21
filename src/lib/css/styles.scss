@@ -82,6 +82,11 @@ input:focus {
   width: 0;
 }
 
+.fillBody {
+  height: 100%;
+  width: 100%;
+}
+
 /* Light-mode */
 body {
   background-color: light.$default-background;

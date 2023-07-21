@@ -12,11 +12,11 @@
 </script>
 
 {#await getDatabases()}
-  <div class="absolute-center">
+  <div class="fillBody center-absolute">
     <p>Fetching data...</p>
   </div>
 {:then dbs}
-  <div class={dbs.length < 4 ? "homeCenter" : ""}>
+  <div class={dbs.length < 4 ? "fillBody center-absolute" : ""}>
     {#each [...Array(Math.ceil(dbs.length / 4)).keys()] as row}
       <div class="databaseContainer">
         {#if dbs.length < Number(row) * 4 + 4}
@@ -46,14 +46,6 @@
 {/await}
 
 <style lang="scss">
-  .homeCenter {
-    height: 100%;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   .databaseContainer {
     position: relative;
     display: flex;

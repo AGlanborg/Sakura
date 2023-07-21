@@ -26,6 +26,8 @@
   "license": "ISC",
   "dependencies": {
     "material-icons": "^1.13.8",
-    "sass": "^1.63.4"
+    "sass": "^1.63.4",
+    "sqlite": "^5.0.1",
+    "sqlite3": "^5.1.6"
   }
 }

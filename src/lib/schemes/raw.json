@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Id",
+    "size": "short"
+  },
+  {
+    "name": "Säljare",
+    "size": "default"
+  },
+  {
+    "name": "Köpare",
+    "size": "default"
+  },
+  {
+    "name": "Arbetstyp",
+    "size": "long"
+  },
+  {
+    "name": "Antal Poster",
+    "size": "long"
+  },
+  {
+    "name": "Typ",
+    "size": "default"
+  },
+  {
+    "name": "Leverantör",
+    "size": "long"
+  },
+  {
+    "name": "Text På Internfaktura",
+    "size": "extra"
+  },
+  {
+    "name": "Kontaktinfo",
+    "size": "long"
+  },
+  {
+    "name": "Valuta",
+    "size": "default"
+  },
+  {
+    "name": "Antal licenser",
+    "size": "long"
+  },
+  {
+    "name": "Inpris ex. moms",
+    "size": "extra"
+  },
+  {
+    "name": "Inpris inkl. moms",
+    "size": "extra"
+  },
+  {
+    "name": "Procent (%)",
+    "size": "long"
+  },
+  {
+    "name": "OH",
+    "size": "default"
+  },
+  {
+    "name": "Totalt, SEK, inkl. moms och OH",
+    "size": "extra"
+  },
+  {
+    "name": "Fakturanummer",
+    "size": "extra"
+  },
+  {
+    "name": "Kommentar",
+    "size": "long"
+  },
+  {
+    "name": "Internpris",
+    "size": "long"
+  },
+  {
+    "name": "Periodisering Start",
+    "size": "extra"
+  },
+  {
+    "name": "Periodisering Slut",
+    "size": "extra"
+  },
+  {
+    "name": "Periodisering antal månader",
+    "size": "extra"
+  },
+  {
+    "name": "Antal månader upfront",
+    "size": "extra"
+  },
+  {
+    "name": "Antal månader resterande",
+    "size": "extra"
+  },
+  {
+    "name": "Internfakt. per period, SEK",
+    "size": "extra"
+  },
+  {
+    "name": "Intäkt",
+    "size": "default"
+  },
+  {
+    "name": "Check",
+    "size": "default"
+  }
+]

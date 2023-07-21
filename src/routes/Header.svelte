@@ -3,7 +3,6 @@
 
   import { page } from "$app/stores";
   import { goto } from "$app/navigation";
-  import { db } from "$lib/memory/selected";
 
   import non64 from "$lib/images/non-64.png";
   import a64 from "$lib/images/0-64.png";
@@ -43,7 +42,7 @@
       <button class="center-absolute" on:click={() => back()}>
         <div>
           <p>Home</p>
-          <span class="material-icons"> home </span>
+          <span class="material-icons icon"> home </span>
         </div>
       </button>
       <button class="center-absolute">
@@ -127,11 +126,23 @@
 
   .arrowDown {
     transform: rotate(-90deg);
-    margin: 0 5px 5px;
+    margin: 5px 0 5px 5px;
   }
 
   .arrowUp {
     transform: rotate(90deg);
-    margin: 10px 5px 0px;
+    margin: 15px 5px 0px;
+  }
+
+  .arrowDown,
+  .arrowUp {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+  }
+
+  .icon {
+    font-size: 25px;
+    margin: 8px 5px 0;
   }
 </style>

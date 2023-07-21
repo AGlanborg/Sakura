@@ -1,19 +1,54 @@
 <script>
-  import { onMount } from "svelte";
-  import { db, mode } from "$lib/memory/selected";
-  import { goto } from "$app/navigation";
+  import { db } from "$lib/memory/selected";
+  import { goto, afterNavigate  } from "$app/navigation";
 
-  let title = "";
+  import Filters from "./Filters.svelte";
+  import Content from "./Content.svelte";
 
-  onMount(() => {
-    db.subscribe((val) => {
-      if (!val) {
-        goto("/");
-      }
+  let file = "";
 
-      title = val.slice(0, -1);
+  afterNavigate(({from}) => {
+    from?.url.pathname ? '' : goto('/')
+  }) 
+
+  async function getContent() {
+    db.subscribe(async (val) => {
+      file = val;
     });
-  });
+
+    const res = await fetch(`api/content?file=${file}`);
+
+    return await res.json();
+  }
 </script>
 
-<style></style>
+{#await getContent()}
+  <div class="fillBody center-absolute">
+    <p>Fetching data...</p>
+  </div>
+{:then content}
+  <div class="fillBody center-row">
+    <div class="filterContianer">
+      <Filters />
+    </div>
+    <div class="contentContainer">
+      <Content />
+    </div>
+  </div>
+{:catch error}
+  <div class="absolute-center">
+    <p>{error.message}</p>
+  </div>
+{/await}
+
+<style lang="scss">
+  .filterContianer {
+    height: 100%;
+    width: 20vw;
+  }
+
+  .contentContainer {
+    height: 100%;
+    width: 80vw;
+  }
+</style>
