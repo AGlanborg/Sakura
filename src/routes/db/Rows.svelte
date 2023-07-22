@@ -1,21 +1,46 @@
 <script>
-  export let content = { main: {} };
-
   import "$lib/css/table.scss";
   import raw from "$lib/schemes/raw.json";
+  import content_type from "$lib/types";
+
+  export let content = content_type;
 
   let order = {
     column: "main_id",
     desc: true
   };
 
-  function toggleColumn(obj = {name: "", size: "", type: "", column: "", position: 0}) {
+  function toggleColumn(obj) {
     if (order.column == obj.column) {
       order.desc = !order.desc
     } else {
       order.column = obj.column
       order.desc = true
     }
+  }
+
+  function handleForeignKeys(id, column) {
+    if (column == "arbetstyp") {
+      return handleArbetstyp(id)
+    }
+
+    return handleCompany(id, column)
+  }
+
+  function handleArbetstyp(id) {
+    const obj = content.arbetstyp.filter((obj) => obj.arbetstyp_id == id)
+    return obj[0].arbetstyp
+  }
+
+  function handleCompany(id, column = "kopare" || "saljare") {
+    let obj = content[column].filter((obj) => obj[column + "_id"] == id)
+    obj = obj[0]
+
+    if (obj.name == 1) {
+      return obj.rst
+    }
+
+    return obj.copernicus
   }
 </script>
 
@@ -40,13 +65,13 @@
     {/each}
   </div>
 </div>
-{#each Object.values(content.main).sort((a, b) => order.desc ? b[order.column] - a[order.column] : a[order.column] - b[order.column]) as row}
+{#each content.main.sort((a, b) => order.desc ? b[order.column] - a[order.column] : a[order.column] - b[order.column]) as row}
   <div class="tableRowContainer">
     <div class="tableRow">
       {#each raw as column}
         <div class="tableColumn {'table-' + column.size}">
           <button disabled>
-            <p>{row[column.column]}</p>
+            <p>{['kopare', 'saljare', 'arbetstyp'].includes(column.column) ? handleForeignKeys(row[column.column], column.column) : row[column.column]}</p>
           </button>
         </div>
       {/each}

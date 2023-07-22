@@ -6,6 +6,7 @@
   import Content from "./Content.svelte";
 
   let file = "";
+  let fullscreen = false;
 
   afterNavigate(({from}) => {
     from?.url.pathname ? '' : goto('/')
@@ -28,11 +29,11 @@
   </div>
 {:then content}
   <div class="fillBody center-row">
-    <div class="filterContianer">
-      <Filters />
+    <div class="filterContianer {fullscreen ? 'filterContianerSmall' : ''}">
+      <Filters fullscreen={fullscreen} />
     </div>
     <div class="contentContainer">
-      <Content content={content} />
+      <Content bind:fullscreen={fullscreen} content={content} />
     </div>
   </div>
 {:catch error}
@@ -43,8 +44,16 @@
 
 <style lang="scss">
   .filterContianer {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
     height: 100%;
     width: 20vw;
+  }
+
+  .filterContianerSmall {
+    transition-delay: 0.3s;
+    width: 0;
   }
 
   .contentContainer {

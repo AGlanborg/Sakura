@@ -1,25 +1,26 @@
 <script>
-  export let content = { main: {} };
-
+  import content_type from "$lib/types";
   import Rows from "./Rows.svelte";
 
-  let fullscreen = false
+  export let content = content_type;
+  export let fullscreen = false;
 </script>
 
 <div class="statsContainer" />
-<div class="rowsContainer">
-  <div class="dataButtonContainer">
+<div class="rowsContainer {fullscreen ? 'rowContainerFull' : ''}">
+  <div class="dataButtonContainer {fullscreen ? 'dataButtonContainerFull' : ''}">
     <button class="dataButton" on:click={() => fullscreen = !fullscreen}>
       <h2>Data</h2>
       <span class="material-icons data_fullscreen"> {fullscreen ? 'fullscreen_exit' : 'fullscreen'} </span>
     </button>
   </div>
-  <div class="rows">
+  <div class="rows {fullscreen ? 'rowFull' : ''}">
     <Rows {content} />
   </div>
 </div>
 
 <style>
+  /* Static */
   h2 {
     display: inline-block;
     font-size: 30px;
@@ -27,17 +28,32 @@
   }
 
   .statsContainer {
-    margin: 2.5%;
     height: 0;
     width: 90%;
     background-color: black;
   }
 
+  .dataButton {
+    width: 100px;
+    height: 50px;
+  }
+
+  .data_fullscreen {
+    margin: 5px 0 0 5px;
+  }
+
+  /* Default */
   .rowsContainer {
+    position: absolute;
     box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgb(220, 220, 220);
     border-radius: 25px;
-    margin: 2.5%;
-    height: 90%;
+    margin: 4vh 2.5vw;
+    padding: 0 1vh;
+    width: 74vw;
+    height: 77vh;
+    z-index: 1;
+    left: 20vw;
   }
 
   .rows {
@@ -51,15 +67,24 @@
   }
 
   .dataButtonContainer {
-    padding: 1.5% 0 0 5%;
+    margin: 1.5vh 0 0 3vw;
   }
 
-  .dataButton {
-    width: 100px;
-    height: 50px;
+  /* Fullscreen */
+  .rowContainerFull {
+    left: 0;
+    height: 83vh;
+    width: 96vw;
+    margin: 1vh 1vw;
   }
 
-  .data_fullscreen {
-    margin: 5px 0 0 5px;
+  .rowFull {
+    height: 75vh;
+    width: 95vw;
+    margin: 0.5vh 0.5vw;
+  }
+
+  .dataButtonContainerFull {
+    margin: 1vh 3.5vw;
   }
 </style>

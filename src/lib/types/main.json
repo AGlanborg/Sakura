@@ -1,0 +1,32 @@
+[
+  {
+    "main_id": 1,
+    "saljare": 1,
+    "kopare": 1,
+    "arbetstyp": 1,
+    "antal": 0,
+    "typ": "Exempel",
+    "leverantor": "Exempel",
+    "text": "Exempel",
+    "info": "Exempel",
+    "valuta": "Exempel",
+    "mangd": 0,
+    "inprisex": 0,
+    "inprisin": 0,
+    "procent": 0,
+    "oh": 0,
+    "totalt": 0,
+    "fakturanum": 0,
+    "kommentar": 0,
+    "inpris": 0,
+    "start": "00-00-0000",
+    "slut": "00-00-0000",
+    "perioder": 0,
+    "upfront": 0,
+    "rest": 0,
+    "internfakt": 0,
+    "intakt": 0,
+    "scan": 0,
+    "now": "00-00-0000"
+  }
+]
