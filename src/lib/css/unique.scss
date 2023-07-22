@@ -26,7 +26,7 @@ body {
     border-top-color: light.$default-color;
     border-bottom-color: light.$default-color;
   }
-
+ 
   .newImageClose {
     color: light.$inverted-color;
   }
@@ -43,6 +43,10 @@ body {
   .missing64,
   .missing128 {
     background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  .rowsContainer {
+    background-color: light.$default-background;
   }
 }
 
@@ -71,7 +75,11 @@ body.dark {
 
   .missing64,
   .missing128 {
-    background-color: dark.$default-color;
+    background-color: dark.$inverted-background;
+  }
+
+  .rowsContainer {
+    background-color: dark.$default-background;
   }
 }
 

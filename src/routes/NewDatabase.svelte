@@ -3,7 +3,6 @@
   import ImageSelect from "./ImageSelect.svelte";
   import ErrorWarning from "./ErrorWarning.svelte";
 
-  import "$lib/css/unique.scss";
   import "$lib/css/form.scss";
 
   import a128 from "$lib/images/0-128.png";

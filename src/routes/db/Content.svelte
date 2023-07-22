@@ -46,7 +46,6 @@
   .rowsContainer {
     position: absolute;
     box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.1);
-    background-color: rgb(220, 220, 220);
     border-radius: 25px;
     margin: 4vh 2.5vw;
     padding: 0 1vh;

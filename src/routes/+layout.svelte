@@ -1,5 +1,6 @@
 <script>
   import "$lib/css/styles.scss";
+  import "$lib/css/unique.scss";
 
   import Header from "./Header.svelte";
   import ColourButton from "./ColourButton.svelte";

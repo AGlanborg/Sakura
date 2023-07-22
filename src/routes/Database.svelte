@@ -4,8 +4,6 @@
 
   import MediaQuery from "./MediaQuery.svelte";
 
-  import "$lib/css/unique.scss";
-
   import non64 from "$lib/images/non-64.png";
   import non128 from "$lib/images/non-128.png";
   import a128 from "$lib/images/0-128.png";

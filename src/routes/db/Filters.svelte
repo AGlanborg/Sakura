@@ -28,6 +28,5 @@
 
   .filterSmall {
     box-shadow: none;
-    width: 0;
   }
 </style>

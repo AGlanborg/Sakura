@@ -1,6 +1,4 @@
 <script>
-  import "$lib/css/unique.scss";
-
   import Database from "./Database.svelte";
   import Newdatabase from "./NewDatabase.svelte";
 

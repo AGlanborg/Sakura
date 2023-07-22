@@ -1,6 +1,4 @@
 <script>
-  import '$lib/css/unique.scss'
-
   import MediaQuery from "./MediaQuery.svelte";
 
   import a128 from "$lib/images/0-128.png";

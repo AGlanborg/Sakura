@@ -1,6 +1,4 @@
 <script>
-  import "$lib/css/unique.scss";
-
   import { page } from "$app/stores";
   import { goto } from "$app/navigation";
 

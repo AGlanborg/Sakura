@@ -29,7 +29,7 @@
   </div>
 {:then content}
   <div class="fillBody center-row">
-    <div class="filterContianer {fullscreen ? 'filterContianerSmall' : ''}">
+    <div class="filterContianer">
       <Filters fullscreen={fullscreen} />
     </div>
     <div class="contentContainer">
@@ -49,11 +49,6 @@
     justify-content: left;
     height: 100%;
     width: 20vw;
-  }
-
-  .filterContianerSmall {
-    transition-delay: 0.3s;
-    width: 0;
   }
 
   .contentContainer {

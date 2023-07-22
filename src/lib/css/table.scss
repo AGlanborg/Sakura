@@ -110,6 +110,15 @@ button {
   transform: rotate(90deg);
 }
 
+.tableColumnCheck {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  height: 30px;
+  width: 30px;
+}
+
 /* Colourschemes */
 
 body {
@@ -123,6 +132,11 @@ body {
 
   .tableRowContainer:first-child {
     border-top-color: light.$inverted-background;
+  }
+
+  .tableColumnCheck {
+    background-color: light.$inverted-background;
+    color: light.$inverted-color;
   }
 
   .tableRowContainer:nth-child(odd) {
@@ -143,6 +157,11 @@ body.dark {
 
   .tableRowContainer:first-child {
     border-top-color: dark.$inverted-background;
+  }
+
+  .tableColumnCheck {
+    background-color: dark.$inverted-background;
+    color: dark.$inverted-color;
   }
 
   .tableRowContainer:nth-child(odd) {
