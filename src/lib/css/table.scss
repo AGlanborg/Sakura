@@ -147,6 +147,10 @@ body {
 }
 
 body.dark {
+  span {
+    color: dark.$default-background;
+  }
+
   .tableRow {
     border-color: dark.$inverted-background;
   }

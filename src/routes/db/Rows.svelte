@@ -5,8 +5,7 @@
 
   export let content = content_type;
 
-  let selected = [1];
-
+  let selected = [];
   let order = {
     column: "main_id",
     desc: true,
@@ -44,13 +43,42 @@
 
     return obj.copernicus;
   }
+
+  function toggleCheck(row) {
+    selected.includes(row.main_id)
+      ? selected.splice(selected.indexOf(row.main_id), 1)
+      : selected.push(row.main_id);
+
+    forceUpdate();
+  }
+
+  function toggleAllCheck() {
+    content.main.every((obj) => selected.includes(obj.main_id))
+      ? (selected = [])
+      : content.main.forEach((row) => {
+          selected.includes(row.main_id) ? "" : selected.push(row.main_id);
+        });
+
+    forceUpdate();
+  }
+
+  function forceUpdate() {
+    /* To counteract a update-state bug */
+
+    order = order;
+    selected = selected;
+  }
 </script>
 
 <div class="tableRowContainer">
   <div class="tableRow">
     <div class="tableColumn table-short">
-      <button>
-        <div class="tableColumnCheck" />
+      <button on:click={() => toggleAllCheck()}>
+        <div class="tableColumnCheck">
+          {#if content.main.every((obj) => selected.includes(obj.main_id))}
+            <span class="material-icons"> check </span>
+          {/if}
+        </div>
       </button>
     </div>
     {#each raw as column}
@@ -79,16 +107,11 @@
   <div class="tableRowContainer">
     <div class="tableRow">
       <div class="tableColumn table-short">
-        <button
-          on:click={() => {
-            selected.includes(row.main_id)
-              ? selected.splice(selected.indexOf(row.main_id), 1)
-              : selected.push(row.main_id);
-            console.log(selected)
-          }}
-        >
+        <button on:click={() => toggleCheck(row)}>
           <div class="tableColumnCheck">
-            <span class="material-icons">check</span>
+            {#if selected.includes(row.main_id)}
+              <span class="material-icons">check</span>
+            {/if}
           </div>
         </button>
       </div>

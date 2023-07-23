@@ -4,7 +4,6 @@
 
   function toggleMode() {
     mode.update((val) => {
-      console.log(val);
       return val == "dark" ? (val = "light") : (val = "dark");
     });
   }
