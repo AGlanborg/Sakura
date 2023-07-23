@@ -93,9 +93,6 @@
               {:else}
                 <img src={pic128[rep]} alt="Cherry Blossom Icon" />
               {/if}
-              <div class="absolute">
-                <span class="material-icons pen128"> edit </span>
-              </div>
             {/if}
           </MediaQuery>
           <MediaQuery query="(max-width: 1600px)" let:matches>
@@ -107,15 +104,12 @@
               {:else}
                 <img src={pic64[rep]} alt="Cherry Blossom Icon" />
               {/if}
-              <div class="absolute minBody">
-                <span class="material-icons pen64"> edit </span>
-              </div>
             {/if}
           </MediaQuery>
         </button>
       </div>
       <button on:click={() => tryCreate()}>
-        <span class="material-icons"> add_circle </span>
+        <span class="material-icons color-inverted-background"> add_circle </span>
       </button>
     {:else}
       <div />
@@ -196,18 +190,6 @@
   .image64 {
     margin: 10px 0;
     font-size: 44px;
-  }
-
-  .pen128 {
-    font-size: 30px;
-    top: -30px;
-    left: 108px;
-  }
-
-  .pen64 {
-    font-size: 20px;
-    top: -20px;
-    left: 54px;
   }
 
   /* Desktop */

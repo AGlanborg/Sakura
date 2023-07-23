@@ -35,14 +35,20 @@ body {
     border-color: rgba(0, 0, 0, 0.5);
   }
 
-  .plus64,
-  .plus128 {
-    color: rgba(0, 0, 0, 0.2);
-  }
-
   .missing64,
   .missing128 {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: light.$inverted-background;
+  }
+
+  .colour,
+  .plus64,
+  .plus128 {
+    color: light.$inverted-background
+  }
+
+  .image64,
+  .image128 {
+    color: light.$inverted-color;
   }
 
   .rowsContainer {
@@ -63,6 +69,7 @@ body.dark {
     color: dark.$inverted-color;
   }
 
+  .colour,
   .plus64,
   .plus128,
   .newImageClose {
@@ -76,6 +83,11 @@ body.dark {
   .missing64,
   .missing128 {
     background-color: dark.$inverted-background;
+  }
+
+  .image64,
+  .image128 {
+    color: dark.$default-background
   }
 
   .rowsContainer {

@@ -125,6 +125,10 @@ body {
   .inverted-color {
     color: light.$inverted-color;
   }
+
+  .color-inverted-background {
+    color: light.$inverted-background
+  }
 }
 
 /* Dark-mode */
@@ -162,5 +166,9 @@ body.dark {
 
   .inverted-color {
     color: dark.$inverted-color;
+  }
+
+  .color-inverted-background {
+    color: dark.$inverted-background
   }
 }
