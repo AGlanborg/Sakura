@@ -30,7 +30,7 @@
 {:then content}
   <div class="fillBody center-row">
     <div class="filterContianer">
-      <Filters fullscreen={fullscreen} />
+      <Filters fullscreen={fullscreen} content={content} />
     </div>
     <div class="contentContainer">
       <Content bind:fullscreen={fullscreen} content={content} />

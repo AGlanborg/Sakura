@@ -8,6 +8,7 @@ button {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  user-select: text;
   height: 55px;
   padding: 0 10px;
   font-size: 18px;

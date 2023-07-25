@@ -57,7 +57,7 @@
           {/if}
         </MediaQuery>
       </div>
-      <span class="material-icons">delete</span>
+      <span class="material-icons database-delete">delete</span>
     </div>
   </button>
 </div>
@@ -69,7 +69,6 @@
 
   span {
     user-select: none;
-    color: rgba(0, 0, 0, 0.05);
   }
 
   /* Desktop */

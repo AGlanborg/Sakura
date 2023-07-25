@@ -23,10 +23,13 @@ main {
 }
 
 input,
-button {
+button,
+select,
+option {
   font-family: 'Times New Roman', Times, serif;
   border: none;
   padding: 0;
+  background-color: rgba(0, 0, 0, 0);
   cursor: pointer;
 }
 
@@ -93,8 +96,17 @@ body {
   color: light.$default-color;
 
   input,
-  button {
+  button,
+  select,
+  .material-icons,
+  .material-icons-outlined {
     background-color: rgba(0, 0, 0, 0);
+    color: light.$default-color;
+  }
+
+  option {
+    background-color: light.$default-background;
+    border-color: light.$inverted-background;
     color: light.$default-color;
   }
 
@@ -136,7 +148,17 @@ body.dark {
   background-color: dark.$default-background;
   color: dark.$default-color;
 
-  button {
+  input,
+  button,
+  select,
+  .material-icons,
+  .material-icons-outlined {
+    color: dark.$default-color;
+  }
+
+  option {
+    background-color: dark.$default-background;
+    border-color: dark.$inverted-background;
     color: dark.$default-color;
   }
 

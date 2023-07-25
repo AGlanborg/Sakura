@@ -1,14 +1,21 @@
 <script>
+  import content_type from "$lib/types";
+  import SortCompany from "./SortCompany.svelte";
+
   export let fullscreen = false;
+  export let content = content_type;
+
+  let saljare = [];
+  let kopare = [];
 </script>
 
 <div class="filter {fullscreen ? 'filterSmall' : ''}">
-  <h2>
-    Filters
-  </h2>
+  <h2>Filters</h2>
+  <SortCompany content={content} bind:arr={saljare} context={{column: "saljare", title: "Säljare"}} />
+  <SortCompany content={content} bind:arr={kopare} context={{column: "kopare", title: "Köpare"}} />
 </div>
 
-<style>
+<style lang="scss">
   h2 {
     display: inline-block;
     margin: 30px;
