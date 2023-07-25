@@ -13,17 +13,29 @@
       <h2>Data</h2>
       <span class="material-icons data_fullscreen"> {fullscreen ? 'fullscreen_exit' : 'fullscreen'} </span>
     </button>
+    <div class="dataOptionsContainer">
+      <button>
+        <h3>
+          Download
+        </h3>
+        <span class="material-icons data_fullscreen"> download </span>
+      </button>
+    </div>
   </div>
   <div class="rows {fullscreen ? 'rowFull' : ''}">
     <Rows {content} />
   </div>
 </div>
 
-<style>
+<style lang="scss">
   /* Static */
   h2 {
     display: inline-block;
     font-size: 30px;
+    font-weight: 100;
+  }
+
+  h3 {
     font-weight: 100;
   }
 
@@ -66,7 +78,18 @@
   }
 
   .dataButtonContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     margin: 1.5vh 0 0 3vw;
+  }
+
+  .dataOptionsContainer {
+    padding-right: 2vw;
+
+    button {
+      margin: 0 1vw;
+    }
   }
 
   /* Fullscreen */
