@@ -5,9 +5,7 @@
   import handleForeignKeys from "$lib/modules/handleForeignKeys";
 
   export let content = content_type;
-  export let saljare = [];
-  export let kopare = [];
-  export let arbetstyp = [];
+  export let filters;
 
   let selected = [];
   let filtered = [];
@@ -53,9 +51,9 @@
   function filterContent() {
     filtered = content.main
 
-    filterValue(saljare, "saljare")
-    filterValue(kopare, "kopare")
-    filterValue(arbetstyp, "arbetstyp")
+    filterValue(filters.saljare, "saljare")
+    filterValue(filters.kopare, "kopare")
+    filterValue(filters.arbetstyp, "arbetstyp")
   }
 
   function filterValue(val, column) {
@@ -70,9 +68,7 @@
 
   filterContent()
 
-  $: saljare, filterContent()
-  $: kopare, filterContent()
-  $: arbetstyp, filterContent()
+  $: filters, filterContent()
 </script>
 
 <div class="tableRowContainer">

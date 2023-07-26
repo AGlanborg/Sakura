@@ -4,9 +4,7 @@
 
   export let content = content_type;
   export let fullscreen = false;
-  export let saljare = [];
-  export let kopare = [];
-  export let arbetstyp = [];
+  export let filters;
 </script>
 
 <div class="statsContainer" />
@@ -26,7 +24,7 @@
     </div>
   </div>
   <div class="rows {fullscreen ? 'rowFull' : ''}">
-    <Rows content={content} saljare={saljare} kopare={kopare} arbetstyp={arbetstyp} />
+    <Rows content={content} filters={filters} />
   </div>
 </div>
 

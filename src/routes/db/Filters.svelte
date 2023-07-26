@@ -4,16 +4,14 @@
 
   export let fullscreen = false;
   export let content = content_type;
-  export let saljare = [];
-  export let kopare = [];
-  export let arbetstyp = [];
+  export let filters;
 </script>
 
 <div class="filter {fullscreen ? 'filterSmall' : ''}">
   <h2>Filters</h2>
-  <SortCompany content={content} bind:arr={saljare} context={{column: "saljare", title: "Säljare"}} />
-  <SortCompany content={content} bind:arr={kopare} context={{column: "kopare", title: "Köpare"}} />
-  <SortCompany content={content} bind:arr={arbetstyp} context={{column: "arbetstyp", title: "Arbetstyp"}} />
+  <SortCompany content={content} bind:arr={filters.saljare} context={{column: "saljare", title: "Säljare"}} />
+  <SortCompany content={content} bind:arr={filters.kopare} context={{column: "kopare", title: "Köpare"}} />
+  <SortCompany content={content} bind:arr={filters.arbetstyp} context={{column: "arbetstyp", title: "Arbetstyp"}} />
 </div>
 
 <style lang="scss">

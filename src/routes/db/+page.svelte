@@ -7,9 +7,11 @@
 
   let file = "";
   let fullscreen = false;
-  let saljare = [];
-  let kopare = [];
-  let arbetstyp = [];
+  let filters = {
+    saljare: [],
+    kopare: [],
+    arbetstyp: []
+  };
 
   afterNavigate(({from}) => {
     from?.url.pathname ? '' : goto('/')
@@ -33,10 +35,10 @@
 {:then content}
   <div class="fillBody center-row">
     <div class="filterContianer">
-      <Filters fullscreen={fullscreen} content={content} bind:saljare={saljare} bind:kopare={kopare} bind:arbetstyp={arbetstyp} />
+      <Filters fullscreen={fullscreen} content={content} bind:filters={filters} />
     </div>
     <div class="contentContainer">
-      <Content bind:fullscreen={fullscreen} content={content} saljare={saljare} kopare={kopare} arbetstyp={arbetstyp} />
+      <Content bind:fullscreen={fullscreen} content={content} filters={filters} />
     </div>
   </div>
 {:catch error}
