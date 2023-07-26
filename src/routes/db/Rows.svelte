@@ -2,10 +2,12 @@
   import "$lib/css/table.scss";
   import raw from "$lib/schemes/raw.json";
   import content_type from "$lib/types";
+  import handleForeignKeys from "$lib/modules/handleForeignKeys";
 
   export let content = content_type;
   export let saljare = [];
   export let kopare = [];
+  export let arbetstyp = [];
 
   let selected = [];
   let filtered = [];
@@ -21,29 +23,6 @@
       order.column = obj.column;
       order.desc = true;
     }
-  }
-
-  function handleForeignKeys(id, column) {
-    if (column == "arbetstyp") {
-      return handleArbetstyp(id);
-    }
-
-    return handleCompany(id, column);
-  }
-
-  function handleArbetstyp(id) {
-    const obj = content.arbetstyp.filter((obj) => obj.arbetstyp_id == id);
-    return obj[0].arbetstyp;
-  }
-
-  function handleCompany(id, column = "kopare" || "saljare") {
-    let obj = content[column].filter((obj) => obj[column + "_id"] == id);
-
-    if (obj[0].name == 1) {
-      return obj[0].rst;
-    }
-
-    return obj[0].copernicus;
   }
 
   function toggleCheck(row) {
@@ -76,15 +55,16 @@
 
     filterValue(saljare, "saljare")
     filterValue(kopare, "kopare")
+    filterValue(arbetstyp, "arbetstyp")
   }
 
-  function filterValue(val, title) {
+  function filterValue(val, column) {
     if (val.length) {
-      let temp = []
+      let res = []
 
-      filtered.forEach((obj) => val.includes(obj[title]) ? temp.push(obj) : "")
+      filtered.forEach((obj) => val.includes(obj[column]) ? res.push(obj) : "")
 
-      filtered = temp
+      filtered = res
     }
   }
 
@@ -92,6 +72,7 @@
 
   $: saljare, filterContent()
   $: kopare, filterContent()
+  $: arbetstyp, filterContent()
 </script>
 
 <div class="tableRowContainer">
@@ -144,7 +125,7 @@
           <button disabled>
             <p>
               {["kopare", "saljare", "arbetstyp"].includes(column.column)
-                ? handleForeignKeys(row[column.column], column.column)
+                ? handleForeignKeys(content, row[column.column], column.column)
                 : row[column.column]}
             </p>
           </button>

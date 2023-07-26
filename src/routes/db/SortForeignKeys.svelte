@@ -44,7 +44,7 @@
 <div class="sortContainer">
   <div class="ghostContainer">
     <div>
-      <span class="material-icons-outlined"> { context.column == "saljare" ? "sell" : "work_outlined"} </span>
+      <span class="material-icons-outlined"> { context.column == "saljare" ? "sell" : context.column == "kopare" ? "work_outlined" : "label"} </span>
       <p>
         {context.title}
       </p>
@@ -57,7 +57,7 @@
     <option selected disabled hidden value="default" />
     {#each option as res}
       <option value={res[context.column + "_id"]}>
-        {res.name ? res.rst : res.copernicus}
+        {context.column == "arbetstyp" ? res.arbetstyp : res.name ? res.rst : res.copernicus}
       </option>
     {/each}
   </select>
@@ -67,7 +67,7 @@
     <div class="display">
       <div class="center-column">
         <p>
-          {res.name ? res.rst : res.copernicus}
+          {context.column == "arbetstyp" ? res.arbetstyp : res.name ? res.rst : res.copernicus}
         </p>
       </div>
       <button on:click={() => handleRemove(res[context.column + "_id"])}>
