@@ -52,6 +52,11 @@ input:focus {
   width: 100vw;
 }
 
+.material-icons,
+.material-icons-outlined {
+  user-select: none;
+}
+
 /* General */
 
 .center-row {

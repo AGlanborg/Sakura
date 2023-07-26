@@ -137,7 +137,10 @@ body {
 
   .tableColumnCheck {
     background-color: light.$inverted-background;
-    color: light.$inverted-color;
+
+    .material-icons {
+      color: light.$inverted-color;
+    }
   }
 
   .tableRowContainer:nth-child(odd) {
@@ -166,7 +169,10 @@ body.dark {
 
   .tableColumnCheck {
     background-color: dark.$inverted-background;
-    color: dark.$inverted-color;
+
+    .material-icons {
+      color: dark.$inverted-color;
+    }
   }
 
   .tableRowContainer:nth-child(odd) {

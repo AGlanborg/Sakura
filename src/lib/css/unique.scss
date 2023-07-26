@@ -31,6 +31,8 @@ body {
     color: light.$inverted-color;
   }
 
+  .ghostContainer,
+  .display,
   .db {
     border-color: light.$inverted-background;
   }
@@ -80,6 +82,8 @@ body.dark {
     color: dark.$default-color;
   }
 
+  .ghostContainer,
+  .display,
   .db {
     border-color: dark.$inverted-background;
   }

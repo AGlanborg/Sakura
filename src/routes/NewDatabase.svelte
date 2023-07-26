@@ -157,13 +157,6 @@
     border-radius: 50%;
   }
 
-  .pen128,
-  .pen64 {
-    position: relative;
-    height: 0;
-    width: 0;
-  }
-
   .plus64 {
     font-size: 64px;
   }

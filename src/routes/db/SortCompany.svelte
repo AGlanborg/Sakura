@@ -19,6 +19,12 @@
     sortFilters()
   }
 
+  function handleRemove(id) {
+    arr = arr.filter(val => val != id)
+
+    sortFilters()
+  }
+
   function sortFilters() {
     option = []
     list = []
@@ -28,10 +34,6 @@
         ? list.push(obj)
         : option.push(obj)
     });
-
-    console.log("arr: ", arr)
-    console.log("option: ", option)
-    console.log("list: ", list)
   }
 
   sortFilters()
@@ -40,7 +42,7 @@
 <div class="sortContainer">
   <div class="ghostContainer">
     <div>
-      <span class="material-icons-outlined"> sell </span>
+      <span class="material-icons-outlined"> { context.column == "saljare" ? "sell" : "work_outlined"} </span>
       <p>
         {context.title}
       </p>
@@ -60,7 +62,16 @@
 </div>
 <div class="displayContainer">
   {#each list as res}
-    {res.name ? res.rst : res.copernicus}
+    <div class="display">
+      <div class="center-column">
+        <p>
+          {res.name ? res.rst : res.copernicus}
+        </p>
+      </div>
+      <button on:click={() => handleRemove(res[context.column + "_id"])}>
+        <span class="material-icons"> delete </span>
+      </button>
+    </div>
   {/each}
 </div>
 
@@ -90,7 +101,6 @@
     width: 10vw;
     margin: 0 2.5vw;
     padding: 0 1.5vw;
-    border-color: rgb(0, 0, 0);
 
     & > div {
       display: flex;
@@ -108,9 +118,40 @@
   }
 
   .displayContainer {
-    height: 50px;
     width: 12vw;
     margin: 1px 3vw 15px;
-    background-color: red;
+  }
+
+  .display {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-style: solid;
+    border-top: none;
+    border-width: 1px;
+    font-size: 20px;
+    width: 10vw;
+    height: 40px;
+    padding: 0 0.5vw 0 1.5vw;
+
+    &:last-child {
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+
+    p {
+      display: inline-block;
+      text-align: center;
+      margin: 0;
+    }
+
+    button {
+      height: 40px;
+    }
+  }
+
+  .material-icons-outlined {
+    height: 24px;
+    width: 24px;
   }
 </style>
