@@ -1,27 +1,25 @@
 <script>
   import "$lib/css/filters.scss"
-  import content_type from "$lib/types";
+  import * as schemes from "$lib/schemes/filters/"
 
-  export let content = content_type;
   export let arr = [];
   export let context = {
-    column: "",
-    title: "",
+    column: ""
   };
 
   let option = [];
   let list = [];
 
   function handleSelect(event) {
-    arr.includes(Number(event.target.value)) ? "" : arr.push(Number(event.target.value));
+    arr.includes(event.target.value) ? "" : arr.push(event.target.value);
 
     event.target.value = "default";
 
     sortFilters()
   }
 
-  function handleRemove(id) {
-    arr = arr.filter(val => val != id)
+  function handleRemove(val) {
+    arr = arr.filter(e => e != val)
 
     sortFilters()
   }
@@ -30,10 +28,10 @@
     option = []
     list = []
 
-    content[context.column].forEach(obj => {
-      arr.includes(obj[context.column + "_id"])
-        ? list.push(obj)
-        : option.push(obj)
+    schemes[context.column].values.forEach(val => {
+      arr.includes(val)
+        ? list.push(val)
+        : option.push(val)
     });
 
     arr = arr
@@ -45,9 +43,9 @@
 <div class="sortContainer">
   <div class="ghostContainer">
     <div>
-      <span class="material-icons-outlined"> {context.column == "saljare" ? "sell" : context.column == "kopare" ? "work_outlined" : "folder"} </span>
+      <span class="material-icons-outlined"> { schemes[context.column].symbol } </span>
       <p>
-        {context.title}
+        { schemes[context.column].title }
       </p>
     </div>
     <div>
@@ -57,8 +55,8 @@
   <select class="selectFilter" on:change={(e) => handleSelect(e)}>
     <option selected disabled hidden value="default" />
     {#each option as res}
-      <option value={res[context.column + "_id"]}>
-        {context.column == "arbetstyp" ? res.arbetstyp : res.name ? res.rst : res.copernicus}
+      <option value={res}>
+        { res }
       </option>
     {/each}
   </select>
@@ -68,10 +66,10 @@
     <div class="display">
       <div class="center-column">
         <p>
-          {context.column == "arbetstyp" ? res.arbetstyp : res.name ? res.rst : res.copernicus}
+          {res}
         </p>
       </div>
-      <button on:click={() => handleRemove(res[context.column + "_id"])}>
+      <button on:click={() => handleRemove(res)}>
         <span class="material-icons"> delete </span>
       </button>
     </div>

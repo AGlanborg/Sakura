@@ -1,6 +1,7 @@
 <script>
   import content_type from "$lib/types";
-  import SortCompany from "./SortForeignKeys.svelte";
+  import SortForeignKeys from "./SortForeignKeys.svelte";
+  import SortSchemes from "./SortSchemes.svelte";
 
   export let fullscreen = false;
   export let content = content_type;
@@ -9,9 +10,11 @@
 
 <div class="filter {fullscreen ? 'filterSmall' : ''}">
   <h2>Filters</h2>
-  <SortCompany content={content} bind:arr={filters.saljare} context={{column: "saljare", title: "Säljare"}} />
-  <SortCompany content={content} bind:arr={filters.kopare} context={{column: "kopare", title: "Köpare"}} />
-  <SortCompany content={content} bind:arr={filters.arbetstyp} context={{column: "arbetstyp", title: "Arbetstyp"}} />
+  <SortForeignKeys content={content} bind:arr={filters.saljare} context={{column: "saljare", title: "Säljare"}} />
+  <SortForeignKeys content={content} bind:arr={filters.kopare} context={{column: "kopare", title: "Köpare"}} />
+  <SortForeignKeys content={content} bind:arr={filters.arbetstyp} context={{column: "arbetstyp", title: "Arbetstyp"}} />
+  <SortSchemes bind:arr={filters.typ} context={{column: "typ"}} />
+  <SortSchemes bind:arr={filters.valuta} context={{column: "valuta"}} />
 </div>
 
 <style lang="scss">

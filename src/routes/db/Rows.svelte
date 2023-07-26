@@ -54,6 +54,8 @@
     filterValue(filters.saljare, "saljare")
     filterValue(filters.kopare, "kopare")
     filterValue(filters.arbetstyp, "arbetstyp")
+    filterValue(filters.typ, "typ")
+    filterValue(filters.valuta, "valuta")
   }
 
   function filterValue(val, column) {
@@ -74,9 +76,9 @@
 <div class="tableRowContainer">
   <div class="tableRow">
     <div class="tableColumn table-short">
-      <button on:click={() => toggleAllCheck()}>
+      <button disabled={!filtered.length} on:click={() => toggleAllCheck()}>
         <div class="tableColumnCheck">
-          {#if filtered.every((obj) => selected.includes(obj.main_id))}
+          {#if filtered.every((obj) => selected.includes(obj.main_id)) && filtered.length}
             <span class="material-icons"> check </span>
           {/if}
         </div>

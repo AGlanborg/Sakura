@@ -2,16 +2,13 @@
   import { db } from "$lib/memory/selected";
   import { goto, afterNavigate  } from "$app/navigation";
 
+  import filters_scheme from "$lib/schemes/filters.json"
   import Filters from "./Filters.svelte";
   import Content from "./Content.svelte";
 
   let file = "";
   let fullscreen = false;
-  let filters = {
-    saljare: [],
-    kopare: [],
-    arbetstyp: []
-  };
+  let filters = filters_scheme;
 
   afterNavigate(({from}) => {
     from?.url.pathname ? '' : goto('/')

@@ -187,5 +187,12 @@
     "type": "number",
     "column": "scan",
     "position": 27
+  },
+  {
+    "name": "Created",
+    "size": "default",
+    "type": "date",
+    "column": "now",
+    "position": 28
   }
 ]

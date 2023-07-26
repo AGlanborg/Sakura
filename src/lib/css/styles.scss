@@ -8,7 +8,7 @@
 }
 
 body {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Times, serif;
   margin: 0;
 }
 
@@ -102,7 +102,6 @@ body {
 
   input,
   button,
-  select,
   .material-icons,
   .material-icons-outlined {
     background-color: rgba(0, 0, 0, 0);
@@ -155,7 +154,6 @@ body.dark {
 
   input,
   button,
-  select,
   .material-icons,
   .material-icons-outlined {
     color: dark.$default-color;
