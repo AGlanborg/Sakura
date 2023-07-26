@@ -34,19 +34,7 @@ export const POST: RequestHandler = async ({ request }) => {
         return json("Exists")
     }
 
-    fs.readFile("src/lib/db/licenses.sqlite", 'utf8', (err, data) => {
-        if (err) {
-            console.log("Error: ", err)
-            return
-        }
-
-        if (typeof data == "undefined") {
-            console.log("Error: Original content not found")
-            return
-        }
-
-        fs.writeFile(`/licenses/${req}.sqlite`, data, (err) => { if (err) { console.log(err) } })
-    })
+    fs.copyFileSync("src/lib/db/licenses.sqlite", `/licenses/${req}.sqlite`)
 
     return json(`Created ${req}`)
 }
