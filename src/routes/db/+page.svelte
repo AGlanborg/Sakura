@@ -7,6 +7,8 @@
 
   let file = "";
   let fullscreen = false;
+  let saljare = [];
+  let kopare = [];
 
   afterNavigate(({from}) => {
     from?.url.pathname ? '' : goto('/')
@@ -30,10 +32,10 @@
 {:then content}
   <div class="fillBody center-row">
     <div class="filterContianer">
-      <Filters fullscreen={fullscreen} content={content} />
+      <Filters fullscreen={fullscreen} content={content} bind:saljare={saljare} bind:kopare={kopare} />
     </div>
     <div class="contentContainer">
-      <Content bind:fullscreen={fullscreen} content={content} />
+      <Content bind:fullscreen={fullscreen} content={content} saljare={saljare} kopare={kopare} />
     </div>
   </div>
 {:catch error}

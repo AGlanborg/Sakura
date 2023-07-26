@@ -4,9 +4,8 @@
 
   export let fullscreen = false;
   export let content = content_type;
-
-  let saljare = [];
-  let kopare = [];
+  export let saljare = [];
+  export let kopare = [];
 </script>
 
 <div class="filter {fullscreen ? 'filterSmall' : ''}">

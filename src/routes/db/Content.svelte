@@ -4,6 +4,8 @@
 
   export let content = content_type;
   export let fullscreen = false;
+  export let saljare = [];
+  export let kopare = [];
 </script>
 
 <div class="statsContainer" />
@@ -23,7 +25,7 @@
     </div>
   </div>
   <div class="rows {fullscreen ? 'rowFull' : ''}">
-    <Rows {content} />
+    <Rows content={content} saljare={saljare} kopare={kopare} />
   </div>
 </div>
 

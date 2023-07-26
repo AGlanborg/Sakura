@@ -34,6 +34,8 @@
         ? list.push(obj)
         : option.push(obj)
     });
+
+    arr = arr
   }
 
   sortFilters()

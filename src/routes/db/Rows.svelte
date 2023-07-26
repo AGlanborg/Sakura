@@ -4,8 +4,11 @@
   import content_type from "$lib/types";
 
   export let content = content_type;
+  export let saljare = [];
+  export let kopare = [];
 
   let selected = [];
+  let filtered = [];
   let order = {
     column: "main_id",
     desc: true,
@@ -35,13 +38,12 @@
 
   function handleCompany(id, column = "kopare" || "saljare") {
     let obj = content[column].filter((obj) => obj[column + "_id"] == id);
-    obj = obj[0];
 
-    if (obj.name == 1) {
-      return obj.rst;
+    if (obj[0].name == 1) {
+      return obj[0].rst;
     }
 
-    return obj.copernicus;
+    return obj[0].copernicus;
   }
 
   function toggleCheck(row) {
@@ -68,6 +70,28 @@
     order = order;
     selected = selected;
   }
+
+  function filterContent() {
+    filtered = content.main
+
+    filterValue(saljare, "saljare")
+    filterValue(kopare, "kopare")
+  }
+
+  function filterValue(val, title) {
+    if (val.length) {
+      let temp = []
+
+      filtered.forEach((obj) => val.includes(obj[title]) ? temp.push(obj) : "")
+
+      filtered = temp
+    }
+  }
+
+  filterContent()
+
+  $: saljare, filterContent()
+  $: kopare, filterContent()
 </script>
 
 <div class="tableRowContainer">
@@ -75,7 +99,7 @@
     <div class="tableColumn table-short">
       <button on:click={() => toggleAllCheck()}>
         <div class="tableColumnCheck">
-          {#if content.main.every((obj) => selected.includes(obj.main_id))}
+          {#if filtered.every((obj) => selected.includes(obj.main_id))}
             <span class="material-icons"> check </span>
           {/if}
         </div>
@@ -103,7 +127,7 @@
     {/each}
   </div>
 </div>
-{#each content.main.sort( (a, b) => (order.desc ? b[order.column] - a[order.column] : a[order.column] - b[order.column]) ) as row}
+{#each filtered.sort( (a, b) => (order.desc ? b[order.column] - a[order.column] : a[order.column] - b[order.column]) ) as row}
   <div class="tableRowContainer">
     <div class="tableRow">
       <div class="tableColumn table-short">
