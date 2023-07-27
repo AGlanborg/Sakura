@@ -112,6 +112,7 @@ body {
   .material-icons-outlined {
     background-color: rgba(0, 0, 0, 0);
     color: light.$default-color;
+    border-color: light.$inverted-background;
   }
 
   option {
@@ -163,6 +164,7 @@ body.dark {
   .material-icons,
   .material-icons-outlined {
     color: dark.$default-color;
+    border-color: dark.$inverted-background;
   }
 
   option {
