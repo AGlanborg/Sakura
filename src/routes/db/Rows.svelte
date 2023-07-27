@@ -1,6 +1,6 @@
 <script>
   import "$lib/css/table.scss";
-  import raw from "$lib/schemes/raw.json";
+  import raw from "$lib/schemes/layouts/raw.json";
   import content_type from "$lib/types";
   import handleForeignKeys from "$lib/modules/handleForeignKeys";
 
@@ -51,18 +51,30 @@
   function filterContent() {
     filtered = content.main
 
-    filterValue(filters.saljare, "saljare")
-    filterValue(filters.kopare, "kopare")
-    filterValue(filters.arbetstyp, "arbetstyp")
-    filterValue(filters.typ, "typ")
-    filterValue(filters.valuta, "valuta")
+    filterValue("saljare")
+    filterValue("kopare")
+    filterValue("arbetstyp")
+    filterValue("typ")
+    filterValue("valuta")
+    filterString("text")
+    filterString("fakturanum")
   }
 
-  function filterValue(val, column) {
-    if (val.length) {
+  function filterValue(column) {
+    if (filters[column].length) {
       let res = []
 
-      filtered.forEach((obj) => val.includes(obj[column]) ? res.push(obj) : "")
+      filtered.forEach((obj) => filters[column].includes(obj[column]) ? res.push(obj) : "")
+
+      filtered = res
+    }
+  }
+
+  function filterString(column) {
+    if (filters[column].length) {
+      let res = []
+
+      filtered.forEach((obj) => filters[column].some(str => obj[column].includes(str)) ? res.push(obj) : "")
 
       filtered = res
     }

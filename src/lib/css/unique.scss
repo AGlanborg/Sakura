@@ -60,6 +60,12 @@ body {
   .database-delete {
     color: rgba(0, 0, 55, 0.1);
   }
+
+  .database_name {
+    background-color: light.$default-background;
+    color: light.$default-color;
+    border-bottom-color: light.$inverted-background;
+  }
 }
 
 /* Dark-mode colors*/
@@ -104,6 +110,12 @@ body.dark {
 
   .database-delete {
     color: rgba(200, 200, 255, 0.1);
+  }
+
+  .database_name {
+    background-color: dark.$default-background;
+    color: dark.$default-color;
+    border-bottom-color: dark.$inverted-background;
   }
 }
 

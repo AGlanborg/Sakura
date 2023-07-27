@@ -3,8 +3,6 @@
   import ImageSelect from "./ImageSelect.svelte";
   import ErrorWarning from "./ErrorWarning.svelte";
 
-  import "$lib/css/form.scss";
-
   import a128 from "$lib/images/0-128.png";
   import a64 from "$lib/images/0-64.png";
   import b128 from "$lib/images/1-128.png";
@@ -80,7 +78,7 @@
   <div class="db">
     {#if phase}
       <div>
-        <input type="text" placeholder="Title..." bind:value={title} />
+        <input type="text" placeholder="Title..." class="database_name" bind:value={title} />
       </div>
       <div class="center-row">
         <button on:click={() => (options = 1)}>
@@ -109,7 +107,9 @@
         </button>
       </div>
       <button on:click={() => tryCreate()}>
-        <span class="material-icons color-inverted-background"> add_circle </span>
+        <span class="material-icons color-inverted-background">
+          add_circle
+        </span>
       </button>
     {:else}
       <div />
@@ -133,20 +133,23 @@
 </div>
 
 <style lang="scss">
-  input[type="text"] {
-    font-weight: 800;
-  }
-
-  input[type="text"]:not(:placeholder-shown) {
-    text-align: center;
-  }
-
   span {
     user-select: none;
   }
 
   img {
     cursor: pointer;
+  }
+
+  .database_name {
+    border-bottom-style: solid;
+    border-bottom-width: 3px;
+    font-weight: 800;
+    padding: 5px 0;
+  }
+
+  .database_name:not(:placeholder-shown) {
+    text-align: center;
   }
 
   .missing64,

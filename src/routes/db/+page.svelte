@@ -3,7 +3,7 @@
   import { goto, afterNavigate  } from "$app/navigation";
 
   import filters_scheme from "$lib/schemes/filters.json"
-  import Filters from "./Filters.svelte";
+  import Filter from "./Filter.svelte";
   import Content from "./Content.svelte";
 
   let file = "";
@@ -32,7 +32,7 @@
 {:then content}
   <div class="fillBody center-row">
     <div class="filterContianer">
-      <Filters fullscreen={fullscreen} content={content} bind:filters={filters} />
+      <Filter fullscreen={fullscreen} content={content} bind:filters={filters} />
     </div>
     <div class="contentContainer">
       <Content bind:fullscreen={fullscreen} content={content} filters={filters} />

@@ -59,6 +59,12 @@ input:focus {
 
 /* General */
 
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
 .center-row {
   display: flex;
   flex-direction: row;
