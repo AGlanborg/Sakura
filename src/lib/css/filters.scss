@@ -11,7 +11,8 @@ select {
   padding: 0 1vw;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="month"] {
   display: inline-block;
   outline: none;
   border-style: solid;

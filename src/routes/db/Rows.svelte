@@ -3,6 +3,7 @@
   import raw from "$lib/schemes/layouts/raw.json";
   import content_type from "$lib/types";
   import handleForeignKeys from "$lib/modules/handleForeignKeys";
+  import handleMonth from "$lib/modules/handleMonths"
 
   export let content = content_type;
   export let filters;
@@ -58,6 +59,10 @@
     filterValue("valuta")
     filterString("text")
     filterString("fakturanum")
+    filterString("now")
+    filterString("start")
+    filterString("slut")
+    filterMonths("during")
   }
 
   function filterValue(column) {
@@ -75,6 +80,16 @@
       let res = []
 
       filtered.forEach((obj) => filters[column].some(str => obj[column].includes(str)) ? res.push(obj) : "")
+
+      filtered = res
+    }
+  }
+
+  function filterMonths(column) {
+    if (filters[column].length) {
+      let res = []
+
+      filtered.forEach((obj) => filters[column].some(date => handleMonth(obj.start, obj.slut, date)) ? res.push(obj) : "")
 
       filtered = res
     }
