@@ -1,20 +1,18 @@
 <script>
   import content_type from "$lib/types";
   import Rows from "./Rows.svelte";
+  import Months from "./Months.svelte";
 
   export let content = content_type;
-  export let fullscreen = false;
   export let filters;
 </script>
 
-<div class="statsContainer" />
-<div class="rowsContainer {fullscreen ? 'rowContainerFull' : ''}">
-  <div class="dataButtonContainer {fullscreen ? 'dataButtonContainerFull' : ''}">
-    <button class="dataButton" on:click={() => fullscreen = !fullscreen}>
+<div class="rowsContainer">
+  <div class="tableButtonContainer ">
+    <button class="tableButton">
       <h2>Data</h2>
-      <span class="material-icons data_fullscreen"> {fullscreen ? 'fullscreen_exit' : 'fullscreen'} </span>
     </button>
-    <div class="dataOptionsContainer">
+    <div class="tableOptionsContainer">
       <button>
         <h3>
           Download
@@ -23,8 +21,18 @@
       </button>
     </div>
   </div>
-  <div class="rows {fullscreen ? 'rowFull' : ''}">
+  <div class="rows">
     <Rows content={content} filters={filters} />
+  </div>
+</div>
+<div class="monthsContainer">
+  <div class="tableButtonContainer ">
+    <button class="tableButton">
+      <h2>Months</h2>
+    </button>
+  </div>
+  <div class="months">
+    <Months content={content} filters={filters} />
   </div>
 </div>
 
@@ -40,13 +48,7 @@
     font-weight: 100;
   }
 
-  .statsContainer {
-    height: 0;
-    width: 90%;
-    background-color: black;
-  }
-
-  .dataButton {
+  .tableButton {
     width: 100px;
     height: 50px;
   }
@@ -56,58 +58,55 @@
   }
 
   /* Default */
-  .rowsContainer {
-    position: absolute;
+  .rowsContainer,
+  .monthsContainer {
+    position: relative;
     box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.1);
     border-radius: 25px;
     margin: 4vh 2.5vw;
-    padding: 0 1vh;
+    padding: 1vh 0;
     width: 74vw;
-    height: 77vh;
-    z-index: 1;
-    left: 20vw;
+    left: 0;
   }
 
-  .rows {
+  .rowsContainer {
+    height: 62vh;
+  }
+
+  .monthsContainer {
+    height: 42vh;
+  }
+
+  .rows,
+  .months {
     position: absolute;
     display: flex;
     flex-direction: column;
     overflow: scroll;
     margin: 1.5% 2.5%;
     width: 71.5vw;
-    height: 65vh;
   }
 
-  .dataButtonContainer {
+  .rows {
+    height: 50vh;
+  }
+
+  .months {
+    height: 30vh;
+  }
+
+  .tableButtonContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin: 1.5vh 0 0 3vw;
   }
 
-  .dataOptionsContainer {
+  .tableOptionsContainer {
     padding-right: 2vw;
 
     button {
       margin: 0 1vw;
     }
-  }
-
-  /* Fullscreen */
-  .rowContainerFull {
-    left: 0;
-    height: 83vh;
-    width: 96vw;
-    margin: 1vh 1vw;
-  }
-
-  .rowFull {
-    height: 75vh;
-    width: 95vw;
-    margin: 0.5vh 0.5vw;
-  }
-
-  .dataButtonContainerFull {
-    margin: 1vh 3.5vw;
   }
 </style>

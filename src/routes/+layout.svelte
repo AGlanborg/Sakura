@@ -59,6 +59,7 @@
 
   .home {
     height: 80vh;
+    overflow-y: scroll;
   }
 
   .else {

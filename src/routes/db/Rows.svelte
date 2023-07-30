@@ -3,7 +3,7 @@
   import raw from "$lib/schemes/layouts/raw.json";
   import content_type from "$lib/types";
   import handleForeignKeys from "$lib/modules/handleForeignKeys";
-  import handleMonth from "$lib/modules/handleMonths"
+  import { filterValue, filterString, filterMonths } from "$lib/modules/filters";
 
   export let content = content_type;
   export let filters;
@@ -52,47 +52,17 @@
   function filterContent() {
     filtered = content.main
 
-    filterValue("saljare")
-    filterValue("kopare")
-    filterValue("arbetstyp")
-    filterValue("typ")
-    filterValue("valuta")
-    filterString("text")
-    filterString("fakturanum")
-    filterString("now")
-    filterString("start")
-    filterString("slut")
-    filterMonths("during")
-  }
-
-  function filterValue(column) {
-    if (filters[column].length) {
-      let res = []
-
-      filtered.forEach((obj) => filters[column].includes(obj[column]) ? res.push(obj) : "")
-
-      filtered = res
-    }
-  }
-
-  function filterString(column) {
-    if (filters[column].length) {
-      let res = []
-
-      filtered.forEach((obj) => filters[column].some(str => obj[column].includes(str)) ? res.push(obj) : "")
-
-      filtered = res
-    }
-  }
-
-  function filterMonths(column) {
-    if (filters[column].length) {
-      let res = []
-
-      filtered.forEach((obj) => filters[column].some(date => handleMonth(obj.start, obj.slut, date)) ? res.push(obj) : "")
-
-      filtered = res
-    }
+    filtered = filterValue(filters, filtered, "saljare")
+    filtered = filterValue(filters, filtered, "kopare")
+    filtered = filterValue(filters, filtered, "arbetstyp")
+    filtered = filterValue(filters, filtered, "typ")
+    filtered = filterValue(filters, filtered, "valuta")
+    filtered = filterString(filters, filtered, "text")
+    filtered = filterString(filters, filtered, "fakturanum")
+    filtered = filterString(filters, filtered, "now")
+    filtered = filterString(filters, filtered, "start")
+    filtered = filterString(filters, filtered, "slut")
+    filtered = filterMonths(filters, filtered, "during")
   }
 
   filterContent()

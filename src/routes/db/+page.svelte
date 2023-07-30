@@ -1,13 +1,11 @@
 <script>
-  import { db } from "$lib/memory/selected";
-  import { goto, afterNavigate  } from "$app/navigation";
-
   import filters_scheme from "$lib/schemes/filters.json"
   import Filter from "./Filter.svelte";
   import Content from "./Content.svelte";
+  import { db } from "$lib/memory/selected";
+  import { goto, afterNavigate  } from "$app/navigation";
 
   let file = "";
-  let fullscreen = false;
   let filters = filters_scheme;
 
   afterNavigate(({from}) => {
@@ -32,10 +30,10 @@
 {:then content}
   <div class="fillBody center-row">
     <div class="filterContianer">
-      <Filter fullscreen={fullscreen} content={content} bind:filters={filters} />
+      <Filter content={content} bind:filters={filters} />
     </div>
     <div class="contentContainer">
-      <Content bind:fullscreen={fullscreen} content={content} filters={filters} />
+      <Content content={content} filters={filters} />
     </div>
   </div>
 {:catch error}
@@ -56,5 +54,6 @@
   .contentContainer {
     height: 100%;
     width: 80vw;
+    overflow-y: scroll;
   }
 </style>

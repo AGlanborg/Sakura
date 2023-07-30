@@ -30,7 +30,7 @@
 </script>
 
 <div class="sortContainer row">
-  <input type="text" placeholder="Search {context.title}..." bind:value={searchValue}>
+  <input class="input-text" type="text" placeholder="Search {context.title}..." bind:value={searchValue}>
   <button class="search_button" on:click={() => handleSubmit()}>
     <span class="material-icons-outlined"> add </span>
   </button>

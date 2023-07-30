@@ -27,7 +27,7 @@
 </script>
 
 <div class="sortContainer row">
-  <input type="month" lang="sv" placeholder="MM-YYYY" bind:value={searchValue}>
+  <input class="input-month" type="month" lang="sv" placeholder="MM-YYYY" bind:value={searchValue}>
   <button class="search_button" on:click={() => handleSubmit()}>
     <span class="material-icons-outlined"> add </span>
   </button>

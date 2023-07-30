@@ -1,16 +1,15 @@
 <script>
   import content_type from "$lib/types";
   import FilterForeignKeys from "./FilterForeignKeys.svelte";
-    import FilterMonths from "./FilterMonths.svelte";
-  import FilterSchemes from "./FilterSchemes.svelte";
   import FilterSearch from "./FilterSearch.svelte";
+  import FilterSchemes from "./FilterSchemes.svelte";
+  import FilterMonths from "./FilterMonths.svelte";
 
-  export let fullscreen = false;
   export let content = content_type;
   export let filters;
 </script>
 
-<div class="filter {fullscreen ? 'filterSmall' : ''}">
+<div class="filter">
   <div>
     <h2>Search</h2>
     <br />
@@ -88,10 +87,6 @@
     div {
       direction: ltr;
     }
-  }
-
-  .filterSmall {
-    box-shadow: none;
   }
 
   .material-icons-outlined {

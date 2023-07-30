@@ -1,5 +1,5 @@
 export default function removeZero(text) {
-  if (text.includes("0")) {
+  if (text.charAt(0) == "0") {
     text.replace("0", "");
   }
   return text;
