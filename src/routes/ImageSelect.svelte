@@ -147,7 +147,7 @@
       justify-content: center;
       z-index: 2;
       background-color: rgb(0, 0, 0, 0.6);
-      top: -40vh;
+      top: -20vh;
       left: 0;
       height: 203.5%;
       width: 100%;

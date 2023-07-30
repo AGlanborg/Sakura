@@ -8,31 +8,29 @@
 </script>
 
 <div class="rowsContainer">
-  <div class="tableButtonContainer ">
+  <div class="tableButtonContainer">
     <button class="tableButton">
       <h2>Data</h2>
     </button>
     <div class="tableOptionsContainer">
       <button>
-        <h3>
-          Download
-        </h3>
+        <h3>Download</h3>
         <span class="material-icons data_fullscreen"> download </span>
       </button>
     </div>
   </div>
   <div class="rows">
-    <Rows content={content} filters={filters} />
+    <Rows {content} {filters} />
   </div>
 </div>
 <div class="monthsContainer">
-  <div class="tableButtonContainer ">
+  <div class="tableButtonContainer">
     <button class="tableButton">
       <h2>Months</h2>
     </button>
   </div>
   <div class="months">
-    <Months content={content} filters={filters} />
+    <Months {content} {filters} />
   </div>
 </div>
 
@@ -65,16 +63,7 @@
     border-radius: 25px;
     margin: 4vh 2.5vw;
     padding: 1vh 0;
-    width: 74vw;
     left: 0;
-  }
-
-  .rowsContainer {
-    height: 62vh;
-  }
-
-  .monthsContainer {
-    height: 42vh;
   }
 
   .rows,
@@ -84,15 +73,6 @@
     flex-direction: column;
     overflow: scroll;
     margin: 1.5% 2.5%;
-    width: 71.5vw;
-  }
-
-  .rows {
-    height: 50vh;
-  }
-
-  .months {
-    height: 30vh;
   }
 
   .tableButtonContainer {
@@ -107,6 +87,50 @@
 
     button {
       margin: 0 1vw;
+    }
+  }
+
+  /* Desktop */
+  @media only screen and (min-width: 1601px) {
+    .rowsContainer {
+      height: 68vh;
+      width: 74vw;
+    }
+
+    .monthsContainer {
+      height: 46vh;
+    }
+
+    .rows {
+      height: 56vh;
+      width: 71.5vw;
+    }
+
+    .months {
+      height: 34vh;
+      width: 71.5vw;
+    }
+  }
+
+  /* Laptop */
+  @media only screen and (max-width: 1600px) {
+    .rowsContainer {
+      height: 68vh;
+      width: 77vw;
+    }
+
+    .monthsContainer {
+      height: 46vh;
+    }
+
+    .rows {
+      height: 56vh;
+      width: 74vw;
+    }
+
+    .months {
+      height: 34vh;
+      width: 74vw;
     }
   }
 </style>

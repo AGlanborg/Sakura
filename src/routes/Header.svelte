@@ -72,7 +72,7 @@
     min-height: 75px;
     height: 7.5vh;
     max-height: 125px;
-    top: 0;
+    top: -10vh;
     left: 0;
     z-index: 2;
   }

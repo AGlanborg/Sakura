@@ -49,12 +49,12 @@
 
   .headerContainer {
     position: absolute;
-    top: -7.5vh;
+    top: 0vh;
     left: 0;
   }
 
   .shown {
-    top: 0;
+    top: 10vh;
   }
 
   .home {
@@ -62,7 +62,17 @@
     overflow-y: scroll;
   }
 
-  .else {
-    height: 85vh;
+  /* Desktop */
+  @media only screen and (min-width: 1601px) {
+    .else {
+      height: 85vh;
+    }
+  }
+
+  /* Laptop */
+  @media only screen and (max-width: 1600px) {
+    .else {
+      height: 79vh;
+    }
   }
 </style>

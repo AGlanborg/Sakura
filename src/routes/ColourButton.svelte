@@ -38,11 +38,26 @@
     height: 10vh;
   }
 
-  .smallColour {
-    height: 7.5vh;
+  /* Desktop */
+  @media only screen and (min-width: 1601px) {
+    .colour {
+      font-size: 40px;
+    }
+
+    .smallColour {
+      height: 7.5vh;
+    }
   }
 
-  .colour {
-    font-size: 40px;
+  /* Laptop */
+  @media only screen and (max-width: 1600px) {
+    .colour {
+      font-size: 25px;
+    }
+
+    .smallColour {
+      height: 5vh;
+      margin-top: 1vh;
+    }
   }
 </style>

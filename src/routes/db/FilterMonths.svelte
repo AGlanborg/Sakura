@@ -27,7 +27,7 @@
 </script>
 
 <div class="sortContainer row">
-  <input class="input-month" type="month" lang="sv" placeholder="MM-YYYY" bind:value={searchValue}>
+  <input class="input-month" type="month" lang="sv" placeholder="YYYY-MM" bind:value={searchValue}>
   <button class="search_button" on:click={() => handleSubmit()}>
     <span class="material-icons-outlined"> add </span>
   </button>
@@ -41,7 +41,7 @@
         </p>
       </div>
       <button on:click={() => handleRemove(res)}>
-        <span class="material-icons"> delete </span>
+        <span class="material-icons-outlined"> delete </span>
       </button>
     </div>
   {/each}

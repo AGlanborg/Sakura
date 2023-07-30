@@ -56,4 +56,27 @@
     width: 80vw;
     overflow-y: scroll;
   }
+
+  /* Desktop */
+  @media only screen and (min-width: 1601px) {
+    .filterContianer {
+      width: 20vw;
+    }
+
+    .contentContainer {
+      width: 80vw;
+    }
+  }
+
+  /* Laptop */
+  @media only screen and (max-width: 1600px) {
+    .filterContianer {
+      display: flex;
+      width: 17.5vw;
+    }
+
+    .contentContainer {
+      width: 82.5vw;
+    }
+  }
 </style>

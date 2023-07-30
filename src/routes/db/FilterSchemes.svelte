@@ -70,7 +70,7 @@
         </p>
       </div>
       <button on:click={() => handleRemove(res)}>
-        <span class="material-icons"> delete </span>
+        <span class="material-icons-outlined"> delete </span>
       </button>
     </div>
   {/each}
