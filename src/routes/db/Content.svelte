@@ -78,7 +78,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 0 0 0 3vw;
   }
 
   .tableOptionsContainer {
@@ -102,13 +101,17 @@
     }
 
     .rows {
-      height: 56vh;
+      height: 64vh;
       width: 71.5vw;
     }
 
     .months {
-      height: 34vh;
+      height: 42.5vh;
       width: 71.5vw;
+    }
+
+    .tableButtonContainer {
+      margin: 0 0 0 2.5vw;
     }
   }
 
@@ -137,6 +140,10 @@
     .months {
       height: 39vh;
       width: 74vw;
+    }
+
+    .tableButtonContainer {
+      margin: 0 0 0 3vw;
     }
 
     .tableOptionsContainer {
