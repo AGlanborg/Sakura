@@ -47,7 +47,6 @@
   }
 
   .tableButton {
-    width: 100px;
     height: 50px;
   }
 
@@ -72,14 +71,14 @@
     display: flex;
     flex-direction: column;
     overflow: scroll;
-    margin: 1.5% 2.5%;
+    margin: 0 2.5%;
   }
 
   .tableButtonContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 1.5vh 0 0 3vw;
+    margin: 0 0 0 3vw;
   }
 
   .tableOptionsContainer {
@@ -99,6 +98,7 @@
 
     .monthsContainer {
       height: 46vh;
+      width: 74vw;
     }
 
     .rows {
@@ -114,6 +114,11 @@
 
   /* Laptop */
   @media only screen and (max-width: 1600px) {
+    h2,
+    h3 {
+      margin: 0;
+    }
+
     .rowsContainer {
       height: 68vh;
       width: 77vw;
@@ -121,16 +126,25 @@
 
     .monthsContainer {
       height: 46vh;
+      width: 77vw
     }
 
     .rows {
-      height: 56vh;
+      height: 60vh;
       width: 74vw;
     }
 
     .months {
-      height: 34vh;
+      height: 39vh;
       width: 74vw;
+    }
+
+    .tableOptionsContainer {
+      height: 50px;
+
+      button {
+        height: 50px;
+      }
     }
   }
 </style>
