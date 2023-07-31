@@ -117,6 +117,7 @@
 
     .rowsMinimise {
       width: 92vw;
+      margin: 4vh 1.2vw;
 
       .rows,
       .months {
