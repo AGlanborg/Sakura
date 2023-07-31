@@ -8,12 +8,18 @@
 
   export let content = content_type;
   export let filters;
+  export let minimise = false;
 </script>
 
 <div class="filter">
   <div>
     <MediaQuery query="(min-width: 1601px)" let:matches>
       {#if matches}
+        <div class="minimiseContainer">
+          <button on:click={() => minimise = !minimise}>
+            <span class="material-icons {minimise ? 'minimiseExpand' : ''}"> keyboard_arrow_left </span>
+          </button>
+        </div>
         <h2>Search</h2>
         <br />
         <h3>Text</h3>
@@ -142,6 +148,24 @@
   .material-icons-outlined {
     position: relative;
     top: 5px;
+  }
+
+  .minimiseContainer {
+    position: absolute;
+    right: 0;
+
+    button {
+      height: 50px;
+      width: 50px;
+
+      .material-icons {
+        font-size: 30px;
+      }
+    }
+  }
+
+  .minimiseExpand {
+    transform: rotate(180deg);
   }
 
   /* Desktop */

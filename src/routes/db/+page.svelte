@@ -7,6 +7,7 @@
 
   let file = "";
   let filters = filters_scheme;
+  let minimise = false
 
   afterNavigate(({from}) => {
     from?.url.pathname ? '' : goto('/')
@@ -29,11 +30,11 @@
   </div>
 {:then content}
   <div class="fillBody center-row">
-    <div class="filterContianer">
-      <Filter content={content} bind:filters={filters} />
+    <div class="filterContianer {minimise ? 'filterMinimise' : ''}">
+      <Filter content={content} bind:filters={filters} bind:minimise={minimise} />
     </div>
-    <div class="contentContainer">
-      <Content content={content} filters={filters} />
+    <div class="contentContainer {minimise ? 'contentMinimise' : ''}">
+      <Content content={content} filters={filters} minimise={minimise} />
     </div>
   </div>
 {:catch error}
@@ -44,17 +45,20 @@
 
 <style lang="scss">
   .filterContianer {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: left;
     height: 100%;
-    width: 20vw;
+    left: 0;
   }
 
   .contentContainer {
-    height: 100%;
-    width: 80vw;
+    position: relative;
     overflow-y: scroll;
+    height: 100%;
+    left: 0;
+    transition: 0.175s;
   }
 
   /* Desktop */
@@ -63,8 +67,17 @@
       width: 20vw;
     }
 
+    .filterMinimise {
+      left: -18vw;
+    }
+
     .contentContainer {
       width: 80vw;
+    }
+
+    .contentMinimise {
+      width: 600vw;
+      left: 0vw;
     }
   }
 

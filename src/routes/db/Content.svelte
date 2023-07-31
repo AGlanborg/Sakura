@@ -5,9 +5,10 @@
 
   export let content = content_type;
   export let filters;
+  export let minimise;
 </script>
 
-<div class="rowsContainer">
+<div class="rowsContainer {minimise ? 'rowsMinimise' : ''}">
   <div class="tableButtonContainer">
     <button class="tableButton">
       <h2>Data</h2>
@@ -23,7 +24,7 @@
     <Rows {content} {filters} />
   </div>
 </div>
-<div class="monthsContainer">
+<div class="monthsContainer {minimise ? 'rowsMinimise' : ''}">
   <div class="tableButtonContainer">
     <button class="tableButton">
       <h2>Months</h2>
@@ -112,6 +113,15 @@
 
     .tableButtonContainer {
       margin: 0 0 0 2.5vw;
+    }
+
+    .rowsMinimise {
+      width: 92vw;
+
+      .rows,
+      .months {
+        width: 89vw;
+      }
     }
   }
 
