@@ -45,20 +45,20 @@
       </button>
       <button class="center-absolute">
         <div>
-          <p>Content</p>
-          <span class="material-icons {$page.url.pathname == '/db' ? 'arrowDown' : 'arrowUp'}"> arrow_back_ios </span>
+          <p>Overview</p>
+          <span class="material-icons {$page.url.pathname == '/overview' ? 'arrowDown' : 'arrowUp'}"> arrow_back_ios </span>
         </div>
       </button>
       <button class="center-absolute" disabled={$page.url.pathname == '/'}>
         <div>
-          <p>Graphs</p>
-          <span class="material-icons {$page.url.pathname == '/db/graphs' ? 'arrowDown' : 'arrowUp'}"> arrow_back_ios </span>
+          <p>Create</p>
+          <span class="material-icons {$page.url.pathname == '/create' ? 'arrowDown' : 'arrowUp'}"> arrow_back_ios </span>
         </div>
       </button>
       <button class="center-absolute" disabled={$page.url.pathname == '/'}>
         <div>
-          <p>Oveview</p>
-          <span class="material-icons {$page.url.pathname == '/db/overview' ? 'arrowDown' : 'arrowUp'}"> arrow_back_ios </span>
+          <p>Graph</p>
+          <span class="material-icons {$page.url.pathname == '/graph' ? 'arrowDown' : 'arrowUp'}"> arrow_back_ios </span>
         </div>
       </button>
     </div>

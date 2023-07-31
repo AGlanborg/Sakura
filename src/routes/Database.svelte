@@ -29,7 +29,7 @@
 
   function selectDB() {
     db.update(() => title + img)
-    goto("/db")
+    goto("/overview")
   }
 </script>
 
