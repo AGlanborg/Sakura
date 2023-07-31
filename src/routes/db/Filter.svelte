@@ -16,8 +16,10 @@
     <MediaQuery query="(min-width: 1601px)" let:matches>
       {#if matches}
         <div class="minimiseContainer">
-          <button on:click={() => minimise = !minimise}>
-            <span class="material-icons {minimise ? 'minimiseExpand' : ''}"> keyboard_arrow_left </span>
+          <button on:click={() => (minimise = !minimise)}>
+            <span class="material-icons {minimise ? 'minimiseExpand' : ''}">
+              keyboard_arrow_left
+            </span>
           </button>
         </div>
         <h2>Search</h2>
@@ -69,6 +71,13 @@
     </MediaQuery>
     <MediaQuery query="(max-width: 1600px)" let:matches>
       {#if matches}
+        <div class="minimiseContainer">
+          <button on:click={() => (minimise = !minimise)}>
+            <span class="material-icons {minimise ? 'minimiseExpand' : ''}">
+              keyboard_arrow_left
+            </span>
+          </button>
+        </div>
         <h2>Text</h2>
         <FilterSearch bind:arr={filters.text} context={{ title: "Text" }} />
         <h2>Fakturanummer</h2>
@@ -150,20 +159,6 @@
     top: 5px;
   }
 
-  .minimiseContainer {
-    position: absolute;
-    right: 0;
-
-    button {
-      height: 50px;
-      width: 50px;
-
-      .material-icons {
-        font-size: 30px;
-      }
-    }
-  }
-
   .minimiseExpand {
     transform: rotate(180deg);
   }
@@ -180,6 +175,20 @@
       width: 20vw;
       margin: 4vh 0;
     }
+
+    .minimiseContainer {
+      position: absolute;
+      right: 0;
+
+      button {
+        height: 50px;
+        width: 50px;
+
+        .material-icons {
+          font-size: 30px;
+        }
+      }
+    }
   }
 
   /* Laptop */
@@ -190,9 +199,23 @@
     }
 
     .filter {
-      height: 71vh;
+      height: 74vh;
       width: 17.5vw;
       margin: 4.5vh 0 0;
+    }
+
+    .minimiseContainer {
+      position: absolute;
+      right: 0vw;
+
+      button {
+        height: 40px;
+        width: 40px;
+
+        .material-icons {
+          font-size: 25px;
+        }
+      }
     }
   }
 </style>

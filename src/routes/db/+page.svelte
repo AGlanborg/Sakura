@@ -88,8 +88,18 @@
       width: 17.5vw;
     }
 
+    .filterMinimise {
+      left: -15vw;
+    }
+
+
     .contentContainer {
       width: 82.5vw;
+    }
+
+    .contentMinimise {
+      width: 600vw;
+      left: 0vw;
     }
   }
 </style>

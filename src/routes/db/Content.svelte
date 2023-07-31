@@ -163,5 +163,14 @@
         height: 50px;
       }
     }
+
+    .rowsMinimise {
+      width: 92vw;
+
+      .rows,
+      .months {
+        width: 89vw;
+      }
+    }
   }
 </style>

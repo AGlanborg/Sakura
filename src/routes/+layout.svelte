@@ -72,7 +72,7 @@
   /* Laptop */
   @media only screen and (max-width: 1600px) {
     .else {
-      height: 79vh;
+      height: 82vh;
     }
   }
 </style>
