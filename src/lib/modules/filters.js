@@ -16,7 +16,7 @@ export function filterString(filters, filtered, column) {
   if (filters[column].length) {
     let res = []
 
-    filtered.forEach((obj) => filters[column].some(str => obj[column].includes(str)) ? res.push(obj) : "")
+    filtered.forEach((obj) => filters[column].some(str => obj[column].toUpperCase().includes(str.toUpperCase())) ? res.push(obj) : "")
 
     return res
   }
