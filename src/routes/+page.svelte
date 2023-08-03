@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Database from "./Database.svelte";
   import Newdatabase from "./NewDatabase.svelte";
 

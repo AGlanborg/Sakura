@@ -1,6 +1,5 @@
-<script>
+<script lang="ts">
   import "$lib/css/table.scss";
-  import content_type from "$lib/types";
   import createMonths from "$lib/modules/createMonths";
   import handleMonth from "$lib/modules/handleMonths";
   import {
@@ -8,12 +7,13 @@
     filterString,
     filterMonths,
   } from "$lib/modules/filters";
+  import type { type_content, type_filters, type_main } from "$lib/types/index";
 
-  export let content = content_type;
-  export let filters;
+  export let content: type_content;
+  export let filters: type_filters;
 
-  let filtered = [];
-  let months = [];
+  let filtered: type_main[] = [];
+  let months: string[] = [];
 
   function filterContent() {
     filtered = content.main;

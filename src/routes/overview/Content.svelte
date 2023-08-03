@@ -1,11 +1,11 @@
-<script>
-  import content_type from "$lib/types";
+<script lang="ts">
   import Rows from "./Rows.svelte";
   import Months from "./Months.svelte";
+  import type { type_content, type_filters } from "$lib/types/index";
 
-  export let content = content_type;
-  export let filters;
-  export let minimise;
+  export let content: type_content;
+  export let filters: type_filters;
+  export let minimise: boolean;
 </script>
 
 <div class="rowsContainer {minimise ? 'rowsMinimise' : ''}">
@@ -140,7 +140,7 @@
 
     .monthsContainer {
       height: 46vh;
-      width: 77vw
+      width: 77vw;
     }
 
     .rows {

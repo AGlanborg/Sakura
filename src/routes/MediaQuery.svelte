@@ -1,12 +1,12 @@
-<script>
+<script lang="ts">
     import { onMount } from "svelte";
 
-    export let query;
+    export let query: any;
 
-    let mql;
-    let mqlListener;
-    let wasMounted = false;
-    let matches = false;
+    let mql: any;
+    let mqlListener: any;
+    let wasMounted: boolean = false;
+    let matches: boolean = false;
 
     onMount(() => {
         wasMounted = true;
@@ -22,9 +22,9 @@
         }
     }
 
-    function addNewListener(query) {
+    function addNewListener(query: any) {
         mql = window.matchMedia(query);
-        mqlListener = v => matches = v.matches;
+        mqlListener = (v: any) => (matches = v.matches);
         mql.addListener(mqlListener);
         matches = mql.matches;
     }

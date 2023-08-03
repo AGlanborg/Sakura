@@ -1,20 +1,20 @@
-<script>
-  import filters_scheme from "$lib/schemes/filters.json"
+<script lang="ts">
+  import filters_scheme from "$lib/schemes/filters.json";
   import Filter from "./Filter.svelte";
   import Content from "./Content.svelte";
   import { db } from "$lib/memory/selected";
-  import { goto, afterNavigate  } from "$app/navigation";
+  import { goto, afterNavigate } from "$app/navigation";
 
-  let file = "";
+  let file: string = "";
   let filters = filters_scheme;
-  let minimise = false
+  let minimise: boolean = false;
 
-  afterNavigate(({from}) => {
-    from?.url.pathname ? '' : goto('/')
-  }) 
+  afterNavigate(({ from }) => {
+    from?.url.pathname ? "" : goto("/");
+  });
 
   async function getContent() {
-    db.subscribe(async (val) => {
+    db.subscribe(async (val: string) => {
       file = val;
     });
 
@@ -31,10 +31,10 @@
 {:then content}
   <div class="fillBody center-row">
     <div class="filterContianer {minimise ? 'filterMinimise' : ''}">
-      <Filter content={content} bind:filters={filters} bind:minimise={minimise} />
+      <Filter {content} bind:filters bind:minimise />
     </div>
     <div class="contentContainer {minimise ? 'contentMinimise' : ''}">
-      <Content content={content} filters={filters} minimise={minimise} />
+      <Content {content} {filters} {minimise} />
     </div>
   </div>
 {:catch error}
@@ -91,7 +91,6 @@
     .filterMinimise {
       left: -15vw;
     }
-
 
     .contentContainer {
       width: 82.5vw;

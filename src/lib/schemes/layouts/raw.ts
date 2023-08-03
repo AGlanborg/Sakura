@@ -1,4 +1,6 @@
-[
+import type { type_layouts } from "$lib/types"
+
+export let layoutsRaw: type_layouts[] = [
   {
     "name": "Id",
     "size": "short",

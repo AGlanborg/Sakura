@@ -66,6 +66,22 @@ body {
     color: light.$default-color;
     border-bottom-color: light.$inverted-background;
   }
+
+  .formatButton {
+    background-color: light.$default-background;
+
+    span {
+      color: light.$default-color;
+    }
+  }
+
+  .formatHighlight {
+    background-color: light.$inverted-background;
+
+    span {
+      color: light.$inverted-color;
+    }
+  }
 }
 
 /* Dark-mode colors*/
@@ -116,6 +132,22 @@ body.dark {
     background-color: dark.$default-background;
     color: dark.$default-color;
     border-bottom-color: dark.$inverted-background;
+  }
+
+  .formatButton {
+    background-color: dark.$default-background;
+
+    span {
+      color: dark.$default-color;
+    }
+  }
+
+  .formatHighlight {
+    background-color: dark.$inverted-background;
+
+    span {
+      color: dark.$inverted-color;
+    }
   }
 }
 

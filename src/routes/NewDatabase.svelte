@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import MediaQuery from "./MediaQuery.svelte";
   import ImageSelect from "./ImageSelect.svelte";
   import ErrorWarning from "./ErrorWarning.svelte";
@@ -18,15 +18,15 @@
   import g128 from "$lib/images/6-128.png";
   import g64 from "$lib/images/6-64.png";
 
-  let pic64 = [a64, b64, c64, d64, e64, f64, g64];
-  let pic128 = [a128, b128, c128, d128, e128, f128, g128];
+  let pic64: string[] = [a64, b64, c64, d64, e64, f64, g64];
+  let pic128: string[] = [a128, b128, c128, d128, e128, f128, g128];
 
-  let phase = 0;
-  let title = "";
-  let rep = 100;
-  let options = 0;
-  let duplicate = 0;
-  let message = new Array();
+  let phase: number = 0;
+  let title: string = "";
+  let rep: number = 100;
+  let options: number = 0;
+  let duplicate: number = 0;
+  let message: string[] = new Array();
 
   async function tryCreate() {
     if (title && rep != 100) {
@@ -78,7 +78,12 @@
   <div class="db">
     {#if phase}
       <div>
-        <input type="text" placeholder="Title..." class="database_name" bind:value={title} />
+        <input
+          type="text"
+          placeholder="Title..."
+          class="database_name"
+          bind:value={title}
+        />
       </div>
       <div class="center-row">
         <button on:click={() => (options = 1)}>

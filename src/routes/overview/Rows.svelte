@@ -1,30 +1,38 @@
-<script>
+<script lang="ts">
   import "$lib/css/table.scss";
-  import raw from "$lib/schemes/layouts/raw.json";
-  import content_type from "$lib/types";
+  import { layoutsRaw } from "$lib/schemes/layouts/index";
   import handleForeignKeys from "$lib/modules/handleForeignKeys";
-  import { filterValue, filterString, filterMonths } from "$lib/modules/filters";
+  import {
+    filterValue,
+    filterString,
+    filterMonths,
+  } from "$lib/modules/filters";
+  import type {
+    type_content,
+    type_filters,
+    type_main,
+    type_layouts,
+  } from "$lib/types/index";
 
-  export let content = content_type;
-  export let filters;
+  export let content: type_content;
+  export let filters: type_filters;
 
-  let selected = [];
-  let filtered = [];
-  let order = {
-    column: "main_id",
-    desc: true,
-  };
+  let selected: number[] = [];
+  let filtered: type_main[] = [];
+  let mainColumn: keyof type_main = "main_id";
+  let desc: boolean = true;
+  let raw: type_layouts[] = layoutsRaw;
 
-  function toggleColumn(obj) {
-    if (order.column == obj.column) {
-      order.desc = !order.desc;
+  function toggleColumn(obj: any) {
+    if (mainColumn == obj.column) {
+      desc = !desc;
     } else {
-      order.column = obj.column;
-      order.desc = true;
+      mainColumn = obj.column;
+      desc = true;
     }
   }
 
-  function toggleCheck(row) {
+  function toggleCheck(row: type_main) {
     selected.includes(row.main_id)
       ? selected.splice(selected.indexOf(row.main_id), 1)
       : selected.push(row.main_id);
@@ -45,29 +53,30 @@
   function forceUpdate() {
     /* To counteract a update-state bug */
 
-    order = order;
+    mainColumn = mainColumn;
+    desc = desc;
     selected = selected;
   }
 
   function filterContent() {
-    filtered = content.main
+    filtered = content.main;
 
-    filtered = filterValue(filters, filtered, "saljare")
-    filtered = filterValue(filters, filtered, "kopare")
-    filtered = filterValue(filters, filtered, "arbetstyp")
-    filtered = filterValue(filters, filtered, "typ")
-    filtered = filterValue(filters, filtered, "valuta")
-    filtered = filterString(filters, filtered, "text")
-    filtered = filterString(filters, filtered, "fakturanum")
-    filtered = filterString(filters, filtered, "now")
-    filtered = filterString(filters, filtered, "start")
-    filtered = filterString(filters, filtered, "slut")
-    filtered = filterMonths(filters, filtered, "during")
+    filtered = filterValue(filters, filtered, "saljare");
+    filtered = filterValue(filters, filtered, "kopare");
+    filtered = filterValue(filters, filtered, "arbetstyp");
+    filtered = filterValue(filters, filtered, "typ");
+    filtered = filterValue(filters, filtered, "valuta");
+    filtered = filterString(filters, filtered, "text");
+    filtered = filterString(filters, filtered, "fakturanum");
+    filtered = filterString(filters, filtered, "now");
+    filtered = filterString(filters, filtered, "start");
+    filtered = filterString(filters, filtered, "slut");
+    filtered = filterMonths(filters, filtered, "during");
   }
 
-  filterContent()
+  filterContent();
 
-  $: filters, filterContent()
+  $: filters, filterContent();
 </script>
 
 <div class="tableRowContainer">
@@ -75,7 +84,7 @@
     <div class="tableColumn table-short">
       <button disabled={!filtered.length} on:click={() => toggleAllCheck()}>
         <div class="tableColumnCheck">
-          {#if filtered.every((obj) => selected.includes(obj.main_id)) && filtered.length}
+          {#if filtered.every( (obj) => selected.includes(obj.main_id) ) && filtered.length}
             <span class="material-icons"> check </span>
           {/if}
         </div>
@@ -87,8 +96,8 @@
           <button on:click={() => toggleColumn(column)}>
             <p>{column.name}</p>
             <span
-              class="material-icons {order.column == column.column
-                ? order.desc
+              class="material-icons {mainColumn == column.column
+                ? desc
                   ? 'drop_down'
                   : 'drop_up'
                 : ''}">arrow_right</span
@@ -103,7 +112,7 @@
     {/each}
   </div>
 </div>
-{#each filtered.sort( (a, b) => (order.desc ? b[order.column] - a[order.column] : a[order.column] - b[order.column]) ) as row}
+{#each filtered.sort( (a, b) => (desc ? Number(b[mainColumn]) - Number(a[mainColumn]) : Number(a[mainColumn]) - Number(b[mainColumn])) ) as row}
   <div class="tableRowContainer">
     <div class="tableRow">
       <div class="tableColumn table-short">

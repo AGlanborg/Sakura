@@ -1,36 +1,41 @@
-<script>
-  import "$lib/css/filters.scss"
+<script lang="ts">
+  import "$lib/css/filters.scss";
 
-  export let arr = [];
+  export let arr: string[];
   export let context = {
-    title: ""
-  }
+    title: "",
+  };
 
-  let searchValue = ""
+  let searchValue = "";
 
   function handleSubmit() {
     if (!searchValue.match(/^ *$/)) {
       arr.includes(searchValue) ? "" : arr.push(searchValue);
 
-      searchValue = ""
+      searchValue = "";
 
-      arr = arr
+      arr = arr;
     }
   }
 
-  function handleRemove(val) {
-    arr = arr.filter(e => e != val)
+  function handleRemove(val: string) {
+    arr = arr.filter((e: string) => e != val);
   }
 
-  function onKeyDown(key) {
+  function onKeyDown(key: any) {
     if (key.keyCode == 13) {
-      handleSubmit()
+      handleSubmit();
     }
   }
 </script>
 
 <div class="sortContainer row">
-  <input class="input-text" type="text" placeholder="Search {context.title}..." bind:value={searchValue}>
+  <input
+    class="input-text"
+    type="text"
+    placeholder="Search {context.title}..."
+    bind:value={searchValue}
+  />
   <button class="search_button" on:click={() => handleSubmit()}>
     <span class="material-icons-outlined"> add </span>
   </button>

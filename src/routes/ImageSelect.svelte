@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import MediaQuery from "./MediaQuery.svelte";
 
   import a128 from "$lib/images/0-128.png";
@@ -16,8 +16,8 @@
   import g128 from "$lib/images/6-128.png";
   import g64 from "$lib/images/6-64.png";
 
-  export let rep;
-  export let options;
+  export let rep: number;
+  export let options: number;
 
   function selectImg(val = 100) {
     rep = val;
@@ -101,16 +101,16 @@
 </MediaQuery>
 
 <style lang="scss">
-    .newImageClose {
-      font-size: 40px;
-      transform: rotate(45deg);
-    }
+  .newImageClose {
+    font-size: 40px;
+    transform: rotate(45deg);
+  }
 
-    .newImageCloseContainer {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-    }
+  .newImageCloseContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
 
   /* Desktop */
   @media only screen and (min-width: 1601px) {

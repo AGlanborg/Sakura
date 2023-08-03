@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { goto } from "$app/navigation";
   import { db } from "$lib/memory/selected";
 
@@ -21,15 +21,15 @@
   import g128 from "$lib/images/6-128.png";
   import g64 from "$lib/images/6-64.png";
 
-  export let img = "100";
-  export let title = "";
+  export let img: string;
+  export let title: string;
 
-  let pic64 = [a64, b64, c64, d64, e64, f64, g64];
-  let pic128 = [a128, b128, c128, d128, e128, f128, g128];
+  let pic64: string[] = [a64, b64, c64, d64, e64, f64, g64];
+  let pic128: string[] = [a128, b128, c128, d128, e128, f128, g128];
 
   function selectDB() {
-    db.update(() => title + img)
-    goto("/overview")
+    db.update(() => title + img);
+    goto("/overview");
   }
 </script>
 

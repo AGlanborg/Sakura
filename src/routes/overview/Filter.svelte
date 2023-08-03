@@ -1,14 +1,14 @@
-<script>
-  import content_type from "$lib/types";
+<script lang="ts">
   import MediaQuery from "../MediaQuery.svelte";
   import FilterForeignKeys from "./FilterForeignKeys.svelte";
   import FilterSearch from "./FilterSearch.svelte";
   import FilterSchemes from "./FilterSchemes.svelte";
   import FilterMonths from "./FilterMonths.svelte";
+  import type { type_content, type_filters } from "$lib/types/index";
 
-  export let content = content_type;
-  export let filters;
-  export let minimise = false;
+  export let content: type_content;
+  export let filters: type_filters;
+  export let minimise: boolean;
 </script>
 
 <div class="filter {minimise ? 'minimiseFilter' : ''}">

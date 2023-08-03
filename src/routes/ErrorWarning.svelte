@@ -1,6 +1,6 @@
-<script>
-  export let message = new Array();
-  export let duplicate = 1;
+<script lang="ts">
+  export let message: any[] = new Array();
+  export let duplicate: number = 1;
 
   function wipe() {
     message = [];
@@ -16,7 +16,7 @@
         {content}
       </p>
     {/each}
-    <button on:click={() => wipe()}>
+    <button class="fillBody center-absolute" on:click={() => wipe()}>
       <p>Sorry...</p>
     </button>
   </div>

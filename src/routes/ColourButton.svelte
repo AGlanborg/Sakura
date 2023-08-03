@@ -1,15 +1,19 @@
-<script>
+<script lang="ts">
   import { page } from "$app/stores";
   import { mode } from "$lib/memory/selected";
 
   function toggleMode() {
-    mode.update((val) => {
+    mode.update((val: string) => {
       return val == "dark" ? (val = "light") : (val = "dark");
     });
   }
 </script>
 
-<div class="colourSchemeContainer {$page.url.pathname !== '/' ? 'smallColourContainer' : ''}">
+<div
+  class="colourSchemeContainer {$page.url.pathname !== '/'
+    ? 'smallColourContainer'
+    : ''}"
+>
   <div class="colourScheme {$page.url.pathname !== '/' ? 'smallColour' : ''}">
     <button on:click={toggleMode}>
       <span class="material-icons colour">wb_sunny</span>

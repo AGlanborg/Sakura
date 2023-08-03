@@ -1,51 +1,49 @@
-<script>
-  import "$lib/css/filters.scss"
-  import * as schemes from "$lib/schemes/filters/"
+<script lang="ts">
+  import "$lib/css/filters.scss";
+  import * as schemes from "$lib/schemes/filters/";
 
-  export let arr = [];
-  export let context = {
-    column: ""
-  };
+  export let arr: string[];
+  export let context: { column: "typ" | "valuta" };
 
-  let option = [];
-  let list = [];
+  let option: string[] = [];
+  let list: string[] = [];
 
-  function handleSelect(event) {
+  function handleSelect(event: any) {
     arr.includes(event.target.value) ? "" : arr.push(event.target.value);
 
     event.target.value = "default";
 
-    sortFilters()
+    sortFilters();
   }
 
-  function handleRemove(val) {
-    arr = arr.filter(e => e != val)
+  function handleRemove(val: string) {
+    arr = arr.filter((e: string) => e != val);
 
-    sortFilters()
+    sortFilters();
   }
 
   function sortFilters() {
-    option = []
-    list = []
+    option = [];
+    list = [];
 
-    schemes[context.column].values.forEach(val => {
-      arr.includes(val)
-        ? list.push(val)
-        : option.push(val)
+    schemes[context.column].values.forEach((val: string) => {
+      arr.includes(val) ? list.push(val) : option.push(val);
     });
 
-    arr = arr
+    arr = arr;
   }
 
-  sortFilters()
+  sortFilters();
 </script>
 
 <div class="sortContainer">
   <div class="ghostContainer">
     <div>
-      <span class="material-icons-outlined"> { schemes[context.column].symbol } </span>
+      <span class="material-icons-outlined">
+        {schemes[context.column].symbol}
+      </span>
       <p>
-        { schemes[context.column].title }
+        {schemes[context.column].title}
       </p>
     </div>
     <div>
@@ -56,7 +54,7 @@
     <option selected disabled hidden value="default" />
     {#each option as res}
       <option value={res}>
-        { res }
+        {res}
       </option>
     {/each}
   </select>

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { page } from "$app/stores";
   import { goto } from "$app/navigation";
 
@@ -11,8 +11,8 @@
   import f64 from "$lib/images/5-64.png";
   import g64 from "$lib/images/6-64.png";
 
-  export let img = "";
-  export let title = "";
+  export let img: string;
+  export let title: string;
 
   let pic64 = [a64, b64, c64, d64, e64, f64, g64];
 </script>
@@ -39,22 +39,48 @@
           <span class="material-icons icon"> home </span>
         </div>
       </button>
-      <button class="center-absolute" on:click={() => $page.url.pathname != '/overview' ? goto("/overview") : ''}>
+      <button
+        class="center-absolute"
+        on:click={() =>
+          $page.url.pathname != "/overview" ? goto("/overview") : ""}
+      >
         <div>
           <p>Overview</p>
-          <span class="material-icons {$page.url.pathname == '/overview' ? 'arrowDown' : 'arrowUp'}"> arrow_back_ios </span>
+          <span
+            class="material-icons {$page.url.pathname == '/overview'
+              ? 'arrowDown'
+              : 'arrowUp'}"
+          >
+            arrow_back_ios
+          </span>
         </div>
       </button>
-      <button class="center-absolute" on:click={() => $page.url.pathname != '/create' ? goto("/create") : ''}>
+      <button
+        class="center-absolute"
+        on:click={() =>
+          $page.url.pathname != "/create" ? goto("/create") : ""}
+      >
         <div>
           <p>Create</p>
-          <span class="material-icons {$page.url.pathname == '/create' ? 'arrowDown' : 'arrowUp'}"> arrow_back_ios </span>
+          <span
+            class="material-icons {$page.url.pathname == '/create'
+              ? 'arrowDown'
+              : 'arrowUp'}"
+          >
+            arrow_back_ios
+          </span>
         </div>
       </button>
-      <button class="center-absolute" disabled={$page.url.pathname == '/'}>
+      <button class="center-absolute" disabled={$page.url.pathname == "/"}>
         <div>
           <p>Graph</p>
-          <span class="material-icons {$page.url.pathname == '/graph' ? 'arrowDown' : 'arrowUp'}"> arrow_back_ios </span>
+          <span
+            class="material-icons {$page.url.pathname == '/graph'
+              ? 'arrowDown'
+              : 'arrowUp'}"
+          >
+            arrow_back_ios
+          </span>
         </div>
       </button>
     </div>

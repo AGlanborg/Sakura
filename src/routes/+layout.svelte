@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import "$lib/css/styles.scss";
   import "$lib/css/unique.scss";
 
@@ -9,20 +9,20 @@
   import { onMount } from "svelte";
   import { db, mode } from "$lib/memory/selected";
 
-  let img = "100";
-  let title = "";
+  let img: string = "100";
+  let title: string = "";
 
   onMount(() => {
     db.update(() => "");
 
-    db.subscribe((val) => {
-      img = val.slice(-1)
-      title = val.slice(0, -1)
+    db.subscribe((val: string) => {
+      img = val.slice(-1);
+      title = val.slice(0, -1);
     });
   });
 
   onMount(() => {
-    mode.subscribe((val) => {
+    mode.subscribe((val: string) => {
       if (val == "dark") {
         window.document.body.classList.add("dark");
       } else {
@@ -39,7 +39,7 @@
 <ColourButton />
 
 <div class="mainContainer">
-  <main class={$page.url.pathname == '/' ? 'home' : 'else'}>
+  <main class={$page.url.pathname == "/" ? "home" : "else"}>
     <slot />
   </main>
 </div>
