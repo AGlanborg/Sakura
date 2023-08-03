@@ -11,7 +11,7 @@
   export let minimise = false;
 </script>
 
-<div class="filter">
+<div class="filter {minimise ? 'minimiseFilter' : ''}">
   <div>
     <MediaQuery query="(min-width: 1601px)" let:matches>
       {#if matches}
@@ -152,6 +152,10 @@
     div {
       direction: ltr;
     }
+  }
+
+  .minimiseFilter {
+    overflow-y: hidden;
   }
 
   .material-icons-outlined {

@@ -15,8 +15,8 @@
     </button>
     <div class="tableOptionsContainer">
       <button>
-        <h3>Download</h3>
-        <span class="material-icons data_fullscreen"> download </span>
+        <h3 class="selectNone">Download</h3>
+        <span class="material-icons data_download"> download </span>
       </button>
     </div>
   </div>
@@ -51,7 +51,7 @@
     height: 50px;
   }
 
-  .data_fullscreen {
+  .data_download {
     margin: 5px 0 0 5px;
   }
 

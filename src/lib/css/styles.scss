@@ -90,6 +90,10 @@ input:focus {
   cursor: pointer;
 }
 
+.selectNone {
+  user-select: none;
+}
+
 .minBody {
   height: 0;
   width: 0;

@@ -15,10 +15,6 @@
   export let title = "";
 
   let pic64 = [a64, b64, c64, d64, e64, f64, g64];
-
-  function back() {
-    goto("/");
-  }
 </script>
 
 <header class="default-background">
@@ -37,19 +33,19 @@
       </div>
     </div>
     <div class="navButtonsContainer">
-      <button class="center-absolute" on:click={() => back()}>
+      <button class="center-absolute" on:click={() => goto("/")}>
         <div>
           <p>Home</p>
           <span class="material-icons icon"> home </span>
         </div>
       </button>
-      <button class="center-absolute">
+      <button class="center-absolute" on:click={() => $page.url.pathname != '/overview' ? goto("/overview") : ''}>
         <div>
           <p>Overview</p>
           <span class="material-icons {$page.url.pathname == '/overview' ? 'arrowDown' : 'arrowUp'}"> arrow_back_ios </span>
         </div>
       </button>
-      <button class="center-absolute" disabled={$page.url.pathname == '/'}>
+      <button class="center-absolute" on:click={() => $page.url.pathname != '/create' ? goto("/create") : ''}>
         <div>
           <p>Create</p>
           <span class="material-icons {$page.url.pathname == '/create' ? 'arrowDown' : 'arrowUp'}"> arrow_back_ios </span>
@@ -103,6 +99,7 @@
     }
 
     p {
+      user-select: none;
       font-size: 25px;
       margin: 5px 0 0;
     }
@@ -124,12 +121,12 @@
 
   .arrowDown {
     transform: rotate(-90deg);
-    margin: 5px 0 5px 5px;
+    margin: 5px 5px 0;
   }
 
   .arrowUp {
     transform: rotate(90deg);
-    margin: 15px 5px 0px;
+    margin: 14px 5px 0px;
   }
 
   .arrowDown,
