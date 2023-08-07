@@ -82,6 +82,17 @@ body {
       color: light.$inverted-color;
     }
   }
+
+  .commitCreateButton {
+    background-color: light.$inverted-background;
+    color: light.$inverted-color
+  }
+
+  .mutipleTextarea {
+    background-color: light.$default-background;
+    color: light.$default-color;
+    outline-color: light.$inverted-background;
+  }
 }
 
 /* Dark-mode colors*/
@@ -148,6 +159,17 @@ body.dark {
     span {
       color: dark.$inverted-color;
     }
+  }
+
+  .commitCreateButton {
+    background-color: dark.$inverted-background;
+    color: dark.$inverted-color;
+  }
+
+  .mutipleTextarea {
+    background-color: dark.$default-background;
+    color: dark.$default-color;
+    outline-color: dark.$inverted-background;
   }
 }
 

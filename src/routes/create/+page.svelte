@@ -28,12 +28,21 @@
   >
     <span class="material-icons-outlined">folder_copy</span>
   </button>
-  {#if single}
-    <CreateSingle />
-  {:else}
-    <CreateMutiple />
-  {/if}
 </div>
+{#if single}
+  <div class="mutipleTitleContainer">
+    <h1>Create Entery</h1>
+  </div>
+  <CreateSingle />
+{:else}
+  <div class="mutipleTitleContainer">
+    <h1>Create Mutiple Enteries</h1>
+    <abbr title="Enter one value per row. ">
+      <span class="material-icons-outlined">info</span>
+    </abbr>
+  </div>
+  <CreateMutiple />
+{/if}
 
 <style lang="scss">
   .formatSelect {
@@ -41,7 +50,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    top: 2vh;
+    top: 3vh;
     left: 1vw;
     height: 50px;
     width: 100px;
@@ -62,6 +71,17 @@
     &:last-child {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
+    }
+  }
+
+  .mutipleTitleContainer {
+    margin: 3.5vh 7vw 1vh;
+    width: 20vw;
+
+    h1 {
+      display: inline-block;
+      font-weight: 100;
+      margin: 0 5px;
     }
   }
 </style>

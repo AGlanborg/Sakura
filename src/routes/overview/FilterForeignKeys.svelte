@@ -8,7 +8,7 @@
   } from "$lib/types/index";
 
   export let content: type_content;
-  export let arr: type_saljare[] | type_kopare[] | type_arbetstyp[];
+  export let arr: number[];
   export let context: {
     column: keyof type_content;
     title: string;
