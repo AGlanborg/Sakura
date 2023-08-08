@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 export default function handleForeignKeys(content, id, column) {
   if (column == "arbetstyp") {
     return handleArbetstyp(content, id);

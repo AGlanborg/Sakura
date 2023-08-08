@@ -1,12 +1,12 @@
 <script lang="ts">
   import "$lib/css/table.scss";
-  import createMonths from "$lib/modules/createMonths";
-  import handleMonth from "$lib/modules/handleMonths";
+  import createMonths from "$lib/modules/months/createMonths";
+  import handleMonth from "$lib/modules/filters/handleMonths";
   import {
     filterValue,
     filterString,
     filterMonths,
-  } from "$lib/modules/filters";
+  } from "$lib/modules/filters/filters";
   import type { type_content, type_filters, type_main } from "$lib/types/index";
 
   export let content: type_content;

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import removeZero from "./removeZero";
 
 export default function createMonths(data, now) {

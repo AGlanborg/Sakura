@@ -1,14 +1,38 @@
 <script lang="ts">
+  // @ts-nocheck
+
   import { layoutsMultiple } from "$lib/schemes/layouts";
+  import seperate from "$lib/modules/create/seperate";
 
-  let info =  {}
+  let info = {};
+  let reason = "";
+  let failed = [];
 
-  layoutsMultiple.forEach((s: {column: string}) => {
-    info[s.column] = ""
-  })
+  layoutsMultiple.forEach((s: { column: string }) => {
+    info[s.column] = "";
+  });
+
+  function handleSubmit() {
+    const res = seperate(info);
+
+    res.code ? handleSuccess() : handleError(res);
+  }
+
+  function handleError(res) {
+    failed = res.object.failed;
+  }
+
+  function handleSuccess() {
+    return
+  }
+
+  function handleChange(val) {
+    failed.splice(failed.indexOf(val, 1))
+    failed = failed
+  }
 </script>
 
-<button class="commitCreateButton">
+<button class="commitCreateButton" on:click={() => handleSubmit()}>
   Commit
 </button>
 <div class="mutipleContainer">
@@ -16,10 +40,16 @@
     <div>
       <h2>
         {column.category}
-        <br>
+        <br />
         {column.title}
       </h2>
-      <textarea class="mutipleTextarea" bind:value={info[column.column]} />
+      <textarea
+        class="mutipleTextarea {failed.includes(column.column)
+          ? 'failedTextarea'
+          : ''}"
+        on:change={failed.includes(column.column) ? handleChange(column.column) : ''}
+        bind:value={info[column.column]}
+      />
     </div>
   {/each}
 </div>
@@ -44,7 +74,7 @@
     width: 94vw;
     padding: 1vh 2vw;
 
-    &>div {
+    & > div {
       display: flex;
       flex-direction: column;
       flex-grow: 1;
@@ -53,8 +83,9 @@
 
     h2 {
       text-align: center;
+      font-size: 22.5px;
       line-height: 30px;
-      width: 250px;
+      width: 225px;
     }
 
     .mutipleTextarea {
@@ -66,8 +97,12 @@
       padding: 5px 10px;
 
       &:focus {
-        outline-color: rgb(200, 50, 50);
+        outline-color: rgb(50, 50, 200);
       }
+    }
+
+    .failedTextarea {
+      outline-color: rgb(200, 50, 50);
     }
   }
 </style>

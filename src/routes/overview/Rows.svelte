@@ -1,12 +1,12 @@
 <script lang="ts">
   import "$lib/css/table.scss";
   import { layoutsRaw } from "$lib/schemes/layouts/index";
-  import handleForeignKeys from "$lib/modules/handleForeignKeys";
+  import handleForeignKeys from "$lib/modules/filters/handleForeignKeys";
   import {
     filterValue,
     filterString,
     filterMonths,
-  } from "$lib/modules/filters";
+  } from "$lib/modules/filters/filters";
   import type {
     type_content,
     type_filters,
