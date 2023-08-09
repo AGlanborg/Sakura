@@ -15,7 +15,7 @@
   function handleSubmit() {
     const res = seperate(info);
 
-    res.code ? handleSuccess() : handleError(res);
+    res.code > 0 ? handleSuccess() : handleError(res);
   }
 
   function handleError(res) {
@@ -93,9 +93,9 @@
       text-align: center;
       font-size: 25px;
       font-weight: 100;
-      width: 10vw;
+      width: 30vw;
       top: 0.5vw;
-      left: -5vw;
+      left: -15vw;
       margin: 0;
       color: rgb(200, 50, 50);
 
