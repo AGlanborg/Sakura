@@ -20,18 +20,31 @@
 
   function handleError(res) {
     failed = res.object.failed;
+    reason = res.reason;
   }
 
   function handleSuccess() {
-    return
+    return;
   }
 
   function handleChange(val) {
-    failed.splice(failed.indexOf(val, 1))
-    failed = failed
+    failed.splice(failed.indexOf(val, 1));
+    failed = failed;
+
+    if (!failed.length) {
+      reason = "";
+    }
   }
 </script>
 
+{#if reason}
+  <div class="mutipleReason">
+    <h3>
+      <span class="material-icons">warning_amber</span>
+      {reason}
+    </h3>
+  </div>
+{/if}
 <button class="commitCreateButton" on:click={() => handleSubmit()}>
   Commit
 </button>
@@ -47,7 +60,9 @@
         class="mutipleTextarea {failed.includes(column.column)
           ? 'failedTextarea'
           : ''}"
-        on:change={failed.includes(column.column) ? handleChange(column.column) : ''}
+        on:change={failed.includes(column.column)
+          ? handleChange(column.column)
+          : ""}
         bind:value={info[column.column]}
       />
     </div>
@@ -64,6 +79,33 @@
     right: 2.5vw;
     height: 50px;
     width: 200px;
+  }
+
+  .mutipleReason {
+    position: absolute;
+    top: 3vh;
+    left: 50vw;
+    height: 0;
+    width: 0;
+
+    h3 {
+      position: relative;
+      text-align: center;
+      font-size: 25px;
+      font-weight: 100;
+      width: 10vw;
+      top: 0.5vw;
+      left: -5vw;
+      margin: 0;
+      color: rgb(200, 50, 50);
+
+      .material-icons {
+        position: relative;
+        font-size: 30px;
+        top: 7px;
+        color: rgb(200, 50, 50);
+      }
+    }
   }
 
   .mutipleContainer {
