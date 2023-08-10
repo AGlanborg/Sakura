@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import handleMonth from "./handleMonths"
 
 export function filterValue(filters, filtered, column) {

@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 export default function equalRows(obj) {
   let arr = Object.values(obj);
 

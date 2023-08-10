@@ -37,7 +37,7 @@ export let layoutsMultiple = [
   {
     category: "Arbetstyp",
     title: "Förkortning",
-    column: "arbetstyp_forkortning"
+    column: "arbetstyp_arbetstyp"
   },
   {
     category: "",

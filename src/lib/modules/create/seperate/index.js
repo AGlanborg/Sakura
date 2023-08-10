@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import equalRows from "../verify/equalRows";
 import unequalRows from "../errors/unequalRows";
 import foreignKeys from "./foreignKeys";
@@ -10,7 +8,6 @@ export default function seperate(obj) {
 }
 
 function commitSeperate(obj) {
-  console.log(obj);
   try {
     obj = foreignKeys(obj);
   } catch (e) {

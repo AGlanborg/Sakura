@@ -1,6 +1,4 @@
 <script lang="ts">
-  // @ts-nocheck
-
   import { layoutsMultiple } from "$lib/schemes/layouts";
   import seperate from "$lib/modules/create/seperate";
 
@@ -15,7 +13,7 @@
   function handleSubmit() {
     const res = seperate(info);
 
-    res.code > 0 ? handleSuccess() : handleError(res);
+    //res.code > 0 ? handleSuccess() : handleError(res);
   }
 
   function handleError(res) {
@@ -60,7 +58,7 @@
         class="mutipleTextarea {failed.includes(column.column)
           ? 'failedTextarea'
           : ''}"
-        on:change={failed.includes(column.column)
+        on:change={() => failed.includes(column.column)
           ? handleChange(column.column)
           : ""}
         bind:value={info[column.column]}

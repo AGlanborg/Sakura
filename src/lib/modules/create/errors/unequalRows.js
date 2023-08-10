@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 export default function unequalRows(obj) {
   let groups = [];
 

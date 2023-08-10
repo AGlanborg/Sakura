@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import removeZero from "../months/removeZero";
 
 export default function handleMonth(start, slut, month) {

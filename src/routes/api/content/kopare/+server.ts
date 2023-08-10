@@ -4,7 +4,7 @@ import { open } from "sqlite";
 
 import sqlite3 from "sqlite3";
 
-// api/content GET
+// api/content/kopare GET
 export const GET: RequestHandler = async ({ request }) => {
   if (!request.url.split('=')[1]) {
     return json({})
@@ -15,15 +15,25 @@ export const GET: RequestHandler = async ({ request }) => {
     driver: sqlite3.Database
   })
 
-  const main = await db.all('SELECT * FROM main')
-  const saljare = await db.all('SELECT * FROM saljare')
   const kopare = await db.all('SELECT * FROM kopare')
-  const arbetstyp = await db.all('SELECT * FROM arbetstyp')
 
   return json({
-    main: main,
-    saljare: saljare,
     kopare: kopare,
-    arbetstyp: arbetstyp
   })
+}
+
+// api/content/kopare POST
+export const POST: RequestHandler = async ({request}) => {
+  const req = await request.json()
+
+  const db = await open({
+    filename: `/licenses/${req.file}.sqlite`,
+    driver: sqlite3.Database
+  })
+
+  let content = `('${req.rst}','${req.copernicus}','${req.kontakt}','${req.name}')`
+
+  await db.run(`INSERT INTO kopare (rst,copernicus,kontakt,name) VALUES ${content}`)
+
+  return json(`Created ${req}`)
 }
