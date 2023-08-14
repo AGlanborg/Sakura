@@ -1,4 +1,4 @@
-import filledValuesForeignKeys from "../verify/filledValuesForeignKeys";
+import filledValuesForeignKeys from "../verify/arrays/filledValuesForeignKeys";
 import existsForeignKeys from "../verify/existsForeignKeys";
 
 export default async function foreignKeys(obj) {
@@ -33,7 +33,18 @@ export default async function foreignKeys(obj) {
     arbetstyp
   );
 
-  const saljare_ids = await existsForeignKeys(saljare)
-  const kopare_ids = await existsForeignKeys(kopare)
-  const arbetstyp_ids = await existsForeignKeys(arbetstyp)
+  delete obj.saljare_rst
+  delete obj.saljare_cop
+  delete obj.saljare_kontakt
+  delete obj.kopare_rst
+  delete obj.kopare_cop
+  delete obj.kopare_kontakt
+  delete obj.arbetstyp_arbetstyp
+  delete obj.arbetstyp_tillverkare
+
+  obj.saljare = await existsForeignKeys(saljare)
+  obj.kopare = await existsForeignKeys(kopare)
+  obj.arbetstyp = await existsForeignKeys(arbetstyp)
+
+  return obj
 }

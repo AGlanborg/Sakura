@@ -5,15 +5,20 @@
   let info = {};
   let reason = "";
   let failed = [];
+  let succeed = "";
 
   layoutsMultiple.forEach((s: { column: string }) => {
     info[s.column] = "";
   });
 
-  function handleSubmit() {
-    const res = seperate(info);
+  async function handleSubmit() {
+    const dummy = new Object();
 
-    //res.code > 0 ? handleSuccess() : handleError(res);
+    Object.assign(dummy, info);
+
+    const res = await seperate(dummy);
+
+    res.code > 0 ? handleSuccess() : handleError(res);
   }
 
   function handleError(res) {
@@ -22,24 +27,39 @@
   }
 
   function handleSuccess() {
-    return;
+    succeed = "All new rows have been created";
+
+    layoutsMultiple.forEach((s: { column: string }) => {
+      info[s.column] = "";
+    });
   }
 
-  function handleChange(val) {
-    failed.splice(failed.indexOf(val, 1));
-    failed = failed;
+  function handleChange(column) {
+    if (failed.includes(column.column)) {
+      failed.splice(failed.indexOf(column, 1));
+      failed = failed;
 
-    if (!failed.length) {
-      reason = "";
+      if (!failed.length) {
+        reason = "";
+      }
     }
+
+    succeed = "";
   }
 </script>
 
 {#if reason}
   <div class="mutipleReason">
-    <h3>
+    <h3 class="failMessage">
       <span class="material-icons">warning_amber</span>
       {reason}
+    </h3>
+  </div>
+{/if}
+{#if succeed}
+  <div class="mutipleReason">
+    <h3 class="successMessage">
+      {succeed}
     </h3>
   </div>
 {/if}
@@ -58,9 +78,7 @@
         class="mutipleTextarea {failed.includes(column.column)
           ? 'failedTextarea'
           : ''}"
-        on:change={() => failed.includes(column.column)
-          ? handleChange(column.column)
-          : ""}
+        on:change={() => handleChange(column.column)}
         bind:value={info[column.column]}
       />
     </div>
@@ -86,7 +104,8 @@
     height: 0;
     width: 0;
 
-    h3 {
+    .successMessage,
+    .failMessage {
       position: relative;
       text-align: center;
       font-size: 25px;
@@ -95,6 +114,13 @@
       top: 0.5vw;
       left: -15vw;
       margin: 0;
+    }
+
+    .successMessage {
+      color: rgb(50, 200, 50);
+    }
+
+    .failMessage {
       color: rgb(200, 50, 50);
 
       .material-icons {
