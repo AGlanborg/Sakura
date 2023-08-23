@@ -1,8 +1,8 @@
-import replaceCommas from "../verify/arrays/replaceCommas";
-import mainTypeof from "../verify/typeof/mainTypeof";
+import replaceCommas from "./arrays/replaceCommas";
+import mainTypeof from "./typeof/mainTypeof";
 import wrongValueType from "../errors/wrongValueType";
 import calculateMainValues from "../calculate/calculateMainValues"
-import existsMain from "../verify/existsMain";
+import existsMain from "./existsMain";
 
 export default async function main(obj) {
   for (const [key, value] of Object.entries(obj)) {

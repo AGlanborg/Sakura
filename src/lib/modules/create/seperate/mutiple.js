@@ -2,7 +2,7 @@ import equalRows from "../verify/arrays/equalRows";
 import unequalRows from "../errors/unequalRows";
 import foreignKeys from "./foreignKeys";
 import emptyValuesForeignKeys from "../errors/emptyValuesForeignKeys";
-import main from "./main";
+import main from "../verify/mutiple";
 
 export default function seperate(obj) {
   return equalRows(obj) ? commitSeperate(obj) : unequalRows(obj);

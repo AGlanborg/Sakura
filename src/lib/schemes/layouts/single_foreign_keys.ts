@@ -1,50 +1,49 @@
-export let layoutsSingleForeignKeys = [
-  {
-    category: "Säljare",
-    title: "RST nummer",
-    column: "saljare_rst",
-    type: "text"
+export let layoutsSingleForeignKeys = {
+  saljare: {
+    title: "Säljare",
+    content: [
+      {
+        label: "RST nummer",
+        column: "saljare_rst"
+      },
+      {
+        label: "Copernicus nummer",
+        column: "saljare_cop"
+      },
+      {
+        label: "Kontaktperson",
+        column: "saljare_kontakt"
+      }
+    ]
   },
-  {
-    category: "Säljare",
-    title: "Copernicus nummer",
-    column: "saljare_cop",
-    type: "text"
+  kopare: {
+    title: "Köpare",
+    content: [
+      {
+        label: "RST nummer",
+        column: "kopare_rst"
+      },
+      {
+        label: "Copernicus nummer",
+        column: "kopare_cop"
+      },
+      {
+        label: "Kontaktperson",
+        column: "kopare_kontakt"
+      }
+    ]
   },
-  {
-    category: "Säljare",
-    title: "Kontaktperson",
-    column: "saljare_kontakt",
-    type: "text"
-  },
-  {
-    category: "Köpare",
-    title: "RST nummer",
-    column: "kopare_rst",
-    type: "text"
-  },
-  {
-    category: "Köpare",
-    title: "Copernicus nummer",
-    column: "kopare_cop",
-    type: "text"
-  },
-  {
-    category: "Köpare",
-    title: "Kontaktperson",
-    column: "kopare_kontakt",
-    type: "text"
-  },
-  {
-    category: "Arbetstyp",
-    title: "Tillverkare",
-    column: "arbetstyp_tillverkare",
-    type: "text"
-  },
-  {
-    category: "Arbetstyp",
-    title: "Förkortning",
-    column: "arbetstyp_arbetstyp",
-    type: "text"
+  arbetstyp: {
+    title: "Arbetstyp",
+    content: [
+      {
+        label: "Tillverkare",
+        column: "arbetstyp_tillverkare"
+      },
+      {
+        label: "Förkortning",
+        column: "arbetstyp_arbetstyp"
+      }
+    ]
   }
-]
+}

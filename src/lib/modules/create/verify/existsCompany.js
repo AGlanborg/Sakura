@@ -22,7 +22,7 @@ async function createRow(res, file, rst, cop, kontakt, column) {
     body: JSON.stringify({
       file: file,
       rst: rst,
-      copernicus: cop,
+      cop: cop,
       kontakt: kontakt,
       name: rst ? 1 : 0
     }),

@@ -4,10 +4,10 @@
   import { layoutsMultiple } from "$lib/schemes/layouts";
   import { db } from "$lib/memory/selected";
 
-  let info = {};
+  let info = new Object;
   let row = 1;
   let file = "";
-  let table = {};
+  let table = new Object;
 
   layoutsMultiple.forEach((s: { column: string }) => {
     info[s.column] = "";
@@ -47,7 +47,7 @@
   </div>
 {:then}
   {#if row}
-    <SingleHorizontal info={info} table={table} />
+    <SingleHorizontal bind:info={info} table={table} file={file} getContent={getContent} />
   {:else}
     <SingleVertical />
   {/if}
@@ -89,9 +89,5 @@
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
-  }
-
-  .deg90 {
-    transform: rotate(90deg);
   }
 </style>

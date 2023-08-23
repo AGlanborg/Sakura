@@ -1,13 +1,20 @@
 <script>
   import handleForeignKeys from "$lib/modules/filters/handleForeignKeys";
   import { layoutsSingle, layoutsSingleExceptions } from "$lib/schemes/layouts";
+  import CreateForeignKey from "./CreateForeignKey.svelte";
 
   export let info;
   export let table;
+  export let file;
+  export let getContent;
+
+  let foreign = "";
 
   function handleChange() {
     console.log(info);
   }
+
+  $: foreign, getContent()
 </script>
 
 <div class="fillBody center-column singleContainer">
@@ -32,18 +39,31 @@
                 </option>
               {/each}
             </select>
-            <h2>{obj.title}</h2>
+            <button
+              on:click={() =>
+                foreign ? (foreign = "") : (foreign = obj.column)}
+            >
+              {obj.title}
+              <span
+                class="material-icons-outlined {foreign == obj.column
+                  ? 'deg45'
+                  : ''}"
+              >
+              add_circle_outline
+              </span>
+            </button>
           </div>
         {:else}
           <div class="selectRow">
             <input
               type="text"
               class="selectRowInput"
+              id={obj.column}
               placeholder={obj.title + "..."}
               bind:value={info[obj.column]}
               on:input={() => handleChange()}
             />
-            <h2>{obj.title}</h2>
+            <label for={obj.column}>{obj.title}</label>
           </div>
         {/if}
       {/each}
@@ -56,17 +76,25 @@
           <input
             type="text"
             class="selectRowInput"
+            id={obj.column}
             bind:value={info[obj.column]}
             disabled
           />
-          <h2>{obj.title}</h2>
+          <label for={obj.column}>{obj.title}</label>
         </div>
       {/each}
     </div>
   </div>
 </div>
+{#if foreign}
+  <CreateForeignKey bind:column={foreign} file={file} />
+{/if}
 
 <style lang="scss">
+  input:disabled {
+    cursor: default;
+  }
+
   .singleContainer {
     overflow-x: scroll;
     padding: 0;
@@ -102,9 +130,25 @@
     flex-direction: column-reverse;
     margin: 0 10px;
 
-    h2 {
+    label {
       display: block;
-      margin: 0 5px 5px;
+      font-size: 24px;
+      font-weight: 800;
+      margin: 0 7.5px 5px;
+    }
+
+    button {
+      justify-content: left;
+      font-size: 24px;
+      font-weight: 800;
+      height: 39px;
+      width: 150px;
+      margin: 0 7.5px;
+      padding: 0;
+
+      span {
+        margin-left: 10px;
+      }
     }
   }
 </style>

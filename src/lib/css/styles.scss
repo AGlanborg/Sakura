@@ -117,6 +117,14 @@ input:focus {
   width: 100%;
 }
 
+.deg90 {
+  transform: rotate(90deg);
+}
+
+.deg45 {
+  transform: rotate(45deg);
+}
+
 /* Light-mode */
 body {
   background-color: light.$default-background;

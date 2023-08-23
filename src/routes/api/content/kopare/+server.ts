@@ -31,7 +31,7 @@ export const POST: RequestHandler = async ({request}) => {
     driver: sqlite3.Database
   })
 
-  let content = `('${req.rst}','${req.copernicus}','${req.kontakt}','${req.name}')`
+  let content = `('${req.rst}','${req.cop}','${req.kontakt}','${req.name}')`
 
   await db.run(`INSERT INTO kopare (rst,copernicus,kontakt,name) VALUES ${content}`)
 

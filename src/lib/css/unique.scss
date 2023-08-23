@@ -99,6 +99,33 @@ body {
     background-color: light.$inverted-background;
     color: light.$inverted-color;
   }
+
+  .createForeignKeys {
+    background-color: light.$default-background;
+    color: light.$default-color;
+
+    input {
+      outline-color: light.$inverted-background;
+    }
+
+    &>button {
+      background-color: light.$inverted-background;
+      color: light.$inverted-color;
+
+      &:last-child {
+        background-color: light.$default-background;
+        color: light.$default-color
+      }
+    }
+
+    .foreignKeyCheckbox {
+      background-color: light.$inverted-background;
+
+      span {
+        color: light.$inverted-color;
+      }
+    }
+  }
 }
 
 /* Dark-mode colors*/
@@ -182,6 +209,33 @@ body.dark {
   .selectRowInput>option:focus {
     background-color: dark.$inverted-background;
     color: dark.$inverted-color;
+  }
+
+  .createForeignKeys {
+    background-color: dark.$default-background;
+    color: dark.$default-color;
+
+    input {
+      outline-color: dark.$inverted-background;
+    }
+
+    &>button {
+      background-color: dark.$inverted-background;
+      color: dark.$inverted-color;
+
+      &:last-child {
+        background-color: dark.$default-background;
+        color: dark.$default-color
+      }
+    }
+
+    .foreignKeyCheckbox {
+      background-color: dark.$inverted-background;
+
+      span {
+        color: dark.$inverted-color;
+      }
+    }
   }
 }
 
