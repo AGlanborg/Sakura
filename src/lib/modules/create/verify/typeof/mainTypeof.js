@@ -1,5 +1,6 @@
 import typeofNumber from "./number"
 import typeofDate from "./date"
+import typeofTyp from "./typ"
 
 export default function mainTypeof(obj) {
   typeofNumber(obj.antal, "antal", "Antal")
@@ -9,4 +10,5 @@ export default function mainTypeof(obj) {
   typeofDate(obj.start, "start", "Periodisering-Start")
   typeofDate(obj.slut, "slut", "Periodisering-Slut")
   typeofDate(obj.now, "now", "Faktureringsperioder")
+  typeofTyp(obj.typ, "typ", "Typ")
 }

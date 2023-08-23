@@ -2,111 +2,133 @@ export let layoutsMultiple = [
   {
     category: "Säljare",
     title: "RST nummer",
-    column: "saljare_rst"
+    column: "saljare_rst",
+    type: "textarea"
   },
   {
     category: "Säljare",
     title: "Copernicus nummer",
-    column: "saljare_cop"
+    column: "saljare_cop",
+    type: "textarea"
   },
   {
     category: "Säljare",
     title: "Kontaktperson",
-    column: "saljare_kontakt"
+    column: "saljare_kontakt",
+    type: "textarea"
   },
   {
     category: "Köpare",
     title: "RST nummer",
-    column: "kopare_rst"
+    column: "kopare_rst",
+    type: "textarea"
   },
   {
     category: "Köpare",
     title: "Copernicus nummer",
-    column: "kopare_cop"
+    column: "kopare_cop",
+    type: "textarea"
   },
   {
     category: "Köpare",
     title: "Kontaktperson",
-    column: "kopare_kontakt"
+    column: "kopare_kontakt",
+    type: "textarea"
   },
   {
     category: "Arbetstyp",
     title: "Tillverkare",
-    column: "arbetstyp_tillverkare"
+    column: "arbetstyp_tillverkare",
+    type: "textarea"
   },
   {
     category: "Arbetstyp",
     title: "Förkortning",
-    column: "arbetstyp_arbetstyp"
+    column: "arbetstyp_arbetstyp",
+    type: "textarea"
   },
   {
     category: "",
     title: "Antal",
-    column: "antal"
+    column: "antal",
+    type: "textarea"
   },
   {
     category: "",
     title: "Typ",
-    column: "typ"
+    column: "typ",
+    type: "textarea"
   },
   {
     category: "",
     title: "Leverantör",
-    column: "leverantor"
+    column: "leverantor",
+    type: "textarea"
   },
   {
     category: "",
     title: "Text På Internfaktura",
-    column: "text"
+    column: "text",
+    type: "textarea"
   },
   {
     category: "",
     title: "Kontaktinfo",
-    column: "info"
+    column: "info",
+    type: "textarea"
   },
   {
     category: "",
     title: "Valuta",
-    column: "valuta"
+    column: "valuta",
+    type: "textarea"
   },
   {
     category: "",
     title: "Antal Licenser",
-    column: "mangd"
+    column: "mangd",
+    type: "textarea"
   },
   {
     category: "",
     title: "Inpris ex.moms",
-    column: "inprisex"
+    column: "inprisex",
+    type: "textarea"
   },
   {
     category: "",
     title: "Procent (%)",
-    column: "procent"
+    column: "procent",
+    type: "textarea"
   },
   {
     category: "",
     title: "Fakturanummer",
-    column: "fakturanum"
+    column: "fakturanum",
+    type: "textarea"
   },
   {
     category: "",
     title: "Kommentar",
-    column: "kommentar"
+    column: "kommentar",
+    type: "textarea"
   },
   {
     category: "Periodisering",
     title: "Start",
-    column: "start"
+    column: "start",
+    type: "textarea"
   },
   {
     category: "Periodisering",
     title: "Slut",
-    column: "slut"
+    column: "slut",
+    type: "textarea"
   },
   {
     category: "",
     title: "Faktureringsperioder",
-    column: "now"
+    column: "now",
+    type: "textarea"
   }
 ]
