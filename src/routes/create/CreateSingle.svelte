@@ -1,16 +1,10 @@
 <script lang="ts">
   import CreateSingleLayout from "./CreateSingleLayout.svelte";
-  import { layoutsMultiple } from "$lib/schemes/layouts";
   import { db } from "$lib/memory/selected";
 
-  let info = new Object;
   let row = 1;
   let file = "";
   let table = new Object;
-
-  layoutsMultiple.forEach((s: { column: string }) => {
-    info[s.column] = "";
-  });
 
   async function getContent() {
     db.subscribe(async (val: string) => {
@@ -45,7 +39,7 @@
     </p>
   </div>
 {:then}
-  <CreateSingleLayout bind:info={info} table={table} file={file} getContent={getContent} row={row} />
+  <CreateSingleLayout table={table} file={file} getContent={getContent} row={row} />
 {/await}
 
 <style lang="scss">

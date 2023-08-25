@@ -1,15 +1,23 @@
 <script>
   import handleForeignKeys from "$lib/modules/filters/handleForeignKeys";
-  import { layoutsSingle, layoutsSingleExceptions } from "$lib/schemes/layouts";
   import CreateForeignKey from "./CreateForeignKey.svelte";
+  import {
+    layoutsMultiple,
+    layoutsSingle,
+    layoutsSingleExceptions,
+  } from "$lib/schemes/layouts";
 
-  export let info;
   export let table;
   export let file;
   export let getContent;
   export let row;
 
   let foreign = "";
+  let info = new Object();
+
+  layoutsMultiple.forEach((s) => {
+    info[s.column] = "";
+  });
 
   function handleChange() {
     console.log(info);
@@ -105,7 +113,8 @@
 
   .singleHalf {
     display: flex;
-    padding: 20px 20px 20px 60px;
+    padding: 20px;
+    transition: none;
 
     &:last-child .selectRow {
       margin-bottom: 150px;
@@ -127,7 +136,7 @@
   .selectRow {
     display: flex;
     flex-direction: column-reverse;
-    margin: 0 10px;
+    transition: none;
 
     label {
       display: block;
@@ -150,24 +159,31 @@
       }
     }
   }
-
-  .column .selectRow {
-    margin: 20px 0;
-  }
-
   /* Row */
-  .center-column {
-    .singleHalf {
-      height: 50%;
-      width: 4100px;
+  .center-column .singleHalf {
+    height: 50%;
+    width: 4200px;
+
+    .selectRow {
+      margin: 0 15px;
+    }
+
+    &:first-child {
+      margin-top: 5vh;
+    }
+
+    &:last-child {
+      margin-bottom: 10vh;
     }
   }
 
-  /* Row */
-  .center-row {
-    .singleHalf {
-      height: 2100px;
-      width: 50vw;
+  /* Column */
+  .center-row .singleHalf {
+    height: 2100px;
+    width: 50vw;
+
+    .selectRow {
+      margin: 20px 0;
     }
   }
 </style>
