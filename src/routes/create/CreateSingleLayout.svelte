@@ -7,6 +7,7 @@
   export let table;
   export let file;
   export let getContent;
+  export let row;
 
   let foreign = "";
 
@@ -14,12 +15,12 @@
     console.log(info);
   }
 
-  $: foreign, getContent()
+  $: foreign, getContent();
 </script>
 
-<div class="fillBody center-column singleContainer">
-  <div class="singleHalf center-column">
-    <div class="row">
+<div class="fillBody singleContainer {row ? 'center-column' : 'center-row'}">
+  <div class="singleHalf {row ? 'center-column' : 'center-row'}">
+    <div class={row ? "row" : "column"}>
       {#each layoutsSingle as obj}
         {#if obj.type == "select"}
           <div class="selectRow">
@@ -49,7 +50,7 @@
                   ? 'deg45'
                   : ''}"
               >
-              add_circle_outline
+                add_circle_outline
               </span>
             </button>
           </div>
@@ -69,8 +70,8 @@
       {/each}
     </div>
   </div>
-  <div class="singleHalf center-column">
-    <div class="center-row">
+  <div class="singleHalf {row ? 'center-column' : 'center-row'}">
+    <div class={row ? "center-row" : "center-column"}>
       {#each layoutsSingleExceptions as obj}
         <div class="selectRow">
           <input
@@ -87,7 +88,7 @@
   </div>
 </div>
 {#if foreign}
-  <CreateForeignKey bind:column={foreign} file={file} />
+  <CreateForeignKey bind:column={foreign} {file} />
 {/if}
 
 <style lang="scss">
@@ -96,7 +97,7 @@
   }
 
   .singleContainer {
-    overflow-x: scroll;
+    overflow: scroll;
     padding: 0;
     margin: 0;
     width: 100vw;
@@ -104,8 +105,6 @@
 
   .singleHalf {
     display: flex;
-    height: 50%;
-    width: 4100px;
     padding: 20px 20px 20px 60px;
 
     &:last-child .selectRow {
@@ -149,6 +148,26 @@
       span {
         margin-left: 10px;
       }
+    }
+  }
+
+  .column .selectRow {
+    margin: 20px 0;
+  }
+
+  /* Row */
+  .center-column {
+    .singleHalf {
+      height: 50%;
+      width: 4100px;
+    }
+  }
+
+  /* Row */
+  .center-row {
+    .singleHalf {
+      height: 2100px;
+      width: 50vw;
     }
   }
 </style>

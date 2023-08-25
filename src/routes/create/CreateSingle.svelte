@@ -1,6 +1,5 @@
 <script lang="ts">
-  import SingleHorizontal from "./SingleHorizontal.svelte";
-  import SingleVertical from "./SingleVertical.svelte";
+  import CreateSingleLayout from "./CreateSingleLayout.svelte";
   import { layoutsMultiple } from "$lib/schemes/layouts";
   import { db } from "$lib/memory/selected";
 
@@ -46,11 +45,7 @@
     </p>
   </div>
 {:then}
-  {#if row}
-    <SingleHorizontal bind:info={info} table={table} file={file} getContent={getContent} />
-  {:else}
-    <SingleVertical />
-  {/if}
+  <CreateSingleLayout bind:info={info} table={table} file={file} getContent={getContent} row={row} />
 {/await}
 
 <style lang="scss">
