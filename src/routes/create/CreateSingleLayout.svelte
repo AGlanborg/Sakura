@@ -1,13 +1,14 @@
 <script>
   import handleForeignKeys from "$lib/modules/filters/handleForeignKeys";
   import CreateForeignKey from "./CreateForeignKey.svelte";
-  import calculateSingleValues from "$lib/modules/create/calculate/calculateSingleValues";
+  import calculateSingleValues from "$lib/modules/create/multiple/calculate/calculateSingleValues";
   import {
     layoutsSingle,
     layoutsSingleExceptions,
   } from "$lib/schemes/layouts";
 
   export let info;
+  export let failed;
   export let table;
   export let file;
   export let getContent;
@@ -24,7 +25,12 @@
     info["now"] = info["now"].getFullYear() + "-" + info["now"].getMonth();
   }
 
-  function handleChange() {
+  function handleChange(column) {
+    if (failed.includes(column)) {
+      failed.splice(failed.indexOf(column), 1)
+      failed = failed
+    }
+
     info = calculateSingleValues(info)
 
     for (let [key, value] of Object.entries(info)) {
@@ -41,12 +47,13 @@
   <div class="singleHalf {row ? 'center-column' : 'center-row'}">
     <div class={row ? "row" : "column"}>
       {#each layoutsSingle as obj}
+        <!-- Foreign Keys -->
         {#if obj.type == "foreign"}
           <div class="selectRow">
             <select
-              class="selectRowInput"
+              class="selectRowInput {failed.includes(obj.column) ? 'failed' : ''}"
               bind:value={info[obj.column]}
-              on:change={() => handleChange()}
+              on:change={() => handleChange(obj.column)}
             >
               <option selected hidden disabled value="">...</option>
               {#each table[obj.column] as row}
@@ -73,13 +80,14 @@
               </span>
             </button>
           </div>
+        <!-- Typ -->
         {:else if obj.type == "select" && obj.column == "typ"}
           <div class="selectRow">
             <select
-              class="selectRowInput"
+              class="selectRowInput {failed.includes(obj.column) ? 'failed' : ''}"
               id={obj.column}
               bind:value={info[obj.column]}
-              on:change={() => handleChange()}
+              on:change={() => handleChange(obj.column)}
             >
               <option selected hidden disabled value="">...</option>
               <option value="Support"> Support </option>
@@ -88,40 +96,43 @@
             </select>
             <label for={obj.column}>{obj.category} {obj.title}</label>
           </div>
+        <!-- Valuta -->
         {:else if obj.type == "select" && obj.column == "valuta"}
           <div class="selectRow">
             <select
-              class="selectRowInput"
+              class="selectRowInput {failed.includes(obj.column) ? 'failed' : ''}"
               id={obj.column}
               bind:value={info[obj.column]}
-              on:change={() => handleChange()}
+              on:change={() => handleChange(obj.column)}
             >
               <option selected hidden disabled value="">...</option>
               <option value="SEK" selected> SEK </option>
             </select>
             <label for={obj.column}>{obj.category} {obj.title}</label>
           </div>
+        <!-- Months -->
         {:else if obj.type == "month"}
           <div class="selectRow">
             <input
               type="month"
-              class="selectRowInput"
+              class="selectRowInput {failed.includes(obj.column) ? 'failed' : ''}"
               id={obj.column}
               placeholder="yyyy-mm"
               bind:value={info[obj.column]}
-              on:input={() => handleChange()}
+              on:input={() => handleChange(obj.column)}
             />
             <label for={obj.column}>{obj.category} {obj.title}</label>
           </div>
+        <!-- Text -->
         {:else}
           <div class="selectRow">
             <input
               type="text"
-              class="selectRowInput"
+              class="selectRowInput {failed.includes(obj.column) ? 'failed' : ''}"
               id={obj.column}
               placeholder={obj.title + "..."}
               bind:value={info[obj.column]}
-              on:input={() => handleChange()}
+              on:input={() => handleChange(obj.column)}
             />
             <label for={obj.column}>{obj.title}</label>
           </div>
@@ -131,6 +142,7 @@
   </div>
   <div class="singleHalf {row ? 'center-column' : 'center-row'}">
     <div class={row ? "center-row" : "center-column"}>
+      <!-- Exceptions -->
       {#each layoutsSingleExceptions as obj}
         <div class="selectRow">
           <input
@@ -153,6 +165,10 @@
 <style lang="scss">
   input:disabled {
     cursor: default;
+  }
+
+  .failed {
+    outline-color: rgb(200, 50, 50);
   }
 
   .singleContainer {
