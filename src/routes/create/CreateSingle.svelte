@@ -1,10 +1,23 @@
 <script lang="ts">
   import CreateSingleLayout from "./CreateSingleLayout.svelte";
+  import {
+    layoutsSingle,
+    layoutsSingleExceptions,
+  } from "$lib/schemes/layouts";
   import { db } from "$lib/memory/selected";
 
   let row = 1;
   let file = "";
   let table = new Object;
+  let info = new Object();
+
+  layoutsSingle.forEach((s) => {
+    info[s.column] = "";
+  });
+
+  layoutsSingleExceptions.forEach((s) => {
+    info[s.column] = "";
+  });
 
   async function getContent() {
     db.subscribe(async (val: string) => {
@@ -14,6 +27,10 @@
     const res = await fetch(`api/content?file=${file}`);
 
     table = await res.json();
+  }
+
+  async function createContent() {
+    console.log("commit")
   }
 </script>
 
@@ -31,7 +48,7 @@
     <span class="material-icons-outlined deg90">density_medium</span>
   </button>
 </div>
-<button class="commitCreateButton" on:click={() => ""}> Commit </button>
+<button class="commitCreateButton" on:click={() => createContent()}> Commit </button>
 {#await getContent()}
   <div class="fillBody center-absolute">
     <p>
@@ -39,7 +56,7 @@
     </p>
   </div>
 {:then}
-  <CreateSingleLayout table={table} file={file} getContent={getContent} row={row} />
+  <CreateSingleLayout bind:info={info} table={table} file={file} getContent={getContent} row={row} />
 {/await}
 
 <style lang="scss">

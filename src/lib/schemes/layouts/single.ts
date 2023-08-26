@@ -3,19 +3,19 @@ export let layoutsSingle = [
     category: "",
     title: "Säljare",
     column: "saljare",
-    type: "select"
+    type: "foreign"
   },
   {
     category: "",
     title: "Köpare",
     column: "kopare",
-    type: "select"
+    type: "foreign"
   },
   {
     category: "",
     title: "Arbetstyp",
     column: "arbetstyp",
-    type: "select"
+    type: "foreign"
   },
   {
     category: "",
@@ -27,7 +27,7 @@ export let layoutsSingle = [
     category: "",
     title: "Typ",
     column: "typ",
-    type: "text"
+    type: "select"
   },
   {
     category: "",
@@ -51,25 +51,25 @@ export let layoutsSingle = [
     category: "",
     title: "Valuta",
     column: "valuta",
-    type: "text"
+    type: "select"
   },
   {
     category: "",
     title: "Antal Licenser",
     column: "mangd",
-    type: "text"
+    type: "number"
   },
   {
     category: "",
     title: "Inpris ex.moms",
     column: "inprisex",
-    type: "text"
+    type: "number"
   },
   {
     category: "",
     title: "Procent (%)",
     column: "procent",
-    type: "text"
+    type: "number"
   },
   {
     category: "",
@@ -87,18 +87,12 @@ export let layoutsSingle = [
     category: "Periodisering",
     title: "Start",
     column: "start",
-    type: "text"
+    type: "month"
   },
   {
     category: "Periodisering",
     title: "Slut",
     column: "slut",
-    type: "text"
-  },
-  {
-    category: "",
-    title: "Faktureringsperioder",
-    column: "now",
-    type: "text"
+    type: "month"
   }
 ]

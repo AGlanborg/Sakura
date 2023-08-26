@@ -4,7 +4,7 @@ export default function calculateMainValues(obj) {
   obj.oh = [];
   obj.totalt = [];
   obj.inpris = [];
-  obj.perioder = [1, 1, 1];
+  obj.perioder = [];
   obj.internfakt = [];
   obj.upfront = [];
   obj.rest = [];
@@ -50,6 +50,8 @@ export default function calculateMainValues(obj) {
 
     if (obj.upfront[i] < 0) {
       obj.upfront[i] = 0;
+    } else if (obj.upfront > obj.perioder) {
+      obj.upfront = obj.perioder
     }
 
     obj.rest[i] = obj.perioder[i] - obj.upfront[i];

@@ -1,26 +1,37 @@
 <script>
   import handleForeignKeys from "$lib/modules/filters/handleForeignKeys";
   import CreateForeignKey from "./CreateForeignKey.svelte";
+  import calculateSingleValues from "$lib/modules/create/calculate/calculateSingleValues";
   import {
-    layoutsMultiple,
     layoutsSingle,
     layoutsSingleExceptions,
   } from "$lib/schemes/layouts";
 
+  export let info;
   export let table;
   export let file;
   export let getContent;
   export let row;
 
   let foreign = "";
-  let info = new Object();
 
-  layoutsMultiple.forEach((s) => {
-    info[s.column] = "";
-  });
+  info["now"] = new Date();
+
+  if (info["now"].getMonth().toString().length < 2) {
+    info["now"] =
+      info["now"].getFullYear() + "-0" + (info["now"].getMonth() + 1);
+  } else {
+    info["now"] = info["now"].getFullYear() + "-" + info["now"].getMonth();
+  }
 
   function handleChange() {
-    console.log(info);
+    info = calculateSingleValues(info)
+
+    for (let [key, value] of Object.entries(info)) {
+      isNaN(value) && typeof value != "string"
+        ? info[key] = ""
+        : info[key] = value
+    }
   }
 
   $: foreign, getContent();
@@ -30,14 +41,14 @@
   <div class="singleHalf {row ? 'center-column' : 'center-row'}">
     <div class={row ? "row" : "column"}>
       {#each layoutsSingle as obj}
-        {#if obj.type == "select"}
+        {#if obj.type == "foreign"}
           <div class="selectRow">
             <select
               class="selectRowInput"
               bind:value={info[obj.column]}
               on:change={() => handleChange()}
             >
-              <option selected disabled hidden />
+              <option selected hidden disabled value="">...</option>
               {#each table[obj.column] as row}
                 <option value={row[obj.column + "_id"]}>
                   {handleForeignKeys(
@@ -52,7 +63,7 @@
               on:click={() =>
                 foreign ? (foreign = "") : (foreign = obj.column)}
             >
-              {obj.title}
+              {obj.category} {obj.title}
               <span
                 class="material-icons-outlined {foreign == obj.column
                   ? 'deg45'
@@ -61,6 +72,46 @@
                 add_circle_outline
               </span>
             </button>
+          </div>
+        {:else if obj.type == "select" && obj.column == "typ"}
+          <div class="selectRow">
+            <select
+              class="selectRowInput"
+              id={obj.column}
+              bind:value={info[obj.column]}
+              on:change={() => handleChange()}
+            >
+              <option selected hidden disabled value="">...</option>
+              <option value="Support"> Support </option>
+              <option value="Service"> Service </option>
+              <option value="Licens"> Licens </option>
+            </select>
+            <label for={obj.column}>{obj.category} {obj.title}</label>
+          </div>
+        {:else if obj.type == "select" && obj.column == "valuta"}
+          <div class="selectRow">
+            <select
+              class="selectRowInput"
+              id={obj.column}
+              bind:value={info[obj.column]}
+              on:change={() => handleChange()}
+            >
+              <option selected hidden disabled value="">...</option>
+              <option value="SEK" selected> SEK </option>
+            </select>
+            <label for={obj.column}>{obj.category} {obj.title}</label>
+          </div>
+        {:else if obj.type == "month"}
+          <div class="selectRow">
+            <input
+              type="month"
+              class="selectRowInput"
+              id={obj.column}
+              placeholder="yyyy-mm"
+              bind:value={info[obj.column]}
+              on:input={() => handleChange()}
+            />
+            <label for={obj.column}>{obj.category} {obj.title}</label>
           </div>
         {:else}
           <div class="selectRow">
@@ -107,8 +158,9 @@
   .singleContainer {
     overflow: scroll;
     padding: 0;
-    margin: 0;
+    margin: 1.5vh 0 0;
     width: 100vw;
+    border: 1px solid rgba(0, 0, 0, 0.1);
   }
 
   .singleHalf {
@@ -130,7 +182,7 @@
     margin: 0;
     width: 200px;
     height: 50px;
-    padding: 0 10px;
+    padding: 0 20px;
   }
 
   .selectRow {
@@ -179,7 +231,7 @@
 
   /* Column */
   .center-row .singleHalf {
-    height: 2100px;
+    height: 2050px;
     width: 50vw;
 
     .selectRow {

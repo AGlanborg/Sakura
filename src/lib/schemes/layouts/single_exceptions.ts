@@ -46,5 +46,11 @@ export let layoutsSingleExceptions = [
     title: "Check",
     column: "scan",
     type: "text"
+  },
+  {
+    category: "",
+    title: "Faktureringsperiod",
+    column: "now",
+    type: "text"
   }
 ]
