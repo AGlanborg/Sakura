@@ -36,7 +36,7 @@
     for (let [key, value] of Object.entries(info)) {
       if (
         value == "" &&
-        !["text", "info", ...exceptions.map((a) => a.column)].includes(key)
+        !["text", "info", "kommentar", ...exceptions.map((a) => a.column)].includes(key)
       ) {
         failed.push(key);
       }

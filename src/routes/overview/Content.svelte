@@ -6,6 +6,8 @@
   export let content: type_content;
   export let filters: type_filters;
   export let minimise: boolean;
+
+  let layout: string = "verifikationer"
 </script>
 
 <div class="rowsContainer {minimise ? 'rowsMinimise' : ''}">
@@ -13,6 +15,12 @@
     <button class="tableButton">
       <h2>Data</h2>
     </button>
+    <select class="tableSelect" bind:value={layout}>
+      <option selected value="verifikationer">Summering verifikationer</option>
+      <option value="leverantor">Periodiserad leverantörsfakturor</option>
+      <option value="oh">Periodiserad OH intäkt</option>
+      <option value="raw">Raw</option>
+    </select>
     <div class="tableOptionsContainer">
       <button>
         <h3 class="selectNone">Download</h3>
@@ -21,7 +29,7 @@
     </div>
   </div>
   <div class="rows">
-    <Rows {content} {filters} />
+    <Rows {content} {filters} {layout} />
   </div>
 </div>
 <div class="monthsContainer {minimise ? 'rowsMinimise' : ''}">
@@ -45,6 +53,15 @@
 
   h3 {
     font-weight: 100;
+  }
+
+  .tableSelect {
+    outline-style: solid;
+    outline-width: 2px;
+    border-radius: 20px;
+    height: 44px;
+    width: 300px;
+    padding: 0 20px;
   }
 
   .tableButton {
@@ -112,7 +129,7 @@
     }
 
     .tableButtonContainer {
-      margin: 0 0 0 2.5vw;
+      margin: 0 0 0.5vh 2.5vw;
     }
 
     .rowsMinimise {

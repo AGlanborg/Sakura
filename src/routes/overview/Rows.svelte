@@ -1,6 +1,6 @@
 <script lang="ts">
   import "$lib/css/table.scss";
-  import { layoutsRaw } from "$lib/schemes/layouts/index";
+  import options from "$lib/schemes/layouts/overview/index";
   import handleForeignKeys from "$lib/modules/filters/handleForeignKeys";
   import {
     filterValue,
@@ -16,12 +16,13 @@
 
   export let content: type_content;
   export let filters: type_filters;
+  export let layout: string;
 
   let selected: number[] = [];
   let filtered: type_main[] = [];
   let mainColumn: keyof type_main = "main_id";
   let desc: boolean = true;
-  let raw: type_layouts[] = layoutsRaw;
+  let selectedLayout: type_layouts[] = options[layout];
 
   function toggleColumn(obj: any) {
     if (mainColumn == obj.column) {
@@ -77,6 +78,7 @@
   filterContent();
 
   $: filters, filterContent();
+  $: layout, selectedLayout = options[layout];
 </script>
 
 <div class="tableRowContainer">
@@ -90,7 +92,7 @@
         </div>
       </button>
     </div>
-    {#each raw as column}
+    {#each selectedLayout as column}
       <div class="tableColumn {'table-' + column.size}">
         {#if column.type == "number"}
           <button on:click={() => toggleColumn(column)}>
@@ -124,13 +126,15 @@
           </div>
         </button>
       </div>
-      {#each raw as column}
+      {#each selectedLayout as column}
         <div class="tableColumn {'table-' + column.size}">
           <button disabled>
             <p>
               {["kopare", "saljare", "arbetstyp"].includes(column.column)
                 ? handleForeignKeys(content, row[column.column], column.column)
-                : row[column.column]}
+                : column.column == "oh" && column.type != "number"
+                  ? parseFloat(row.oh / row.perioder).toFixed(2)
+                  : row[column.column]}
             </p>
           </button>
         </div>

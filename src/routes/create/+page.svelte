@@ -1,18 +1,13 @@
 <script lang="ts">
   import CreateSingle from "./CreateSingle.svelte";
   import CreateMutiple from "./CreateMutiple.svelte";
-  import { db } from "$lib/memory/selected";
+  import { goto, afterNavigate } from "$app/navigation";
 
   let single: number = 1;
-  let file: string;
 
-  async function getContent() {
-    db.subscribe(async (val) => {
-      file = val;
-    });
-  }
-
-  getContent();
+  afterNavigate(({ from }) => {
+    from?.url.pathname ? "" : goto("/");
+  });
 </script>
 
 <div class="formatSelect">

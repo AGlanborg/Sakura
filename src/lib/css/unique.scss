@@ -88,6 +88,7 @@ body {
     color: light.$inverted-color
   }
 
+  .tableSelect,
   .selectRowInput,
   .mutipleTextarea {
     background-color: light.$default-background;
@@ -199,6 +200,7 @@ body.dark {
     color: dark.$inverted-color;
   }
 
+  .tableSelect,
   .selectRowInput,
   .mutipleTextarea {
     background-color: dark.$default-background;

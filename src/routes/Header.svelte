@@ -57,13 +57,12 @@
       </button>
       <button
         class="center-absolute"
-        on:click={() =>
-          $page.url.pathname != "/create" ? goto("/create") : ""}
+        on:click={() => ($page.url.pathname != "/graph" ? goto("/graph") : "")}
       >
         <div>
-          <p>Create</p>
+          <p>Graph</p>
           <span
-            class="material-icons {$page.url.pathname == '/create'
+            class="material-icons {$page.url.pathname == '/graph'
               ? 'arrowDown'
               : 'arrowUp'}"
           >
@@ -71,11 +70,15 @@
           </span>
         </div>
       </button>
-      <button class="center-absolute" disabled={$page.url.pathname == "/"}>
+      <button
+        class="center-absolute"
+        on:click={() =>
+          $page.url.pathname != "/create" ? goto("/create") : ""}
+      >
         <div>
-          <p>Graph</p>
+          <p>Create</p>
           <span
-            class="material-icons {$page.url.pathname == '/graph'
+            class="material-icons {$page.url.pathname == '/create'
               ? 'arrowDown'
               : 'arrowUp'}"
           >
