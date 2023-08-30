@@ -1,16 +1,30 @@
 # Sakura
 
-Sakura is a fully offline, local, web-based database application intedend to be used for account Software Asset Management (SAM) specialists' during daily work.
+Sakura is a fully offline, local, web-based database application intedend to be used for account **Software Asset Management (SAM)** specialists' during daily work.
 
-The goal with this product is to give an alternative tool to the spreadsheet appliction, that many in the insudtry currently use for SAM.
+The goal with this product is to give an alternative tool to spreadsheet applictions that many in the industry currently use for SAM.
 
 ## Launching
 
-```bash
-npm run dev
+### First time setup
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+First **Download** the project, then install the excluded content with **Node.js** using the following command in the root directory of the downloaded content with any console
+
+```bash
+ npm install
+```
+### Run the program
+
+In the root directory run the following command and then open the **localhost** port displayed in the console in any browser
+
+```bash
+ npm run dev
+```
+
+*Or* run the following command to open the localhost port in your primary browser
+
+```bash
+ npm run dev -- --open
 ```
 
 ## Know issues
@@ -32,3 +46,5 @@ Graph will include
 More colour options
 
 Complete Swedish and English versions
+
+A executable file for Windows users to click on to launch the program immediately
