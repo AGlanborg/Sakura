@@ -1,4 +1,5 @@
 export default function emptyValuesForeignKeys(e) {
+  console.log(e)
   e = e.split(" ");
 
   return ["arbetstyp"].includes(e[0])

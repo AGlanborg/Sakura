@@ -3,6 +3,7 @@ export default function calculateMainValues(obj) {
   obj.inprisin = [];
   obj.oh = [];
   obj.totalt = [];
+  obj.sek = [];
   obj.inpris = [];
   obj.perioder = [];
   obj.internfakt = [];
@@ -30,6 +31,10 @@ export default function calculateMainValues(obj) {
           (parseFloat(obj.inprisin[i]) + parseFloat(obj.oh[i])) *
           100
       ) / 100
+    ).toFixed(2);
+
+    obj.sek[i] = parseFloat(
+      Math.round(obj.totalt[i] * (obj.valutakurs[i] || 0) * 100) / 100
     ).toFixed(2);
 
     obj.inpris[i] = Math.round(obj.totalt[i]);

@@ -91,6 +91,10 @@
 </header>
 
 <style lang="scss">
+  img {
+    border-radius: 50%;
+  }
+
   header {
     position: absolute;
     width: 100vw;

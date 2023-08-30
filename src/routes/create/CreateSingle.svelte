@@ -14,7 +14,7 @@
 
   function infoInit() {
     layoutsSingle.forEach((s) => {
-      s.column == "antal" ? (info[s.column] = 1) : (info[s.column] = "");
+      ["antal", "valutakurs"].includes(s.column) ? (info[s.column] = 1) : (info[s.column] = "");
     });
 
     exceptions.forEach((s) => {
@@ -50,14 +50,13 @@
     }
   }
 
-  async function createRow(o) {
+  async function createRow(obj) {
     await fetch(`/api/content/main`, {
       method: "POST",
       body: JSON.stringify({
-        file: file,
-        keys: "saljare,kopare,arbetstyp,antal,typ,leverantor,text,info,valuta,mangd,inprisex,inprisin,procent,oh,totalt,fakturanum,kommentar,inpris,start,slut,perioder,upfront,rest,internfakt,intakt,scan,now",
-        values: `'${o.saljare}','${o.kopare}','${o.arbetstyp}','${o.antal}','${o.typ}','${o.leverantor}','${o.text}','${o.info}','${o.valuta}','${o.mangd}','${o.inprisex}','${o.inprisin}','${o.procent}','${o.oh}','${o.totalt}','${o.fakturanum}','${o.kommentar}','${o.inpris}','${o.start}','${o.slut}','${o.perioder}','${o.upfront}','${o.rest}','${o.internfakt}','${o.intakt}','${o.scan}','${o.now}'`,
-      }),
+      file: file,
+      values: obj,
+    }),
       headers: {
         "Content-Type": "application/json",
       },

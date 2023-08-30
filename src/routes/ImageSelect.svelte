@@ -101,6 +101,10 @@
 </MediaQuery>
 
 <style lang="scss">
+  img {
+    border-radius: 50%;
+  }
+
   .newImageClose {
     font-size: 40px;
     transform: rotate(45deg);

@@ -129,7 +129,23 @@
             />
             <label for={obj.column}>{obj.category} {obj.title}</label>
           </div>
-          <!-- Text -->
+          <!-- Number -->
+        {:else if obj.type == "number"}
+          <div class="selectRow">
+            <input
+              type="number"
+              class="selectRowInput {failed.includes(obj.column)
+                ? 'failed'
+                : ''}"
+              lang="sv"
+              id={obj.column}
+              placeholder={obj.title + "..."}
+              bind:value={info[obj.column]}
+              on:input={() => handleChange(obj.column)}
+            />
+            <label for={obj.column}>{obj.title}</label>
+          </div>
+        <!-- Text -->
         {:else}
           <div class="selectRow">
             <input
@@ -160,7 +176,7 @@
             bind:value={info[obj.column]}
             disabled
           />
-          <label for={obj.column}>{obj.title}</label>
+          <label for={obj.column}>{obj.category}<br>{obj.title}</label>
         </div>
       {/each}
     </div>
@@ -173,6 +189,14 @@
 <style lang="scss">
   input:disabled {
     cursor: default;
+  }
+
+  input {
+    max-width: 180px;
+  }
+
+  select {
+    min-width: 220px;
   }
 
   .failed {
@@ -213,11 +237,13 @@
     display: flex;
     flex-direction: column-reverse;
     transition: none;
+    width: 220px;
 
     label {
       display: block;
       font-size: 24px;
       font-weight: 800;
+      width: 240px;
       margin: 0 7.5px 5px;
     }
 
@@ -226,7 +252,7 @@
       font-size: 24px;
       font-weight: 800;
       height: 39px;
-      width: 150px;
+      width: 200px;
       margin: 0 7.5px;
       padding: 0;
 

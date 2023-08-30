@@ -144,6 +144,7 @@
 
   img {
     cursor: pointer;
+    border-radius: 50%;
   }
 
   .database_name {

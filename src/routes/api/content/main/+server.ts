@@ -31,7 +31,11 @@ export const POST: RequestHandler = async ({request}) => {
     driver: sqlite3.Database
   })
 
-  await db.run(`INSERT INTO main (${req.keys}) VALUES (${req.values})`)
+  const o = req.values
+  const keys = "saljare,kopare,konto,arbetstyp,antal,typ,aterforsaljare,tillverkare,text,info,valuta,mangd,inprisex,inprisin,procent,oh,totalt,valutakurs,sek,fakturanum,kommentar,inpris,start,slut,perioder,upfront,rest,internfakt,intakt,scan,now"
+  const values = `'${o.saljare}','${o.kopare}','${o.konto}','${o.arbetstyp}','${o.antal}','${o.typ}','${o.aterforsaljare}','${o.tillverkare}','${o.text}','${o.info}','${o.valuta}','${o.mangd}','${o.inprisex}','${o.inprisin}','${o.procent}','${o.oh}','${o.totalt}','${o.valutakurs}','${o.sek}','${o.fakturanum}','${o.kommentar}','${o.inpris}','${o.start}','${o.slut}','${o.perioder}','${o.upfront}','${o.rest}','${o.internfakt}','${o.intakt}','${o.scan}','${o.now}'`
+
+  await db.run(`INSERT INTO main (${keys}) VALUES (${values})`)
 
   return json(`Created ${req}`)
 }

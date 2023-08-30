@@ -1,7 +1,7 @@
 export let layoutsSingleExceptions = [
   {
     category: "",
-    title: "Inpris inkl.moms",
+    title: "Inpris inkl. moms",
     column: "inprisin",
     type: "text"
   },
@@ -12,19 +12,31 @@ export let layoutsSingleExceptions = [
     type: "text"
   },
   {
-    category: "Periodisering",
+    category: "Totalt,",
+    title: "inkl. moms och oh",
+    column: "totalt",
+    type: "text"
+  },
+  {
+    category: "Totalt, SEK,",
+    title: "inkl. moms och oh",
+    column: "sek",
+    type: "text"
+  },
+  {
+    category: "",
     title: "Antal Perioder",
     column: "perioder",
     type: "text"
   },
   {
-    category: "Periodisering",
+    category: "",
     title: "Upfront",
     column: "upfront",
     type: "text"
   },
   {
-    category: "Periodisering",
+    category: "",
     title: "Resterande",
     column: "rest",
     type: "text"

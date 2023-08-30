@@ -36,6 +36,12 @@ export let layoutsMultiple = [
     type: "textarea"
   },
   {
+    category: "",
+    title: "Konto",
+    column: "konto",
+    type: "textarea"
+  },
+  {
     category: "Arbetstyp",
     title: "Tillverkare",
     column: "arbetstyp_tillverkare",
@@ -61,8 +67,14 @@ export let layoutsMultiple = [
   },
   {
     category: "",
-    title: "Leverantör",
-    column: "leverantor",
+    title: "Återförsäljare",
+    column: "aterforsaljare",
+    type: "textarea"
+  },
+  {
+    category: "",
+    title: "Tillverkare",
+    column: "tillverkare",
     type: "textarea"
   },
   {
@@ -99,6 +111,12 @@ export let layoutsMultiple = [
     category: "",
     title: "Procent (%)",
     column: "procent",
+    type: "textarea"
+  },
+  {
+    category: "",
+    title: "Valutakurs",
+    column: "valutakurs",
     type: "textarea"
   },
   {

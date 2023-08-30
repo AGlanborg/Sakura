@@ -1,5 +1,9 @@
 // @ts-nocheck
 export default function calculateSingleValues(obj) {
+  if (!obj.inprisex) {
+    return obj
+  }
+
   obj.inprisin = parseFloat(
     Math.round((obj.inprisex || 0) * 1.25 * 100) / 100
   ).toFixed(2);
@@ -14,6 +18,10 @@ export default function calculateSingleValues(obj) {
         (parseFloat(obj.inprisin) + parseFloat(obj.oh)) *
         100
     ) / 100
+  ).toFixed(2);
+
+  obj.sek = parseFloat(
+    Math.round(obj.totalt * (obj.valutakurs || 0) * 100) / 100
   ).toFixed(2);
 
   obj.inpris = Math.round(obj.totalt);

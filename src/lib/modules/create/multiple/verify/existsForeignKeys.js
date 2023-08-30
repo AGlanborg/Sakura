@@ -9,15 +9,7 @@ export default async function existsForeignKeys(obj) {
     file = val;
   });
 
-  const res = await getContent(obj, file);
-
   return ["arbetstyp"].includes(obj.column)
-      ? await existsArbetstyp(obj, res, file)
-      : await existsCompany(obj, res, file);
-}
-
-async function getContent(obj, file) {
-  const res = await fetch(`api/content/${obj.column}?file=${file}`);
-
-  return await res.json();
+      ? await existsArbetstyp(obj, file)
+      : await existsCompany(obj, file);
 }

@@ -1,4 +1,5 @@
 export default function wrongValueType(e) {
+  console.log(e)
   e = e.split(" ");
 
   return {

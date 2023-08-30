@@ -26,6 +26,8 @@ export default async function existsMain(arr) {
     }
   }
 
+  arr = checkDups(arr)
+
   for (let i = 0; i < arr.length; i += 1) {
     await createRow(arr[i], file);
   }
@@ -57,16 +59,33 @@ function rearange(res) {
   return list;
 }
 
-async function createRow(o, file) {
+async function createRow(obj, file) {
   await fetch(`/api/content/main`, {
     method: "POST",
     body: JSON.stringify({
       file: file,
-      keys: "saljare,kopare,arbetstyp,antal,typ,leverantor,text,info,valuta,mangd,inprisex,inprisin,procent,oh,totalt,fakturanum,kommentar,inpris,start,slut,perioder,upfront,rest,internfakt,intakt,scan,now",
-      values: `'${o.saljare}','${o.kopare}','${o.arbetstyp}','${o.antal}','${o.typ}','${o.leverantor}','${o.text}','${o.info}','${o.valuta}','${o.mangd}','${o.inprisex}','${o.inprisin}','${o.procent}','${o.oh}','${o.totalt}','${o.fakturanum}','${o.kommentar}','${o.inpris}','${o.start}','${o.slut}','${o.perioder}','${o.upfront}','${o.rest}','${o.internfakt}','${o.intakt}','${o.scan}','${o.now}'`,
+      values: obj,
     }),
     headers: {
       "Content-Type": "application/json",
     },
   });
+}
+
+function checkDups(arr) {
+  for (let i = 0; i < arr.length; i += 1) {
+    for (let n = 0; n < arr.length; n += 1) {
+      if (
+        JSON.stringify(arr[i]) === JSON.stringify(arr[n]) &&
+        i != n
+      ) {
+        arr.splice(n, 1)
+
+        i = 0
+        n = 0
+      }
+    }
+  }
+
+  return arr
 }

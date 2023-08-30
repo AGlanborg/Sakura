@@ -1,7 +1,7 @@
 export let layoutsSingle = [
   {
     category: "",
-    title: "Säljare",
+    title: "Säljare (KST)",
     column: "saljare",
     type: "foreign"
   },
@@ -10,6 +10,12 @@ export let layoutsSingle = [
     title: "Köpare",
     column: "kopare",
     type: "foreign"
+  },
+  {
+    category: "",
+    title: "Konto",
+    column: "konto",
+    type: "number"
   },
   {
     category: "",
@@ -31,8 +37,14 @@ export let layoutsSingle = [
   },
   {
     category: "",
-    title: "Leverantör",
-    column: "leverantor",
+    title: "Återförsäljare",
+    column: "aterforsaljare",
+    type: "text"
+  },
+  {
+    category: "",
+    title: "Tillverkare",
+    column: "tillverkare",
     type: "text"
   },
   {
@@ -69,6 +81,12 @@ export let layoutsSingle = [
     category: "",
     title: "Procent (%)",
     column: "procent",
+    type: "number"
+  },
+  {
+    category: "",
+    title: "Valutakurs",
+    column: "valutakurs",
     type: "number"
   },
   {

@@ -65,6 +65,7 @@
 <style lang="scss">
   img {
     user-select: none;
+    border-radius: 50%;
   }
 
   span {

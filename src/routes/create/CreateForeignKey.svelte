@@ -20,28 +20,39 @@
     name = column;
   }
 
-  async function handleCommit() {
-    if (Object.values(foreign).every((val) => val != "" || typeof val == "number")) {
-      let commit = {file: file}
+  async function handleSubmit() {
+    ["saljare", "kopare"].includes(column)
+      ? (foreign[column + "_rst"] != "" && foreign["name"]) ||
+        (foreign[column + "_cop"] != "" && !foreign["name"])
+        ? commitSubmit()
+        : ""
+      : Object.values(foreign).every(
+          (val) => val != "" || typeof val == "number"
+        )
+      ? commitSubmit()
+      : "";
+  }
 
-      for (let [key, value] of Object.entries(foreign)) {
-        key.includes(column)
-          ? commit[key.replace(column + "_", "")] = value
-          : commit[key] = value
-      }
+  async function commitSubmit() {
+    let commit = { file: file };
 
-      let res = await fetch(`/api/content/${column}`, {
-        method: "POST",
-        body: JSON.stringify(commit),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+    for (let [key, value] of Object.entries(foreign)) {
+      key.includes(column)
+        ? (commit[key.replace(column + "_", "")] = value)
+        : (commit[key] = value);
+    }
 
-      if (res.status == 200) {
-        column = ""
-        foreign = new Object();
-      }
+    let res = await fetch(`/api/content/${column}`, {
+      method: "POST",
+      body: JSON.stringify(commit),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (res.status == 200) {
+      column = "";
+      foreign = new Object();
     }
   }
 </script>
@@ -84,7 +95,7 @@
         {/if}
       </div>
     {/each}
-    <button on:click={() => handleCommit()}>
+    <button on:click={() => handleSubmit()}>
       Create {["kopare", "saljare"].includes(column)
         ? foreign["name"]
           ? foreign[column + "_rst"]
@@ -98,6 +109,10 @@
 </div>
 
 <style lang="scss">
+  button {
+    user-select: none;
+  }
+
   .createForeignContainer {
     position: absolute;
     display: flex;

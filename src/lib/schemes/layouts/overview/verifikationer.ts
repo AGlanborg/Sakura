@@ -16,7 +16,7 @@ export let layoutsVerifikationer: type_layouts[] = [
     "position": 2
   },
   {
-    "name": "Säljare",
+    "name": "Säljare (KST)",
     "size": "default",
     "type": "foreign",
     "column": "saljare",
@@ -70,5 +70,12 @@ export let layoutsVerifikationer: type_layouts[] = [
     "type": "string",
     "column": "info",
     "position": 10
+  },
+  {
+    "name": "Kommentar",
+    "size": "long",
+    "type": "string",
+    "column": "kommentar",
+    "position": 11
   }
 ]
