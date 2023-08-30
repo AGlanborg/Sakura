@@ -1,6 +1,10 @@
-# Launching
+# Sakura
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Sakura is a fully offline, local, web-based database application intedend to be used for account Software Asset Management (SAM) specialists' during daily work.
+
+The goal with this product is to give an alternative tool to the spreadsheet appliction, that many in the insudtry currently use for SAM.
+
+## Launching
 
 ```bash
 npm run dev
@@ -9,14 +13,22 @@ npm run dev
 npm run dev -- --open
 ```
 
-# Building
+## Know issues
 
-To create a production version of your app:
+The Download button, that is supposed to download the selected rows in a csv file, does not work
 
-```bash
-npm run build
-```
+The Graph tab is empty
 
-You can preview the production build with `npm run preview`.
+Half the text is in English and the other half is in Swedish
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## Future plans
+
+Make the Download button download selected rows in a csv-file format
+
+Graph will include
+ - Yearly summeries
+ - Forecasts
+
+More colour options
+
+Complete Swedish and English versions
