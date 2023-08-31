@@ -1,6 +1,6 @@
 # Sakura
 
-Sakura is a fully offline, local, web-based database application intedend to be used for account **Software Asset Management (SAM)** specialists' during daily work.
+Sakura is a fully offline, local, web-based database application intedend to be used for **Software Asset Management (SAM)** specialists' during daily work.
 
 The goal with this product is to give an alternative tool to spreadsheet applictions that many in the industry currently use for SAM.
 
