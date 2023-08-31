@@ -1,6 +1,6 @@
 <script lang="ts">
   import { layoutsMultiple } from "$lib/schemes/layouts";
-  import seperate from "$lib/modules/create/multiple/seperate/index";
+  import seperate from "$lib/modules/create/multiple/submit/index";
 
   let info = {};
   let reason = "";
@@ -8,7 +8,7 @@
   let succeed = "";
 
   layoutsMultiple.forEach((s: { column: string }) => {
-    info[s.column] = "Test\nTest";
+    info[s.column] = ""
   });
 
   async function handleSubmit() {
@@ -18,10 +18,11 @@
 
     const res = await seperate(dummy);
 
-    res.code > 0 ? handleSuccess() : handleError(res);
+    res["code"] > 0 ? handleSuccess() : handleError(res);
   }
 
   function handleError(res) {
+    succeed = ""
     failed = res.object.failed;
     reason = res.reason;
   }
@@ -35,7 +36,7 @@
   }
 
   function handleChange(column) {
-    if (failed.includes(column.column)) {
+    if (failed.includes(column)) {
       failed.splice(failed.indexOf(column, 1));
       failed = failed;
 
