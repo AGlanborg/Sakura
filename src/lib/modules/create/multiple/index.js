@@ -1,10 +1,11 @@
-import equalRows from "../verify/arrays/equalRows";
-import unequalRows from "../errors/unequalRows";
-import verifyForeignKeys from "../verify/foreignKeys";
-import emptyValuesForeignKeys from "../errors/emptyValuesForeignKeys";
-import replaceCommas from "../verify/arrays/replaceCommas";
-import verifyMain from "../verify/main";
-import wrongValueType from "../errors/wrongValueType";
+import equalRows from "./verify/arrays/equalRows";
+import unequalRows from "./errors/unequalRows";
+import verifyForeignKeys from "./verify/foreignKeys";
+import emptyValuesForeignKeys from "./errors/emptyValuesForeignKeys";
+import replaceCommas from "./verify/arrays/replaceCommas";
+import verifyMain from "./verify/main";
+import wrongValueType from "./errors/wrongValueType";
+import calculateMainValues from "./calculate/calculateMainValues";
 import foreignKeys from "./foreignKeys";
 import main from "./main";
 
@@ -55,6 +56,8 @@ async function commitSeperate(obj) {
   } catch (e) {
     return wrongValueType(e);
   }
+
+  obj = calculateMainValues(obj)
 
   obj = await foreignKeys(obj, saljare, kopare, arbetstyp)
 

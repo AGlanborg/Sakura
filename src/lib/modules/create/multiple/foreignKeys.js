@@ -1,4 +1,4 @@
-import existsForeignKeys from "../verify/exists/existsForeignKeys";
+import existsForeignKeys from "./verify/exists/existsForeignKeys";
 
 export default async function foreignKeys(obj, saljare, kopare, arbetstyp) {
   delete obj.saljare_rst

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { layoutsMultiple } from "$lib/schemes/layouts";
-  import seperate from "$lib/modules/create/multiple/submit/index";
+  import seperate from "$lib/modules/create/multiple/index";
 
   let info = {};
   let reason = "";
