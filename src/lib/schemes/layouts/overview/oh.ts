@@ -5,70 +5,60 @@ export let layoutsOh: type_layouts[] = [
     "name": "Id",
     "size": "short",
     "type": "number",
-    "column": "main_id",
-    "position": 1
+    "column": "main_id"
   },
   {
     "name": "Created",
     "size": "default",
     "type": "date",
-    "column": "now",
-    "position": 2
+    "column": "now"
   },
   {
     "name": "Köpare",
     "size": "default",
     "type": "foreign",
-    "column": "kopare",
-    "position": 3
+    "column": "kopare"
   },
   {
     "name": "Text På Internfaktura",
     "size": "extra",
     "type": "string",
-    "column": "text",
-    "position": 4
+    "column": "text"
   },
   {
     "name": "Kontaktinfo",
     "size": "long",
     "type": "string",
-    "column": "info",
-    "position": 5
+    "column": "info"
   },
   {
     "name": "OH",
     "size": "default",
     "type": "number",
-    "column": "oh",
-    "position": 6
+    "column": "oh"
   },
   {
     "name": "Internfaktura per period, kr",
     "size": "extra",
     "type": "string",
-    "column": "oh",
-    "position": 7
+    "column": "oh"
   },
   {
     "name": "Periodisering Start",
     "size": "extra",
     "type": "date",
-    "column": "start",
-    "position": 8
+    "column": "start"
   },
   {
     "name": "Periodisering Slut",
     "size": "extra",
     "type": "date",
-    "column": "slut",
-    "position": 9
+    "column": "slut"
   },
   {
     "name": "Periodisering antal månader",
     "size": "extra",
     "type": "number",
-    "column": "perioder",
-    "position": 10
+    "column": "perioder"
   },
 ]

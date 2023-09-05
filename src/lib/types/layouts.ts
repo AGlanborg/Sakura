@@ -5,5 +5,4 @@ export type type_layouts = {
   size: string;
   type: string;
   column: keyof type_main;
-  position: number;
 }

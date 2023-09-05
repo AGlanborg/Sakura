@@ -1,13 +1,41 @@
 <script lang="ts">
   import Rows from "./Rows.svelte";
   import Months from "./Months.svelte";
-  import type { type_content, type_filters } from "$lib/types/index";
+  import downloadCSV from "$lib/modules/csv/download";
+  import {
+    filterValue,
+    filterString,
+    filterMonths,
+  } from "$lib/modules/filters/filters";
+  import type { type_content, type_filters, type_main } from "$lib/types/index";
 
   export let content: type_content;
   export let filters: type_filters;
   export let minimise: boolean;
 
-  let layout: string = "verifikationer"
+  let layout: string = "verifikationer";
+  let filtered: type_main[] = [];
+  let selected: number[] = [];
+
+  function filterContent() {
+    filtered = content.main;
+
+    filtered = filterValue(filters, filtered, "saljare");
+    filtered = filterValue(filters, filtered, "kopare");
+    filtered = filterValue(filters, filtered, "arbetstyp");
+    filtered = filterValue(filters, filtered, "typ");
+    filtered = filterValue(filters, filtered, "valuta");
+    filtered = filterString(filters, filtered, "text");
+    filtered = filterString(filters, filtered, "fakturanum");
+    filtered = filterString(filters, filtered, "now");
+    filtered = filterString(filters, filtered, "start");
+    filtered = filterString(filters, filtered, "slut");
+    filtered = filterMonths(filters, filtered, "during");
+  }
+
+  filterContent();
+
+  $: filters, filterContent();
 </script>
 
 <div class="rowsContainer {minimise ? 'rowsMinimise' : ''}">
@@ -22,14 +50,14 @@
       <option value="raw">Raw</option>
     </select>
     <div class="tableOptionsContainer">
-      <button>
+      <button on:click={() => downloadCSV(filtered, selected, layout)}>
         <h3 class="selectNone">Download</h3>
         <span class="material-icons data_download"> download </span>
       </button>
     </div>
   </div>
   <div class="rows">
-    <Rows {content} {filters} {layout} />
+    <Rows {content} {filtered} {layout} bind:selected />
   </div>
 </div>
 <div class="monthsContainer {minimise ? 'rowsMinimise' : ''}">
@@ -39,7 +67,7 @@
     </button>
   </div>
   <div class="months">
-    <Months {content} {filters} />
+    <Months {content} {filtered} />
   </div>
 </div>
 
@@ -69,7 +97,7 @@
   }
 
   .data_download {
-    margin: 5px 0 0 5px;
+    margin: 0 0 0 5px;
   }
 
   /* Default */

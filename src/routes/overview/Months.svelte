@@ -10,28 +10,9 @@
   import type { type_content, type_filters, type_main } from "$lib/types/index";
 
   export let content: type_content;
-  export let filters: type_filters;
+  export let filtered: type_main[];
 
-  let filtered: type_main[] = [];
   let months: string[] = [];
-
-  function filterContent() {
-    filtered = content.main;
-
-    filtered = filterValue(filters, filtered, "saljare");
-    filtered = filterValue(filters, filtered, "kopare");
-    filtered = filterValue(filters, filtered, "arbetstyp");
-    filtered = filterValue(filters, filtered, "typ");
-    filtered = filterValue(filters, filtered, "valuta");
-    filtered = filterString(filters, filtered, "text");
-    filtered = filterString(filters, filtered, "fakturanum");
-    filtered = filterString(filters, filtered, "now");
-    filtered = filterString(filters, filtered, "start");
-    filtered = filterString(filters, filtered, "slut");
-    filtered = filterMonths(filters, filtered, "during");
-
-    monthsSetup();
-  }
 
   function monthsSetup() {
     let now = new Date();
@@ -45,9 +26,7 @@
     months = createMonths(filtered, now_str);
   }
 
-  filterContent();
-
-  $: filters, filterContent();
+  $: filtered, monthsSetup();
 </script>
 
 <div class="tableRowContainer">

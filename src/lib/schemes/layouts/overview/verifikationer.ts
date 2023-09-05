@@ -5,77 +5,66 @@ export let layoutsVerifikationer: type_layouts[] = [
     "name": "Id",
     "size": "short",
     "type": "number",
-    "column": "main_id",
-    "position": 1
+    "column": "main_id"
   },
   {
     "name": "Created",
     "size": "default",
     "type": "date",
-    "column": "now",
-    "position": 2
+    "column": "now"
   },
   {
     "name": "Säljare (KST)",
     "size": "default",
     "type": "foreign",
-    "column": "saljare",
-    "position": 3
+    "column": "saljare"
   },
   {
     "name": "Köpare",
     "size": "default",
     "type": "foreign",
-    "column": "kopare",
-    "position": 4
+    "column": "kopare"
   },
   {
     "name": "Arbetstyp",
     "size": "long",
     "type": "foreign",
-    "column": "arbetstyp",
-    "position": 5
+    "column": "arbetstyp"
   },
   {
     "name": "Antal Poster",
     "size": "long",
     "type": "number",
-    "column": "antal",
-    "position": 6
+    "column": "antal"
   },
   {
     "name": "Antal licenser",
     "size": "long",
     "type": "number",
-    "column": "mangd",
-    "position": 7
+    "column": "mangd"
   },
   {
     "name": "Totalt, SEK, inkl. moms och OH",
     "size": "extra",
     "type": "number",
-    "column": "totalt",
-    "position": 8
+    "column": "totalt"
   },
   {
     "name": "Text På Internfaktura",
     "size": "extra",
     "type": "string",
-    "column": "text",
-    "position": 9
+    "column": "text"
   },
   {
     "name": "Kontaktinfo",
     "size": "long",
     "type": "string",
-    "column": "info",
-    "position": 10
+    "column": "info"
   },
   {
     "name": "Kommentar",
     "size": "long",
     "type": "string",
-    "column": "kommentar",
-    "position": 11
+    "column": "kommentar"
   }
 ]

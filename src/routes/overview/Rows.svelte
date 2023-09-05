@@ -2,24 +2,13 @@
   import "$lib/css/table.scss";
   import options from "$lib/schemes/layouts/overview/index";
   import handleForeignKeys from "$lib/modules/filters/handleForeignKeys";
-  import {
-    filterValue,
-    filterString,
-    filterMonths,
-  } from "$lib/modules/filters/filters";
-  import type {
-    type_content,
-    type_filters,
-    type_main,
-    type_layouts,
-  } from "$lib/types/index";
+  import type { type_content, type_main, type_layouts } from "$lib/types/index";
 
   export let content: type_content;
-  export let filters: type_filters;
+  export let filtered: type_main[];
   export let layout: string;
+  export let selected: number[];
 
-  let selected: number[] = [];
-  let filtered: type_main[] = [];
   let mainColumn: keyof type_main = "main_id";
   let desc: boolean = true;
   let selectedLayout: type_layouts[] = options[layout];
@@ -59,26 +48,7 @@
     selected = selected;
   }
 
-  function filterContent() {
-    filtered = content.main;
-
-    filtered = filterValue(filters, filtered, "saljare");
-    filtered = filterValue(filters, filtered, "kopare");
-    filtered = filterValue(filters, filtered, "arbetstyp");
-    filtered = filterValue(filters, filtered, "typ");
-    filtered = filterValue(filters, filtered, "valuta");
-    filtered = filterString(filters, filtered, "text");
-    filtered = filterString(filters, filtered, "fakturanum");
-    filtered = filterString(filters, filtered, "now");
-    filtered = filterString(filters, filtered, "start");
-    filtered = filterString(filters, filtered, "slut");
-    filtered = filterMonths(filters, filtered, "during");
-  }
-
-  filterContent();
-
-  $: filters, filterContent();
-  $: layout, selectedLayout = options[layout];
+  $: layout, (selectedLayout = options[layout]);
 </script>
 
 <div class="tableRowContainer">
@@ -133,8 +103,8 @@
               {["kopare", "saljare", "arbetstyp"].includes(column.column)
                 ? handleForeignKeys(content, row[column.column], column.column)
                 : column.column == "oh" && column.type != "number"
-                  ? parseFloat(row.oh / row.perioder).toFixed(2)
-                  : row[column.column]}
+                ? (row.oh / row.perioder).toFixed(2)
+                : row[column.column]}
             </p>
           </button>
         </div>
