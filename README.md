@@ -6,18 +6,23 @@ The goal with this product is to give an alternative tool to spreadsheet applict
 
 ## Launching
 
+First download and install **Node.js**
+
+Then download the project
+
 ### Windows
 
-Run the **run.bat**
+Run the **run.bat** file in the root directory
 
 *The first time you run the run.bat file, it may stop abruptly without starting the program*
+
 *Run the file again if this happens*
 
 ### Linux & Mac
 
 #### First time setup
 
-First **Download** the project, then install the excluded content with **Node.js** using the following command in the root directory of the downloaded content with any console
+Install the excluded content with **Node.js** using the following command in the root directory of the downloaded content with any console
 
 ```bash
  npm install
