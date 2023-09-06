@@ -1,4 +1,5 @@
 <script lang="ts">
+  import "$lib/css/filters.scss";
   import MediaQuery from "../MediaQuery.svelte";
   import FilterForeignKeys from "./FilterForeignKeys.svelte";
   import FilterSearch from "./FilterSearch.svelte";
@@ -125,101 +126,4 @@
 </div>
 
 <style lang="scss">
-  h2 {
-    display: inline-block;
-    font-weight: 100;
-  }
-
-  h2:first-child {
-    margin-top: 30px;
-  }
-
-  h3 {
-    display: inline-block;
-    margin: 15px 0 15px 40px;
-    font-size: 25px;
-    font-weight: 100;
-  }
-
-  .filter {
-    position: fixed;
-    overflow-y: scroll;
-    direction: rtl;
-    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.1);
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-
-    div {
-      direction: ltr;
-    }
-  }
-
-  .minimiseFilter {
-    overflow-y: hidden;
-  }
-
-  .material-icons-outlined {
-    position: relative;
-    top: 5px;
-  }
-
-  .minimiseExpand {
-    transform: rotate(180deg);
-  }
-
-  /* Desktop */
-  @media only screen and (min-width: 1601px) {
-    h2 {
-      font-size: 30px;
-      margin: 15px 20px 15px;
-    }
-
-    .filter {
-      height: 77vh;
-      width: 20vw;
-      margin: 4vh 0;
-    }
-
-    .minimiseContainer {
-      position: absolute;
-      right: 0;
-
-      button {
-        height: 50px;
-        width: 50px;
-
-        .material-icons {
-          font-size: 30px;
-        }
-      }
-    }
-  }
-
-  /* Laptop */
-  @media only screen and (max-width: 1600px) {
-    h2 {
-      font-size: 20px;
-      margin: 15px 0 15px 10px;
-    }
-
-    .filter {
-      height: 74vh;
-      width: 17.5vw;
-      margin: 4.5vh 0 0;
-    }
-
-    .minimiseContainer {
-      position: absolute;
-      right: 0vw;
-
-      button {
-        height: 40px;
-        width: 40px;
-
-        .material-icons {
-          font-size: 25px;
-        }
-      }
-    }
-  }
 </style>

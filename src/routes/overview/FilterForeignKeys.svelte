@@ -1,5 +1,4 @@
 <script lang="ts">
-  import "$lib/css/filters.scss";
   import type {
     type_content,
     type_saljare,
@@ -73,10 +72,10 @@
     {#each option as res}
       <option value={res[context.column + "_id"]}>
         {context.column == "arbetstyp"
-          ? res.arbetstyp
-          : res.name
-          ? res.rst
-          : res.copernicus}
+          ? res["arbetstyp"]
+          : res["name"]
+          ? res["rst"]
+          : res["copernicus"]}
       </option>
     {/each}
   </select>
@@ -87,10 +86,10 @@
       <div class="center-column">
         <p>
           {context.column == "arbetstyp"
-            ? res.arbetstyp
-            : res.name
-            ? res.rst
-            : res.copernicus}
+            ? res["arbetstyp"]
+            : res["name"]
+            ? res["rst"]
+            : res["copernicus"]}
         </p>
       </div>
       <button on:click={() => handleRemove(res[context.column + "_id"])}>

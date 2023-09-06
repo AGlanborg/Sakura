@@ -1,4 +1,4 @@
-{
+export default {
   "title": "Typ",
   "column": "typ",
   "symbol": "label",

@@ -1,8 +1,9 @@
 <script lang="ts">
-  import * as schemes from "$lib/schemes/filters";
+  import type { type_content } from "$lib/types/index";
 
+  export let content: type_content;
   export let arr: string[];
-  export let context: { column: "typ" | "valuta" };
+  export let context: { column: string };
 
   let option: string[] = [];
   let list: string[] = [];
@@ -15,8 +16,8 @@
     sortFilters();
   }
 
-  function handleRemove(val: string) {
-    arr = arr.filter((e: string) => e != val);
+  function handleRemove(str: string) {
+    arr = arr.filter((val: string) => val != str);
 
     sortFilters();
   }
@@ -25,24 +26,32 @@
     option = [];
     list = [];
 
-    schemes[context.column].values.forEach((val: string) => {
-      arr.includes(val) ? list.push(val) : option.push(val);
-    });
+    for (let i = 0; i < content.main.length; i += 1) {
+      arr.includes(content.main[i][context.column])
+        ? list.includes(content.main[i][context.column])
+        ? ""
+        : list.push(content.main[i][context.column])
+        : option.includes(content.main[i][context.column])
+        ? ""
+        : option.push(content.main[i][context.column])
+    }
 
     arr = arr;
+    list = list;
   }
 
   sortFilters();
+  $: arr, sortFilters()
 </script>
 
 <div class="sortContainer">
   <div class="ghostContainer">
     <div>
       <span class="material-icons-outlined">
-        {schemes[context.column].symbol}
+        adjust
       </span>
       <p>
-        {schemes[context.column].title}
+        Select
       </p>
     </div>
     <div>

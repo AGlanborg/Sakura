@@ -1,6 +1,4 @@
 <script lang="ts">
-  import "$lib/css/filters.scss";
-
   export let arr: string[];
   export let context = {
     title: "",

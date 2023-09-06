@@ -1,4 +1,4 @@
-{
+export default {
   "saljare": [],
   "kopare": [],
   "arbetstyp": [],

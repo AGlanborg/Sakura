@@ -25,6 +25,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chart.js": "^4.4.0",
     "material-icons": "^1.13.8",
     "sass": "^1.63.4",
     "sqlite": "^5.0.1",

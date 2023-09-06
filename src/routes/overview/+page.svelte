@@ -1,12 +1,13 @@
 <script lang="ts">
-  import filters_scheme from "$lib/schemes/filters.json";
+  import filters_scheme from "$lib/schemes/filters/filters";
   import Filter from "./Filter.svelte";
   import Content from "./Content.svelte";
   import { db } from "$lib/memory/selected";
   import { goto, afterNavigate } from "$app/navigation";
+  import type { type_filters } from "$lib/types";
 
   let file: string = "";
-  let filters = filters_scheme;
+  let filters: type_filters = filters_scheme;
   let minimise: boolean = false;
 
   afterNavigate(({ from }) => {
