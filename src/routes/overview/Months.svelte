@@ -18,9 +18,9 @@
     let now = new Date();
     let now_str = "";
     if (now.getMonth().toString().length < 2) {
-      now_str = now.getFullYear() + "-0" + (now.getMonth() + 1);
+      now_str = now.getFullYear() + "-0" + now.getMonth();
     } else {
-      now_str = now.getFullYear() + "-" + (now.getMonth() + 1);
+      now_str = now.getFullYear() + "-" + now.getMonth();
     }
 
     months = createMonths(filtered, now_str);

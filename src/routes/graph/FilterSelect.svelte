@@ -1,6 +1,6 @@
 <script lang="ts">
   export let content: string[];
-  export let arr: string;
+  export let arr: string | number;
   export let labels: string[] = [];
 
   let option: string[] = [];
@@ -21,6 +21,14 @@
     sek: {
       title: "Totalt, SEK, inkl. moms & oh",
       symbol: "functions"
+    },
+    months: {
+      title: "Month Wise",
+      symbol: "calendar_month"
+    },
+    years: {
+      title: "Year Wise",
+      symbol: "celebration"
     }
   }
 
@@ -41,11 +49,6 @@
       arr == content[i] ? "" : option.push(content[i]);
     }
 
-    if (arr.length == 0) {
-      arr = "bar";
-      sortFilters();
-    }
-
     arr = arr;
   }
 
@@ -56,10 +59,10 @@
   <div class="ghostContainer">
     <div>
       <span class="material-icons-outlined">
-        {cosmetic[arr].symbol}
+        {Object.keys(cosmetic).includes(arr.toString()) ? cosmetic[arr].symbol : "circle"}
       </span>
       <p>
-        {cosmetic[arr].title}
+        {Object.keys(cosmetic).includes(arr.toString()) ? cosmetic[arr].title : arr}
       </p>
     </div>
     <div>
@@ -71,7 +74,7 @@
     {#each option as res}
       {#if res != arr}
         <option value={res}>
-          {cosmetic[res].title}
+          {Object.keys(cosmetic).includes(res) ? cosmetic[res].title : res}
         </option>
       {/if}
     {/each}

@@ -2,13 +2,29 @@
   import "$lib/css/filters.scss";
   import MediaQuery from "../MediaQuery.svelte";
   import FilterChart from "./FilterChart.svelte";
-  import FilterCategory from "./FilterCategory.svelte";
+  import FilterSelect from "./FilterSelect.svelte";
   import FilterLabels from "./FilterLabels.svelte";
+  import calMinMaxYears from "$lib/modules/months/calMinMaxYears";
   import type { type_content, type_graphfilters } from "$lib/types/index";
 
   export let content: type_content;
   export let filters: type_graphfilters;
   export let minimise: boolean;
+
+  let years = []
+
+  function calYears() {
+    years = []
+
+    const filtered = content.main.filter(row => filters.labels.includes(row[filters.category]))
+    const [min, max] = calMinMaxYears(filtered)
+
+    for (let i = min; i < max + 1; i += 1) {
+      years.push(i)
+    }
+  }
+
+  $: filters, calYears()
 </script>
 
 <div class="filter {minimise ? 'minimiseFilter' : ''}">
@@ -33,11 +49,17 @@
         </h2>
         <br>
         <h3>Category</h3>
-        <FilterCategory content={["tillverkare", "typ"]} bind:arr={filters.category} bind:labels={filters.labels} />
+        <FilterSelect content={["tillverkare", "typ"]} bind:arr={filters.category} bind:labels={filters.labels} />
         <h3>Labels</h3>
         <FilterLabels {content} bind:arr={filters.labels} context={{column: filters.category}}/>
         <h3>Dataset</h3>
-        <FilterCategory content={["sek", "totalt"]} bind:arr={filters.dataset} />
+        <FilterSelect content={["sek", "totalt"]} bind:arr={filters.dataset} />
+        <h3>Data Display</h3>
+        <FilterSelect content={["months", "years"]} bind:arr={filters.time} />
+        {#if years.length && filters.time == "months"}
+          <h3>Year</h3>
+          <FilterSelect content={years} bind:arr={filters.year} />
+        {/if}
       {/if}
     </MediaQuery>
     <MediaQuery query="(max-width: 1600px)" let:matches>
@@ -52,11 +74,17 @@
         <h2>Chart</h2>
         <FilterChart bind:arr={filters.chart} />
         <h2>Category</h2>
-        <FilterCategory content={["tillverkare", "typ"]} bind:arr={filters.category} bind:labels={filters.labels} />
+        <FilterSelect content={["tillverkare", "typ"]} bind:arr={filters.category} bind:labels={filters.labels} />
         <h2>Labels</h2>
         <FilterLabels {content} bind:arr={filters.labels} context={{column: filters.category}}/>
         <h2>Dataset</h2>
-        <FilterCategory content={["sek", "totalt"]} bind:arr={filters.dataset} />
+        <FilterSelect content={["sek", "totalt"]} bind:arr={filters.dataset} />
+        <h2>Data Display</h2>
+        <FilterSelect content={["months", "years"]} bind:arr={filters.time} />
+        {#if years.length && filters.time == "months"}
+          <h2>Year</h2>
+          <FilterSelect content={years} bind:arr={filters.year} />
+        {/if}
       {/if}
     </MediaQuery>
   </div>

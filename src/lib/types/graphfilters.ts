@@ -3,4 +3,6 @@ export type type_graphfilters = {
   category: string;
   labels: string[];
   dataset: string;
+  time: string;
+  year: number;
 }
