@@ -1,6 +1,6 @@
 <script>
   import calBar from "$lib/modules/canvas/bar";
-  import { Bar, Doughnut, Pie, Line, PolarArea } from "svelte-chartjs";
+  import { Bar, Line } from "svelte-chartjs";
   import {
     Chart,
     Title,
@@ -18,7 +18,6 @@
   export let content;
   export let filters;
 
-  let canvas;
   let data;
 
   function setChart() {
@@ -33,8 +32,6 @@
         CategoryScale,
         LinearScale
       );
-    } else if (["doughnut", "pie"].includes(filters.chart)) {
-      Chart.register(Title, Tooltip, Legend, ArcElement, CategoryScale);
     } else if (filters.chart == "line") {
       Chart.register(
         Title,
@@ -45,8 +42,6 @@
         PointElement,
         CategoryScale
       );
-    } else if (filters.chart == "polarArea") {
-      Chart.register(Title, Tooltip, Legend, ArcElement, RadialLinearScale);
     }
   }
 
@@ -56,14 +51,8 @@
 <div class="canvasContainer">
   {#if filters.chart == "bar"}
     <Bar {data} options={{ responsive: true }} />
-  {:else if filters.chart == "doughnut"}
-    <Doughnut {data} options={{ responsive: true }} />
-  {:else if filters.chart == "pie"}
-    <Pie {data} options={{ responsive: true }} />
   {:else if filters.chart == "line"}
     <Line {data} options={{ responsive: true }} />
-  {:else if filters.chart == "polarArea"}
-    <PolarArea {data} options={{ responsive: true }} />
   {/if}
 </div>
 

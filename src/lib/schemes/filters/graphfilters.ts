@@ -6,5 +6,5 @@ export default {
   "labels": [],
   "dataset": "sek",
   "time": "months",
-  "year": now.getFullYear()
+  "year": now.getFullYear().toString()
 }

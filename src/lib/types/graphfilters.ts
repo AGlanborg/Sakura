@@ -4,5 +4,5 @@ export type type_graphfilters = {
   labels: string[];
   dataset: string;
   time: string;
-  year: number;
+  year: string;
 }

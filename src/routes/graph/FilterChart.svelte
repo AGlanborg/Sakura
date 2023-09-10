@@ -1,7 +1,7 @@
 <script lang="ts">
   export let arr: string;
 
-  let content = ["bar", "line", "polarArea"]
+  let content = ["bar", "line"]
   let option: string[] = [];
 
   function handleSelect(event: any) {
@@ -39,12 +39,8 @@
         {
           arr == "bar"
             ? "bar_chart"
-            : arr == "doughnut" || arr == "pie"
-            ? "pie_chart"
             : arr == "line"
             ? "show_chart"
-            : arr == "polarArea"
-            ? "area_chart"
             : "insert_chart_outlined"
         }
       </span>
@@ -52,14 +48,8 @@
         {
           arr == "bar"
             ? "Bar"
-            : arr == "doughnut"
-            ? "Doughnut"
-            : arr == "pie"
-            ? "Pie"
             : arr == "line"
             ? "Line"
-            : arr == "polarArea"
-            ? "Polar Area"
             : arr
         }
       </p>
@@ -76,14 +66,8 @@
           {
             res == "bar"
               ? "Bar"
-              : res == "doughnut"
-              ? "Doughnut"
-              : res == "pie"
-              ? "Pie"
               : res == "line"
               ? "Line"
-              : res == "polarArea"
-              ? "Polar Area"
               : res
           }
         </option>
