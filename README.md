@@ -44,8 +44,6 @@ In the root directory run the following command and then open the **localhost** 
 
 ## Know issues
 
-The Graph tab is empty
-
 Half the text is in English and the other half is in Swedish
 
 ## Future plans
