@@ -2,15 +2,11 @@
   import "$lib/css/table.scss";
   import createMonths from "$lib/modules/months/createMonths";
   import handleMonth from "$lib/modules/filters/handleMonths";
-  import {
-    filterValue,
-    filterString,
-    filterMonths,
-  } from "$lib/modules/filters/filters";
   import type { type_content, type_filters, type_main } from "$lib/types/index";
 
   export let content: type_content;
   export let filtered: type_main[];
+  export let layout: string;
 
   let months: string[] = [];
 
@@ -39,7 +35,7 @@
       </div>
     {/each}
     {#if months.length < 12}
-      {#each [...Array(12 - months.length).keys()] as filler}
+      {#each [...Array(12 - months.length)] as filler}
         <div class="tableColumn table-default">
           <button disabled>
             <p />
@@ -57,14 +53,16 @@
           <button disabled>
             <p>
               {handleMonth(row.start, row.slut, column)
+                ? layout == "oh"
                 ? (row.oh / row.perioder).toFixed(2)
+                : (row.inpris / row.perioder).toFixed(2)
                 : ""}
             </p>
           </button>
         </div>
       {/each}
       {#if months.length < 12}
-        {#each [...Array(12 - months.length).keys()] as filler}
+        {#each [...Array(12 - months.length)] as filler}
           <div class="tableColumn table-default">
             <button disabled>
               <p />

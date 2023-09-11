@@ -67,7 +67,7 @@
     </button>
   </div>
   <div class="months">
-    <Months {content} {filtered} />
+    <Months {content} {filtered} {layout} />
   </div>
 </div>
 
