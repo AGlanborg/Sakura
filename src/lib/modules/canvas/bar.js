@@ -18,7 +18,6 @@ export default function calBar(content, filters) {
   }
 
   for (const [key, value] of Object.entries(collections)) {
-    console.log("hmm")
     obj.datasets.push(datasetBar(key, value, colours[colourindex], obj.labels, filters))
     colourindex += 1
   }

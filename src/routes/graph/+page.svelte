@@ -10,9 +10,9 @@
   let filters: type_graphfilters = graphfilters_scheme;
   let minimise: boolean = false;
 
-  // afterNavigate(({ from }) => {
-  //   from?.url.pathname ? "" : goto("/");
-  // });
+  afterNavigate(({ from }) => {
+    from?.url.pathname ? "" : goto("/");
+  });
 
   async function getContent() {
     db.subscribe(async (val: string) => {

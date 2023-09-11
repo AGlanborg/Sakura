@@ -43,6 +43,11 @@ input:focus {
   outline: none;
 }
 
+canvas {
+  padding: 2.5%;
+  border-radius: 20px;
+}
+
 /* Classes */
 /* Specific */
 
@@ -195,6 +200,10 @@ body.dark {
     background-color: dark.$default-background;
     border-color: dark.$inverted-background;
     color: dark.$default-color;
+  }
+
+  canvas {
+    background-color: dark.$inverted-background;
   }
 
   /* Dark-default */

@@ -1,4 +1,8 @@
 export default function calMinMaxYears(filtered) {
+  if (!filtered.length) {
+    return []
+  }
+
   const now = new Date();
   let min = now.getFullYear()
   let max = now.getFullYear()

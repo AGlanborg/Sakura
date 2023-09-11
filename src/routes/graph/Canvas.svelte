@@ -61,8 +61,8 @@
     display: flex;
     flex-direction: center;
     align-items: center;
-    height: 80%;
-    width: 80%;
-    margin: 5% 10% 15%;
+    height: 90%;
+    width: 90%;
+    margin: 2.5% 5% 15%;
   }
 </style>

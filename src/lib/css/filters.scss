@@ -9,7 +9,7 @@ h2:first-child {
 
 h3 {
   display: inline-block;
-  margin: 15px 0 15px 40px;
+  margin: 5px 0 15px 60px;
   font-size: 25px;
   font-weight: 100;
 }
@@ -133,7 +133,7 @@ select {
 @media only screen and (min-width: 1601px) {
   h2 {
     font-size: 30px;
-    margin: 15px 20px 15px;
+    margin: 15px 20px 10px;
   }
 
   .filter {

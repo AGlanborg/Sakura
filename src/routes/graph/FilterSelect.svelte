@@ -53,6 +53,7 @@
   }
 
   sortFilters();
+  $: arr, sortFilters();
 </script>
 
 <div class="sortContainer">

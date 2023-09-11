@@ -6,7 +6,7 @@ export default function monthlyBar(objs, labels, filters) {
 
     for (let n = 0; n < objs.length; n += 1) {
       const obj = objs[n];
-      console.log(obj.start.month, " ", i)
+
       if (obj.start.year == filters.year && obj.slut.year > filters.year && obj.start.month <= i + 1) {
         final[i] += Math.round(obj.monthly);
       } else if (obj.start.year == filters.year && obj.slut.year == filters.year && obj.start.month <= i + 1 && obj.slut.month >= i + 1) {

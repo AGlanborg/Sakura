@@ -15,11 +15,10 @@
 
   function calYears() {
     years = []
-
     const filtered = content.main.filter(row => filters.labels.includes(row[filters.category]))
     const [min, max] = calMinMaxYears(filtered)
 
-    for (let i = min; i < max + 1; i += 1) {
+    for (let i = min; i <= max; i += 1) {
       years.push(i)
     }
   }
@@ -50,15 +49,23 @@
         <br>
         <h3>Category</h3>
         <FilterSelect content={["tillverkare", "typ"]} bind:arr={filters.category} bind:labels={filters.labels} />
+        <div class="filterSeperator" />
         <h3>Labels</h3>
         <FilterLabels {content} bind:arr={filters.labels} context={{column: filters.category}}/>
         <h3>Dataset</h3>
         <FilterSelect content={["sek", "totalt"]} bind:arr={filters.dataset} />
+        <div class="filterSeperator" />
         <h3>Data Display</h3>
         <FilterSelect content={["months", "years"]} bind:arr={filters.time} />
-        {#if years.length && filters.time == "months"}
-          <h3>Year</h3>
-          <FilterSelect content={years} bind:arr={filters.year} />
+        {#if filters.time == "months"}
+        <h2>
+          Date
+        </h2>
+        <br>
+          {#if years.length}
+            <h3>Year</h3>
+            <FilterSelect content={years} bind:arr={filters.year} />
+          {/if}
         {/if}
       {/if}
     </MediaQuery>
@@ -81,9 +88,9 @@
         <FilterSelect content={["sek", "totalt"]} bind:arr={filters.dataset} />
         <h2>Data Display</h2>
         <FilterSelect content={["months", "years"]} bind:arr={filters.time} />
-        {#if years.length && filters.time == "months"}
+        {#if filters.time == "months"}
           <h2>Year</h2>
-          <FilterSelect content={years} bind:arr={filters.year} />
+          <FilterSelect bind:content={years} bind:arr={filters.year} />
         {/if}
       {/if}
     </MediaQuery>
@@ -91,4 +98,7 @@
 </div>
 
 <style lang="scss">
+  .filterSeperator {
+    margin-bottom: 16px;
+  }
 </style>
