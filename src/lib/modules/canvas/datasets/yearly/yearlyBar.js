@@ -1,28 +1,23 @@
-import yearlyLogicBar from "./logic/yearlyLogicBar";
+export default function yearlyLogicBar(objs, labels) {
+  let final = Array(labels.length);
 
-export default function yearlyBar(arr, labels, filters) {
-  let objs = Array();
+  for (let i = 0; i < labels.length; i += 1) {
+    final[i] = final[i] ? final[i] : 0;
 
-  arr.forEach((e) => {
-    let start = e.start.split("-");
-    let slut = e.slut.split("-");
+    for (let n = 0; n < objs.length; n += 1) {
+      const obj = objs[n];
 
-    objs.push({
-      start: {
-        year: parseInt(start[0]),
-        month: parseInt(start[1]),
-        total: parseInt(start[0]) * 12 + parseInt(start[1]),
-      },
-      slut: {
-        year: parseInt(slut[0]),
-        month: parseInt(slut[1]),
-        total: parseInt(slut[0]) * 12 + parseInt(slut[1]),
-      },
-      perioder: e.perioder,
-      focus: e[filters.dataset],
-      monthly: e[filters.dataset] / e.perioder,
-    });
-  });
+      if (obj.start.year == labels[i] && obj.slut.year > labels[i]) {
+        final[i] += Math.round(obj.monthly * (12 - obj.start.month + 1));
+      } else if (obj.start.year == labels[i] && obj.slut.year == labels[i]) {
+        final[i] += Math.round(obj.monthly * (obj.slut.month - obj.start.month + 1));
+      } else if (obj.start.year < labels[i] && obj.slut.year > labels[i]) {
+        final[i] += Math.round(obj.monthly * 12);
+      } else if (obj.start.year < labels[i] && obj.slut.year == labels[i]) {
+        final[i] += Math.round(obj.monthly * obj.slut.month);
+      }
+    }
+  }
 
-  return yearlyLogicBar(objs, labels);
+  return final;
 }
